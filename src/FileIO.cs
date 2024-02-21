@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 
 namespace Easy_AMM_Poses
 {
-    class fileIO
+    class FileIO
     {
-        public static void helloWorld()
-        {
-            System.Diagnostics.Debug.WriteLine("Hello world");
-        }
-
-        public static string openFile()
+        public static string OpenFile()
         {
             // Open file dialogue to select file path
             Microsoft.Win32.OpenFileDialog dialogue = new Microsoft.Win32.OpenFileDialog();
@@ -36,7 +31,7 @@ namespace Easy_AMM_Poses
             }
         }
 
-        public static string openFolder()
+        public static string OpenFolder()
         {
             // Configure open folder dialog box
             Microsoft.Win32.OpenFolderDialog dialog = new();

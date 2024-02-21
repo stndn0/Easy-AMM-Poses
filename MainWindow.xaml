@@ -12,12 +12,12 @@
         <TextBox
             x:Name="pathToCli"
             Text="{Binding ElementName=textBox, Path=Text}"
-            PreviewMouseDown="cliPathClickHandler"
+            PreviewMouseDown="CliPathClickHandler"
          ></TextBox>
         <Label>Path to Cyberpunk mod folder</Label>
         <TextBox
             x:Name="pathToGame"
-            PreviewMouseDown="modFolderPathClickHandler"
+            PreviewMouseDown="ModFolderPathClickHandler"
          ></TextBox>
         <Label x:Name="myLabel" Content="Hello World"></Label>
     </StackPanel>

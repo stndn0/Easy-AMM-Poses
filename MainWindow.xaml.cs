@@ -96,5 +96,20 @@ namespace Easy_AMM_Poses
             // Update the label myLabel to show the cliPath string
             myLabel.Content = "Debug: " + config.cliPath;
         }
+
+        private void AnimFilePathClickHandler(object sender, EventArgs e)
+        {
+            string value = FileIO.OpenAnim();
+            if (value != null)
+            {
+                System.Diagnostics.Debug.WriteLine("DEBUG: Anim file, " + value);
+                pathToAnim.Text = value;
+            }
+        }
+
+        private void ButtonConvertHandler(object sender, RoutedEventArgs e)
+        {
+            WolvenKit.ConvertAnimToJson(config.cliPath);
+        }
     }
 }

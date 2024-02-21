@@ -20,5 +20,15 @@
             PreviewMouseDown="ModFolderPathClickHandler"
          ></TextBox>
         <Label x:Name="myLabel" Content="Hello World"></Label>
+        <Label>Load .ANIMS file</Label>
+        <TextBox
+            x:Name="pathToAnim"
+            PreviewMouseDown="AnimFilePathClickHandler"
+         ></TextBox>
+        <Button
+            x:Name="btnConvert"
+            Click="ButtonConvertHandler"
+            Content="Convert to JSON"
+        ></Button>
     </StackPanel>
 </Window>

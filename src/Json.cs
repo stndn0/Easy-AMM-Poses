@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using static Easy_AMM_Poses.MainWindow;
@@ -37,6 +38,14 @@ namespace Easy_AMM_Poses.src
 
             config.cliPath = deserializedData.cliPath;
             config.modFolderPath = deserializedData.modFolderPath;
+        }
+
+        // Read animation data from JSON file
+        public static void ReadAnimData()
+        {
+            // Hard coded for now.
+            var pathToJson = "\"C:\\Users\\stndn\\Documents\\season7_tender_pose_pack_fa.anims.json\"";
+
         }
     }
 }

@@ -14,7 +14,7 @@
             Text="{Binding ElementName=textBox, Path=Text}"
             PreviewMouseDown="CliPathClickHandler"
          ></TextBox>
-        <Label>Path to Cyberpunk mod folder</Label>
+        <Label>Path to your Cyberpunk mod folder</Label>
         <TextBox
             x:Name="pathToGame"
             PreviewMouseDown="ModFolderPathClickHandler"

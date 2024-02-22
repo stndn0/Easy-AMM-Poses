@@ -1,7 +1,8 @@
 ﻿using System.Text;
 using System.IO;
+using System.Diagnostics;
 using System.Text.Json;
-using Newtonsoft.Json; 
+using Newtonsoft.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Easy_AMM_Poses.src;
+using Newtonsoft.Json.Linq;
 
 namespace Easy_AMM_Poses
 {
@@ -26,12 +28,34 @@ namespace Easy_AMM_Poses
         }
         Config config = new Config();
 
+
         public MainWindow()
         {
             InitializeComponent();
             InitializeConfiguration();
 
+            var pathToJson2 = @"C:\Users\stndn\Documents\season7_tender_pose_pack_fa.anims.json";
+
+            // Load the JSON and deserialize it into a JToken object.
+            var result = JsonConvert.DeserializeObject<JToken>(File.ReadAllText(pathToJson2));
+            
+            // Iterate through the JToken object - we're only iterating through what we want.
+            foreach (var item in result["Data"]["RootChunk"]["animations"])
+            {
+                // The item we're after is called $value - this is the name of the animation.
+                // Store all $value items into a new list
+                Debug.WriteLine(item["Data"]["animation"]["Data"]["name"]["$value"]);
+
+            }
+            //var rawAnims = result["Data"]["RootChunk"]["animations"][0]["Data"]["animation"]["Data"]["name"]["$value"];
+            //Debug.WriteLine(rawAnims);
+
         }
+
+
+
+
+
 
         // Initialize the configuration file and set the appropriate variables.
         // The config file is used to store paths to the CLI & the mod folder.

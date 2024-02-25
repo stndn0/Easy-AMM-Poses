@@ -54,11 +54,11 @@ namespace Easy_AMM_Poses
             }
         }
 
+
         public static string OpenAnim()
         {
             // Open file dialogue to select file path
             Microsoft.Win32.OpenFileDialog dialogue = new Microsoft.Win32.OpenFileDialog();
-
             dialogue.DefaultExt = ".anims";
             dialogue.Filter = "ANIMS File (*.ANIMS)|*.ANIMS";
             dialogue.Title = "Select the Cyberpunk 2077 .ANIMS file";

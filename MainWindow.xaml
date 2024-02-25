@@ -7,28 +7,37 @@
         mc:Ignorable="d"
         Title="Easy AMM Poses" Height="800" Width="1200">
     <StackPanel>
-        <Label>Path to WolvenKit CLI executable</Label>
+        <Label FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center">Easy AMM Poses</Label>
+        <Label FontSize="14" FontFamily="Cascadia Code Light" HorizontalAlignment="Center" VerticalAlignment="Center">pre-alpha 1 | work in progress</Label>
+        <Label FontSize="14" FontFamily="Arial" FontWeight="Bold" Padding="5,5,5,1">Configuration</Label>
+        <Label FontStyle="Italic">Path to WolvenKit CLI executable</Label>
         <!-- Binding stops the program from crashing. You need to learn why it works... -->
         <TextBox
             x:Name="pathToCli"
             Text="{Binding ElementName=textBox, Path=Text}"
             PreviewMouseDown="CliPathClickHandler"
          ></TextBox>
-        <Label>Path to your Cyberpunk mod folder</Label>
+        <Label FontStyle="Italic">Path to your Cyberpunk mod folder</Label>
         <TextBox
             x:Name="pathToGame"
             PreviewMouseDown="ModFolderPathClickHandler"
          ></TextBox>
         <Label x:Name="myLabel" Content="Hello World"></Label>
-        <Label>Load .ANIMS file</Label>
+        <Label FontSize="14" FontWeight="Bold" FontFamily="Arial" Padding="5,16,5,1">Pose Pack Creator</Label>
+        <Label FontStyle="Italic">Load .ANIMS file</Label>
         <TextBox
             x:Name="pathToAnim"
             PreviewMouseDown="AnimFilePathClickHandler"
-         ></TextBox>
+         />
         <Button
             x:Name="btnConvert"
             Click="ButtonConvertHandler"
-            Content="Convert to JSON"
-        ></Button>
+            FontSize="16"
+            Content="Load Poses from .ANIM" FontFamily="Arial" Margin="0,8,0,8" Padding="12,12,12,12"
+        />
+        <Label FontSize="14">Detected Poses</Label>
+        <ListView Name="entries" Grid.Row="1">
+        </ListView>
+        <Button FontFamily="Arial" FontSize="16" Margin="0,8,0,8" Padding="12,12,12,12">Create AMM Pose Pack</Button>
     </StackPanel>
 </Window>

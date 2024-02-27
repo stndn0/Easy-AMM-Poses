@@ -45,10 +45,14 @@ namespace Easy_AMM_Poses
                 // The item we're after is called $value - this is the name of the animation.
                 // Store all $value items into a new list
                 Debug.WriteLine(item["Data"]["animation"]["Data"]["name"]["$value"]);
-
+                string poseName = item["Data"]["animation"]["Data"]["name"]["$value"].ToString();
+                entries.Items.Add(poseName);
             }
-            //var rawAnims = result["Data"]["RootChunk"]["animations"][0]["Data"]["animation"]["Data"]["name"]["$value"];
-            //Debug.WriteLine(rawAnims);
+
+            // Test stuff
+            // Add content to JSON file
+            Workspot.BuildWorkspotJson();
+
 
         }
 

@@ -29,7 +29,7 @@ namespace Easy_AMM_Poses.src
             string pathToWorkspotListEntry = @"C:\Home\Development\repos\csharp\Easy AMM Poses\templates\workspot_list_entry.json";
 
             // For each pose, add a new entry to the workspot JSON file
-            int currentId = 2;
+            int currentId = 6;
 
             foreach (Pose pose in poseList)
             {
@@ -42,10 +42,11 @@ namespace Easy_AMM_Poses.src
                 jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["animName"]["$value"] = pose.Name;
 
                 // Update id fields
-                //jsonWorkspotListEntryObj["HandleId"] = currentId;
-                //jsonWorkspotListEntryObj["Data"]["id"]["id"] = currentId;
-                //jsonWorkspotListEntryObj["Data"]["list"][0]["HandleId"] = currentId + 1;
-                //jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["id"]["id"] = currentId + 1;
+                jsonWorkspotListEntryObj["HandleId"] = currentId.ToString();
+                jsonWorkspotListEntryObj["Data"]["list"][0]["HandleId"] = (currentId + 1).ToString();
+
+                jsonWorkspotListEntryObj["Data"]["id"]["id"] = currentId;
+                jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["id"]["id"] = currentId + 1;
 
                 // Add template to the main workspot json.
                 jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["rootEntry"]["Data"]["list"].Add(jsonWorkspotListEntryObj);

@@ -29,42 +29,34 @@ namespace Easy_AMM_Poses.src
             string pathToWorkspotListEntry = @"C:\Home\Development\repos\csharp\Easy AMM Poses\templates\workspot_list_entry.json";
 
             // For each pose, add a new entry to the workspot JSON file
+            // Start at id 6 because the workspot usually already has 5 entries.
             int currentId = 6;
 
             foreach (Pose pose in poseList)
             {
-                Debug.WriteLine(pose.Name);
                 // Deserialize entry template in order to write to it.
                 dynamic jsonWorkspotListEntryObj = JsonConvert.DeserializeObject(File.ReadAllText(pathToWorkspotListEntry));
 
-                // Add a new entries to the workspot template json.
+                // Add a new pose entries to the workspot template json.
                 jsonWorkspotListEntryObj["Data"]["idleAnim"]["$value"] = pose.Name;
                 jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["animName"]["$value"] = pose.Name;
 
-                // Update id fields
+                // Update id fields. Incremented the nested list field.
                 jsonWorkspotListEntryObj["HandleId"] = currentId.ToString();
                 jsonWorkspotListEntryObj["Data"]["list"][0]["HandleId"] = (currentId + 1).ToString();
 
                 jsonWorkspotListEntryObj["Data"]["id"]["id"] = currentId;
                 jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["id"]["id"] = currentId + 1;
 
-                // Add template to the main workspot json.
+                // Increment counter for the next iteration.
+                currentId += 2;
+
+                // Merge template with the main workspot json.
                 jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["rootEntry"]["Data"]["list"].Add(jsonWorkspotListEntryObj);
-
-                // Serialize
-                //string serialized = JsonConvert.SerializeObject(jsonWorkspotListEntryObj, Formatting.Indented);
-                //Debug.WriteLine(serialized);
-
-                currentId+= 2;
-
             }
 
-            // Update workspot json with new entries.
-            // Serialize
+            // Serialize and write updated data to the workspot JSON file.
             string output = JsonConvert.SerializeObject(jsonWorkspotObj, Formatting.Indented);
-            //Debug.WriteLine(output);
-
-            // Write to JSON file
             string pathToOutput = @"C:\Home\Development\repos\csharp\Easy AMM Poses\templates\workspot_output.json";
             File.WriteAllText(pathToOutput, output);
 

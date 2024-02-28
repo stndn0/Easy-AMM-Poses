@@ -1,0 +1,19 @@
+To-Do
+
+general:
+- Clean up the codebase
+	- remove unused code
+	- adhere to proper c# style guidelines
+
+workspot:
+1. Remove hardcoded paths and use GUI paths instead.
+2. Add GUI input to allow user to change the workspot rig types.
+	- Rig should match that of the animation type.
+
+ent:
+
+1. Code the ent json and template
+
+lua:
+Low priority for now.
+1. Generate the lua

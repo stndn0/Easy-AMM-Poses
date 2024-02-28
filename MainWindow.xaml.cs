@@ -82,7 +82,7 @@ namespace Easy_AMM_Poses
         /// </summary>
         private void readAnimData()
         {
-            var pathToJson2 = @"C:\Users\stndn\Documents\season7_tender_pose_pack_fa.anims.json";
+            var pathToJson2 = @"C:\Users\stndn\Documents\season7_allaccess_pose_pack.anims.json";
 
             // Load the JSON and deserialize it into a JToken object.
             var result = JsonConvert.DeserializeObject<JToken>(File.ReadAllText(pathToJson2));

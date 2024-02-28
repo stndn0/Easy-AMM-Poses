@@ -25,8 +25,10 @@ namespace Easy_AMM_Poses
             public string cliPath = "Select the path to your WolvenKit CLI";
             public string modFolderPath = "Select the path to your Cyberpunk 2077 mod folder";
             public string configFilePath = "config/config.json";
-            public string animPath = "";
-            public string animJsonPath = "";
+            public string animPathFemaleAvg = "";
+            public string animJsonPathFemaleAvg = "";
+            public string animPathMaleAvg = "";
+            public string animJsonPathMaleAvg = "";
         }
         Config config = new Config();
 
@@ -48,10 +50,6 @@ namespace Easy_AMM_Poses
             // Convert the workspot from raw json to .workspot.
 
         }
-
-
-
-
 
 
         // Initialize the configuration file and set the appropriate variables.
@@ -85,7 +83,7 @@ namespace Easy_AMM_Poses
         public void readAnimData()
         {
             //var pathToJson2 = @"C:\Users\stndn\Documents\season7_allaccess_pose_pack.anims.json";
-            var pathToJson2 = config.animJsonPath;
+            var pathToJson2 = config.animJsonPathFemaleAvg;
 
             // Load the JSON and deserialize it into a JToken object.
             var result = JsonConvert.DeserializeObject<JToken>(File.ReadAllText(pathToJson2));
@@ -143,22 +141,46 @@ namespace Easy_AMM_Poses
             myLabel.Content = "Debug: " + config.cliPath;
         }
 
-        private void AnimFilePathClickHandler(object sender, EventArgs e)
+        private void AnimFilePathClickHandlerFemaleAvg(object sender, EventArgs e)
         {
             string value = FileIO.OpenAnim();
             if (value != null)
             {
-                Debug.WriteLine("DEBUG: Anim file, " + value);
-                config.animPath = value;
-                config.animJsonPath = value + ".json";
-                pathToAnim.Text = config.animPath;
+                Debug.WriteLine("DEBUG: Anim file [WA], " + value);
+                config.animPathFemaleAvg = value;
+                config.animJsonPathFemaleAvg = value + ".json";
+                pathToFemaleAverageAnim.Text = config.animPathFemaleAvg;
+            }
+        }
+        private void AnimFilePathClickHandlerMaleAvg(object sender, EventArgs e)
+        {
+            string value = FileIO.OpenAnim();
+            if (value != null)
+            {
+                Debug.WriteLine("DEBUG: Anim file [MA], " + value);
+                config.animPathMaleAvg = value;
+                config.animJsonPathMaleAvg = value + ".json";
+                pathToMaleAverageAnim.Text = config.animPathMaleAvg;
             }
         }
 
-        private void ButtonConvertHandler(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Button handler for "Load Poses from .ANIM".
+        /// Calls the method that converts the animation file to JSON.
+        /// </summary>
+        private async void ButtonConvertHandler(object sender, RoutedEventArgs e)
         {
-            WolvenKit.ConvertAnimToJson(config.cliPath, config.animPath);
-            readAnimData();
+            
+            
+            
+            
+            var result = await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg);
+
+            if (result == 1)
+            {
+                Debug.WriteLine("DEBUG: Conversion successful.");
+                readAnimData();
+            }
         }
 
         private void ButtonBuildHandler(object sender, RoutedEventArgs e)

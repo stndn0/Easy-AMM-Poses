@@ -24,10 +24,15 @@
          ></TextBox>
         <Label x:Name="myLabel" Content="Hello World"></Label>
         <Label FontSize="14" FontWeight="Bold" FontFamily="Arial" Padding="5,16,5,1">Pose Pack Creator</Label>
-        <Label FontStyle="Italic">Load .ANIMS file</Label>
+        <Label FontStyle="Italic">Load WA (female average) animation file (.anims)</Label>
         <TextBox
-            x:Name="pathToAnim"
-            PreviewMouseDown="AnimFilePathClickHandler"
+            x:Name="pathToFemaleAverageAnim"
+            PreviewMouseDown="AnimFilePathClickHandlerFemaleAvg"
+         />
+        <Label FontStyle="Italic">Load MA (masc average) animation file (.anims)</Label>
+        <TextBox
+            x:Name="pathToMaleAverageAnim"
+            PreviewMouseDown="AnimFilePathClickHandlerMaleAvg"
          />
         <Button
             x:Name="btnConvert"

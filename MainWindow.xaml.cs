@@ -28,31 +28,22 @@ namespace Easy_AMM_Poses
         }
         Config config = new Config();
 
+        // List of poses to be populated from the users animation JSON file.
+        List<Pose> poseList = new List<Pose>();
+
 
         public MainWindow()
         {
             InitializeComponent();
             InitializeConfiguration();
 
-            var pathToJson2 = @"C:\Users\stndn\Documents\season7_tender_pose_pack_fa.anims.json";
+            // Read the animation data from the JSON file.
+            readAnimData(); 
 
-            // Load the JSON and deserialize it into a JToken object.
-            var result = JsonConvert.DeserializeObject<JToken>(File.ReadAllText(pathToJson2));
-            
-            // Iterate through the JToken object - we're only iterating through what we want.
-            foreach (var item in result["Data"]["RootChunk"]["animations"])
-            {
-                // The item we're after is called $value - this is the name of the animation.
-                // Store all $value items into a new list
-                Debug.WriteLine(item["Data"]["animation"]["Data"]["name"]["$value"]);
-                string poseName = item["Data"]["animation"]["Data"]["name"]["$value"].ToString();
-                entries.Items.Add(poseName);
-            }
+            // Construct the workspot json using animation data.
+            Workspot.BuildWorkspotJson(poseList);       // example of a static class member
 
-            // Test stuff
-            // Add content to JSON file
-            Workspot.BuildWorkspotJson();
-
+            // Convert the workspot from json to .workspot.
 
         }
 
@@ -84,6 +75,36 @@ namespace Easy_AMM_Poses
             pathToCli.Text = config.cliPath;
             pathToGame.Text = config.modFolderPath;
             myLabel.Content = "Debug: " + config.cliPath;
+        }
+
+        /// <summary>
+        /// Load poses from animation JSON file.
+        /// </summary>
+        private void readAnimData()
+        {
+            var pathToJson2 = @"C:\Users\stndn\Documents\season7_tender_pose_pack_fa.anims.json";
+
+            // Load the JSON and deserialize it into a JToken object.
+            var result = JsonConvert.DeserializeObject<JToken>(File.ReadAllText(pathToJson2));
+
+            // Iterate through the JToken object - we're only iterating through what we want.
+            foreach (var item in result["Data"]["RootChunk"]["animations"])
+            {
+                // The item we're after is called $value - this is the name of the animation.
+                // Store all $value items into a new list
+                // Debug.WriteLine(item["Data"]["animation"]["Data"]["name"]["$value"]);
+                string poseName = item["Data"]["animation"]["Data"]["name"]["$value"].ToString();
+                entries.Items.Add(poseName);
+
+                // Create a new pose object for each value in the list.
+                poseList.Add(new Pose(poseName));
+            }
+            Debug.WriteLine("DEBUG: List of pose objects");
+            foreach (var pose in poseList)
+            {
+                //Debug.WriteLine(pose.Name);
+            }
+
         }
 
 

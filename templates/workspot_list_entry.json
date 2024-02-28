@@ -1,0 +1,39 @@
+{
+  "HandleId": "6",
+  "Data": {
+    "$type": "workSequence",
+    "category": "Any",
+    "disableAutoTransition": 0,
+    "flags": 0,
+    "id": {
+      "$type": "workWorkEntryId",
+      "id": 1
+    },
+    "idleAnim": {
+      "$type": "CName",
+      "$storage": "string",
+      "$value": "wolv_rom1_air01_f"
+    },
+    "list": [
+      {
+        "HandleId": "7",
+        "Data": {
+          "$type": "workAnimClip",
+          "animName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wolv_rom1_air01_f"
+          },
+          "blendOutTime": 0.5,
+          "flags": 2,
+          "id": {
+            "$type": "workWorkEntryId",
+            "id": 2
+          }
+        }
+      }
+    ],
+    "loopInfinitely": 1,
+    "previousLoopInfinitely": 0
+  }
+}

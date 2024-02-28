@@ -1,0 +1,1217 @@
+{
+  "Header": {
+    "WolvenKitVersion": "8.12.3-nightly.2024-02-04+00437f805b3b85cadf8d22184311d931958f26f1",
+    "WKitJsonVersion": "0.0.8",
+    "GameVersion": 2110,
+    "ExportedDateTime": "2024-02-27T22:07:40.1305993Z",
+    "DataType": "CR2W",
+    "ArchiveFileName": "E:\\Games\\Cyberpunk 2077\\Cyberpunk 2077 Modding\\WOLVENKIT PROJECTS 2\\EasyAMMPoses\\source\\archive\\pwa_workspot.workspot"
+  },
+  "Data": {
+    "Version": 195,
+    "BuildVersion": 0,
+    "RootChunk": {
+      "$type": "workWorkspotResource",
+      "additionalAnimDatabases": [],
+      "animFeatures": [
+        {
+          "$type": "animAnimFeatureEntry",
+          "className": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "animAnimFeatureUpdateWorkspot"
+          },
+          "debugEnabled": 0,
+          "forceAllocate": 0,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "UpdateWorkspot"
+          }
+        }
+      ],
+      "cookingPlatform": "PLATFORM_PC",
+      "hackAlwaysSample": 0,
+      "hasMixerSlot": 0,
+      "isPaused": 0,
+      "jsonFilesDirectory": "",
+      "nodesToInit": [
+        {
+          "HandleId": "0",
+          "Data": {
+            "$type": "animAnimNode_Root",
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "id": 4294967295,
+            "nodes": [
+              {
+                "HandleId": "1",
+                "Data": {
+                  "$type": "animAnimNode_Output",
+                  "debugName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "id": 4294967295,
+                  "node": {
+                    "$type": "animPoseLink",
+                    "node": {
+                      "HandleId": "2",
+                      "Data": {
+                        "$type": "animAnimNode_WorkspotHub",
+                        "additionalLinkIds": [],
+                        "additionalLinks": [],
+                        "animLoopEventName": {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "None"
+                        },
+                        "debugName": {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "None"
+                        },
+                        "emotionalExpression": {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "None"
+                        },
+                        "eventFilterType": "Default",
+                        "facialIdleFemaleAnimation": {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "idle__interested__female"
+                        },
+                        "facialIdleKey_FemaleAnimation": {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "idle__interested__female__confident"
+                        },
+                        "facialIdleKey_MaleAnimation": {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "idle__interested__male__confident"
+                        },
+                        "facialIdleMaleAnimation": {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "idle__interested__male"
+                        },
+                        "facialKeyWeight": 1,
+                        "id": 4294967295,
+                        "isCoverHubHack": 0,
+                        "mainEmotionalState": {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "None"
+                        },
+                        "poseInfoLogger": null,
+                        "visAxes": 0,
+                        "visMask": null,
+                        "visNames": 0,
+                        "visPostPose": 0,
+                        "visPostPoseColor": {
+                          "$type": "Color",
+                          "Alpha": 0,
+                          "Blue": 0,
+                          "Green": 0,
+                          "Red": 0
+                        },
+                        "visPrePose": 0,
+                        "visPrePoseColor": {
+                          "$type": "Color",
+                          "Alpha": 0,
+                          "Blue": 0,
+                          "Green": 0,
+                          "Red": 0
+                        },
+                        "visRigPartMask": {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "None"
+                        },
+                        "visWhenActive": 0
+                      }
+                    }
+                  },
+                  "poseInfoLogger": null,
+                  "visAxes": 0,
+                  "visMask": null,
+                  "visNames": 0,
+                  "visPostPose": 0,
+                  "visPostPoseColor": {
+                    "$type": "Color",
+                    "Alpha": 0,
+                    "Blue": 0,
+                    "Green": 0,
+                    "Red": 0
+                  },
+                  "visPrePose": 0,
+                  "visPrePoseColor": {
+                    "$type": "Color",
+                    "Alpha": 0,
+                    "Blue": 0,
+                    "Green": 0,
+                    "Red": 0
+                  },
+                  "visRigPartMask": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "visWhenActive": 0
+                }
+              }
+            ],
+            "outputNode": {
+              "$type": "animPoseLink",
+              "node": null
+            },
+            "poseInfoLogger": null,
+            "visAxes": 0,
+            "visMask": null,
+            "visNames": 0,
+            "visPostPose": 0,
+            "visPostPoseColor": {
+              "$type": "Color",
+              "Alpha": 0,
+              "Blue": 0,
+              "Green": 0,
+              "Red": 0
+            },
+            "visPrePose": 0,
+            "visPrePoseColor": {
+              "$type": "Color",
+              "Alpha": 0,
+              "Blue": 0,
+              "Green": 0,
+              "Red": 0
+            },
+            "visRigPartMask": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "visWhenActive": 0
+          }
+        },
+        {
+          "HandleRefId": "1"
+        },
+        {
+          "HandleRefId": "2"
+        }
+      ],
+      "oneFrameToggle": 0,
+      "rootNode": {
+        "HandleRefId": "0"
+      },
+      "staticCommandsRig": {
+        "DepotPath": {
+          "$type": "ResourcePath",
+          "$storage": "uint64",
+          "$value": "0"
+        },
+        "Flags": "Default"
+      },
+      "timeDeltaMultiplier": 1,
+      "useAnimCommands": 0,
+      "useAnimCommandsForCrowd": 0,
+      "useAnimStaticCommands": 0,
+      "useLunaticMode": 0,
+      "variables": {
+        "HandleId": "3",
+        "Data": {
+          "$type": "animAnimVariableContainer",
+          "boolVariables": [],
+          "floatVariables": [],
+          "intVariables": [],
+          "quaternionVariables": [],
+          "transformVariables": [],
+          "vectorVariables": []
+        }
+      },
+      "workspotTree": {
+        "HandleId": "4",
+        "Data": {
+          "$type": "workWorkspotTree",
+          "animGraphSlotName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "WORKSPOT"
+          },
+          "autoTransitionBlendTime": 1,
+          "blacklistVisualTags": {
+            "$type": "redTagList",
+            "tags": [
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "Speaker"
+              },
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "Mask"
+              },
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "Backpack"
+              },
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "Chubby"
+              },
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "Headphones"
+              },
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "Fat"
+              }
+            ]
+          },
+          "blendOutTime": 0,
+          "censorshipFlags": "0",
+          "customTransitionAnims": [
+            {
+              "$type": "workTransitionAnim",
+              "idleA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__2h_on_sides__ow__01"
+              },
+              "idleB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_cigarette__ow__01"
+              },
+              "transitionAtoB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__2h_on_sides__ow__01__to__stand_wall_lean180__rh_cigarette__ow__01__turn0__01"
+              },
+              "transitionBtoA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_cigarette__ow__01__to__stand_wall_lean180__2h_on_sides__ow__01__turn0__01"
+              }
+            },
+            {
+              "$type": "workTransitionAnim",
+              "idleA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__2h_on_sides__ow__01"
+              },
+              "idleB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__arms_crossed_front__ow__01"
+              },
+              "transitionAtoB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__2h_on_sides__ow__01__to__stand_wall_lean180__arms_crossed_front__ow__01__turn0__01"
+              },
+              "transitionBtoA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__arms_crossed_front__ow__01__to__stand_wall_lean180__2h_on_sides__ow__01__turn0__01"
+              }
+            },
+            {
+              "$type": "workTransitionAnim",
+              "idleA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__2h_on_sides__ow__01"
+              },
+              "idleB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__lh_burger__ow__01"
+              },
+              "transitionAtoB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__2h_on_sides__ow__01__to__stand_wall_lean180__lh_burger__ow__01__turn0__01"
+              },
+              "transitionBtoA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__lh_burger__ow__01__to__stand_wall_lean180__2h_on_sides__ow__01__turn0__01"
+              }
+            },
+            {
+              "$type": "workTransitionAnim",
+              "idleA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__2h_on_sides__ow__01"
+              },
+              "idleB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_phone__ow__01"
+              },
+              "transitionAtoB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__2h_on_sides__ow__01__to__stand_wall_lean180__rh_phone__ow__01__turn0__01"
+              },
+              "transitionBtoA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_phone__ow__01__to__stand_wall_lean180__2h_on_sides__ow__01__turn0__01"
+              }
+            },
+            {
+              "$type": "workTransitionAnim",
+              "idleA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_cigarette__ow__01"
+              },
+              "idleB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__arms_crossed_front__ow__01"
+              },
+              "transitionAtoB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_cigarette__ow__01__to__stand_wall_lean180__arms_crossed_front__ow__01__turn0__01"
+              },
+              "transitionBtoA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__arms_crossed_front__ow__01__to__stand_wall_lean180__rh_cigarette__ow__01__turn0__01"
+              }
+            },
+            {
+              "$type": "workTransitionAnim",
+              "idleA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_cigarette__ow__01"
+              },
+              "idleB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__lh_burger__ow__01"
+              },
+              "transitionAtoB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_cigarette__ow__01__to__stand_wall_lean180__lh_burger__ow__01__turn0__01"
+              },
+              "transitionBtoA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__lh_burger__ow__01__to__stand_wall_lean180__rh_cigarette__ow__01__turn0__01"
+              }
+            },
+            {
+              "$type": "workTransitionAnim",
+              "idleA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_cigarette__ow__01"
+              },
+              "idleB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_phone__ow__01"
+              },
+              "transitionAtoB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_cigarette__ow__01__to__stand_wall_lean180__rh_phone__ow__01__turn0__01"
+              },
+              "transitionBtoA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_phone__ow__01__to__stand_wall_lean180__rh_cigarette__ow__01__turn0__01"
+              }
+            },
+            {
+              "$type": "workTransitionAnim",
+              "idleA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__arms_crossed_front__ow__01"
+              },
+              "idleB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__lh_burger__ow__01"
+              },
+              "transitionAtoB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__arms_crossed_front__ow__01__to__stand_wall_lean180__lh_burger__ow__01__turn0__01"
+              },
+              "transitionBtoA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__lh_burger__ow__01__to__stand_wall_lean180__arms_crossed_front__ow__01__turn0__01"
+              }
+            },
+            {
+              "$type": "workTransitionAnim",
+              "idleA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__arms_crossed_front__ow__01"
+              },
+              "idleB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_phone__ow__01"
+              },
+              "transitionAtoB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__arms_crossed_front__ow__01__to__stand_wall_lean180__rh_phone__ow__01__turn0__01"
+              },
+              "transitionBtoA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_phone__ow__01__to__stand_wall_lean180__arms_crossed_front__ow__01__turn0__01"
+              }
+            },
+            {
+              "$type": "workTransitionAnim",
+              "idleA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__lh_burger__ow__01"
+              },
+              "idleB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_phone__ow__01"
+              },
+              "transitionAtoB": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__lh_burger__ow__01__to__stand_wall_lean180__rh_phone__ow__01__turn0__01"
+              },
+              "transitionBtoA": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "stand_wall_lean180__rh_phone__ow__01__to__stand_wall_lean180__lh_burger__ow__01__turn0__01"
+              }
+            }
+          ],
+          "disableAutoAnimsetGeneraion": 0,
+          "dontInjectWorkspotGraph": 0,
+          "finalAnimsets": [
+            {
+              "$type": "workWorkspotAnimsetEntry",
+              "animations": {
+                "$type": "animAnimSetup",
+                "cinematics": [
+                  {
+                    "$type": "animAnimSetupEntry",
+                    "animSet": {
+                      "DepotPath": {
+                        "$type": "ResourcePath",
+                        "$storage": "uint64",
+                        "$value": "0"
+                      },
+                      "Flags": "Default"
+                    },
+                    "priority": 128,
+                    "variableNames": []
+                  }
+                ],
+                "gameplay": [],
+                "hash": "5202934872057620000"
+              },
+              "loadingHandles": [
+                {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "uint64",
+                    "$value": "0"
+                  },
+                  "Flags": "Default"
+                }
+              ],
+              "rig": {
+                "DepotPath": {
+                  "$type": "ResourcePath",
+                  "$storage": "string",
+                  "$value": "base\\characters\\base_entities\\man_base\\man_base.rig"
+                },
+                "Flags": "Soft"
+              }
+            },
+            {
+              "$type": "workWorkspotAnimsetEntry",
+              "animations": {
+                "$type": "animAnimSetup",
+                "cinematics": [
+                  {
+                    "$type": "animAnimSetupEntry",
+                    "animSet": {
+                      "DepotPath": {
+                        "$type": "ResourcePath",
+                        "$storage": "uint64",
+                        "$value": "0"
+                      },
+                      "Flags": "Default"
+                    },
+                    "priority": 128,
+                    "variableNames": []
+                  }
+                ],
+                "gameplay": [],
+                "hash": "5898106146482057000"
+              },
+              "loadingHandles": [
+                {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "uint64",
+                    "$value": "0"
+                  },
+                  "Flags": "Default"
+                }
+              ],
+              "rig": {
+                "DepotPath": {
+                  "$type": "ResourcePath",
+                  "$storage": "string",
+                  "$value": "base\\characters\\base_entities\\man_child\\man_child.rig"
+                },
+                "Flags": "Soft"
+              }
+            },
+            {
+              "$type": "workWorkspotAnimsetEntry",
+              "animations": {
+                "$type": "animAnimSetup",
+                "cinematics": [
+                  {
+                    "$type": "animAnimSetupEntry",
+                    "animSet": {
+                      "DepotPath": {
+                        "$type": "ResourcePath",
+                        "$storage": "string",
+                        "$value": "wolv_internal_season7_halloween\\season_7_special_halloween_pose_pack.anims"
+                      },
+                      "Flags": "Default"
+                    },
+                    "priority": 128,
+                    "variableNames": []
+                  }
+                ],
+                "gameplay": [],
+                "hash": "2090797394152133000"
+              },
+              "loadingHandles": [
+                {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "wolv_internal_season7_halloween\\season_7_special_halloween_pose_pack.anims"
+                  },
+                  "Flags": "Default"
+                }
+              ],
+              "rig": {
+                "DepotPath": {
+                  "$type": "ResourcePath",
+                  "$storage": "string",
+                  "$value": "base\\characters\\base_entities\\woman_base\\woman_base.rig"
+                },
+                "Flags": "Soft"
+              }
+            },
+            {
+              "$type": "workWorkspotAnimsetEntry",
+              "animations": {
+                "$type": "animAnimSetup",
+                "cinematics": [
+                  {
+                    "$type": "animAnimSetupEntry",
+                    "animSet": {
+                      "DepotPath": {
+                        "$type": "ResourcePath",
+                        "$storage": "uint64",
+                        "$value": "0"
+                      },
+                      "Flags": "Default"
+                    },
+                    "priority": 128,
+                    "variableNames": []
+                  }
+                ],
+                "gameplay": [],
+                "hash": "2090797394152133000"
+              },
+              "loadingHandles": [
+                {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "uint64",
+                    "$value": "0"
+                  },
+                  "Flags": "Default"
+                }
+              ],
+              "rig": {
+                "DepotPath": {
+                  "$type": "ResourcePath",
+                  "$storage": "string",
+                  "$value": "base\\characters\\entities\\player\\player_man_skeleton.rig"
+                },
+                "Flags": "Soft"
+              }
+            },
+            {
+              "$type": "workWorkspotAnimsetEntry",
+              "animations": {
+                "$type": "animAnimSetup",
+                "cinematics": [
+                  {
+                    "$type": "animAnimSetupEntry",
+                    "animSet": {
+                      "DepotPath": {
+                        "$type": "ResourcePath",
+                        "$storage": "string",
+                        "$value": "wolv_internal_season7_halloween\\season_7_special_halloween_pose_pack.anims"
+                      },
+                      "Flags": "Default"
+                    },
+                    "priority": 128,
+                    "variableNames": []
+                  }
+                ],
+                "gameplay": [],
+                "hash": "2090797394152133000"
+              },
+              "loadingHandles": [
+                {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "wolv_internal_season7_halloween\\season_7_special_halloween_pose_pack.anims"
+                  },
+                  "Flags": "Default"
+                }
+              ],
+              "rig": {
+                "DepotPath": {
+                  "$type": "ResourcePath",
+                  "$storage": "string",
+                  "$value": "base\\characters\\entities\\player\\player_woman_skeleton.rig"
+                },
+                "Flags": "Soft"
+              }
+            }
+          ],
+          "frezeAtTheLastFrame_UseWithCaution": 0,
+          "globalProps": [],
+          "idCounter": 185,
+          "inertializationDurationEnter": 0.5,
+          "inertializationDurationExitForced": 0.300000012,
+          "inertializationDurationExitNatural": 0.5,
+          "initialActions": [],
+          "initialCanUseExits": 1,
+          "itemsPolicy": "ItemPolicy_SpawnItemOnIdleChange, ItemPolicy_DespawnItemOnIdleChange, ItemPolicy_DespawnItemOnReaction",
+          "propsPlaySyncAnim": 0,
+          "rootEntry": {
+            "HandleId": "5",
+            "Data": {
+              "$type": "workSequence",
+              "category": "Any",
+              "disableAutoTransition": 0,
+              "flags": 0,
+              "id": {
+                "$type": "workWorkEntryId",
+                "id": 1
+              },
+              "idleAnim": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "None"
+              },
+              "list": [
+                {
+                  "HandleId": "6",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 2
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "wolv_rom1_air01_f"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "7",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "wolv_rom1_air01_f"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 3
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "6",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 1
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "tpp_01"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "7",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "tpp_01"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 2
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "6",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 1
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "tpp_02"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "7",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "tpp_02"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 2
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "6",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 1
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "tpp_03"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "7",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "tpp_03"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 2
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "6",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 1
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "tpp_04"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "7",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "tpp_04"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 2
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "6",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 1
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "tpp_05"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "7",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "tpp_05"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 2
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "6",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 1
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "tpp_06"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "7",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "tpp_06"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 2
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "6",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 1
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "tpp_07"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "7",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "tpp_07"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 2
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "6",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 1
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "tpp_08"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "7",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "tpp_08"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 2
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "6",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 1
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "tpp_09"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "7",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "tpp_09"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 2
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "6",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 1
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "tpp_10"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "7",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "tpp_10"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 2
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                }
+              ],
+              "loopInfinitely": 0,
+              "previousLoopInfinitely": 0
+            }
+          },
+          "sequencesTimeLimit": 1,
+          "snapToTerrain": 0,
+          "statusEffectID": {
+            "$type": "TweakDBID",
+            "$storage": "uint64",
+            "$value": "0"
+          },
+          "tags": {
+            "$type": "redTagList",
+            "tags": []
+          },
+          "unmountBodyCarry": 1,
+          "useTimeLimitForSequences": 0,
+          "whitelistVisualTags": {
+            "$type": "redTagList",
+            "tags": []
+          },
+          "workspotRig": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "Flags": "Default"
+          }
+        }
+      }
+    },
+    "EmbeddedFiles": []
+  }
+}

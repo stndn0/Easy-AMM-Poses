@@ -39,13 +39,5 @@ namespace Easy_AMM_Poses.src
             config.cliPath = deserializedData.cliPath;
             config.modFolderPath = deserializedData.modFolderPath;
         }
-
-        // Read animation data from JSON file
-        public static void ReadAnimData()
-        {
-            // Hard coded for now.
-            var pathToJson = "\"C:\\Users\\stndn\\Documents\\season7_tender_pose_pack_fa.anims.json\"";
-
-        }
     }
 }

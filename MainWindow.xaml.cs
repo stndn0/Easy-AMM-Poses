@@ -25,6 +25,8 @@ namespace Easy_AMM_Poses
             public string cliPath = "Select the path to your WolvenKit CLI";
             public string modFolderPath = "Select the path to your Cyberpunk 2077 mod folder";
             public string configFilePath = "config/config.json";
+            public string animPath = "";
+            public string animJsonPath = "";
         }
         Config config = new Config();
 
@@ -38,12 +40,12 @@ namespace Easy_AMM_Poses
             InitializeConfiguration();
 
             // Read the animation data from the JSON file.
-            readAnimData(); 
 
             // Construct the workspot json using animation data.
-            Workspot.BuildWorkspotJson(poseList);       // example of a static class member
 
-            // Convert the workspot from json to .workspot.
+            //Workspot.BuildWorkspotJson(poseList);       // example of a static class member
+
+            // Convert the workspot from raw json to .workspot.
 
         }
 
@@ -80,9 +82,10 @@ namespace Easy_AMM_Poses
         /// <summary>
         /// Load poses from animation JSON file.
         /// </summary>
-        private void readAnimData()
+        public void readAnimData()
         {
-            var pathToJson2 = @"C:\Users\stndn\Documents\season7_allaccess_pose_pack.anims.json";
+            //var pathToJson2 = @"C:\Users\stndn\Documents\season7_allaccess_pose_pack.anims.json";
+            var pathToJson2 = config.animJsonPath;
 
             // Load the JSON and deserialize it into a JToken object.
             var result = JsonConvert.DeserializeObject<JToken>(File.ReadAllText(pathToJson2));
@@ -99,12 +102,6 @@ namespace Easy_AMM_Poses
                 // Create a new pose object for each value in the list.
                 poseList.Add(new Pose(poseName));
             }
-            Debug.WriteLine("DEBUG: List of pose objects");
-            foreach (var pose in poseList)
-            {
-                //Debug.WriteLine(pose.Name);
-            }
-
         }
 
 
@@ -151,14 +148,23 @@ namespace Easy_AMM_Poses
             string value = FileIO.OpenAnim();
             if (value != null)
             {
-                System.Diagnostics.Debug.WriteLine("DEBUG: Anim file, " + value);
-                pathToAnim.Text = value;
+                Debug.WriteLine("DEBUG: Anim file, " + value);
+                config.animPath = value;
+                config.animJsonPath = value + ".json";
+                pathToAnim.Text = config.animPath;
             }
         }
 
         private void ButtonConvertHandler(object sender, RoutedEventArgs e)
         {
-            WolvenKit.ConvertAnimToJson(config.cliPath);
+            WolvenKit.ConvertAnimToJson(config.cliPath, config.animPath);
+            readAnimData();
+        }
+
+        private void ButtonBuildHandler(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("DEBUG: Build requested...");
+            Workspot.BuildWorkspotJson(poseList);       // example of a static class member
         }
     }
 }

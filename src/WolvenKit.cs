@@ -14,25 +14,26 @@ namespace Easy_AMM_Poses.src
 {
     class WolvenKit
     {
-        public static async void ConvertAnimToJson(String cliPath)
+        public static async void ConvertAnimToJson(String cliPath, String animPath)
         {
+            Debug.WriteLine("DEBUG: CONVERTING ANIMATION TO JSON");
             var stdOutBuffer = new StringBuilder();
             var stdErrBuffer = new StringBuilder();
 
-            var animPath = "\"C:\\Users\\stndn\\Documents\\season7_tender_pose_pack_fa.anims\"";
+            //var animPath = "\"C:\\Users\\stndn\\Documents\\season7_tender_pose_pack_fa.anims\"";
 
             Debug.WriteLine("DEBUG: Attempting to convert .ANIM to JSON");
             Debug.WriteLine("DEBUG: Argument path:" + cliPath);
-            Debug.WriteLine("DEBUG: Animation path:" + animPath);
+            //Debug.WriteLine("DEBUG: Animation path:" + animPath);
 
             // Start the WolvenKit CLI and pass the required arguments.
             var result = await Cli.Wrap(cliPath)
-                .WithArguments("convert s \"C:\\Users\\stndn\\Documents\\season7_tender_pose_pack_fa.anims\"")
+                //.WithArguments("convert s \"C:\\Users\\stndn\\Documents\\season7_tender_pose_pack_fa.anims\"")
+                .WithArguments($"convert s {animPath}")
                 .WithValidation(CommandResultValidation.None)
                 .WithStandardOutputPipe(PipeTarget.ToStringBuilder(stdOutBuffer))
                 .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))
                 .ExecuteAsync();
-
 
             Debug.WriteLine(stdOutBuffer.ToString());
             Debug.WriteLine(stdErrBuffer.ToString());

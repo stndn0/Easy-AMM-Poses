@@ -9,6 +9,7 @@ workspot:
 1. Remove hardcoded paths and use GUI paths instead.
 2. Add GUI input to allow user to change the workspot rig types.
 	- Rig should match that of the animation type.
+3. Convert workspot from raw json to actual .workspot file
 
 ent:
 

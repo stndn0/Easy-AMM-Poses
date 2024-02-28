@@ -54,6 +54,7 @@ namespace Easy_AMM_Poses
             }
         }
 
+
         public static string OpenAnim()
         {
             // Open file dialogue to select file path

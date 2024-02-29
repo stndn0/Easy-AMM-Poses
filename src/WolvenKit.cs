@@ -5,6 +5,7 @@ using CliWrap;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 /* 
  * * This class acts as a brige between EAP and WolvenKit.

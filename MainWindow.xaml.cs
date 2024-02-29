@@ -36,6 +36,12 @@ namespace Easy_AMM_Poses
         // List of poses to be populated from the users animation JSON file.
         List<Pose> poseList = new List<Pose>();
 
+        string womanAverage = "WA";
+        string womanBig = "MB";
+        string manAverage = "MA";
+        string manBig = "MB";
+
+
 
         public MainWindow()
         {
@@ -81,7 +87,7 @@ namespace Easy_AMM_Poses
         /// <summary>
         /// Load poses from animation JSON file.
         /// </summary>
-        public void readAnimData(String pathToAnimJson)
+        public void readAnimData(string pathToAnimJson, string bodyType)
         {
             //var pathToJson2 = @"C:\Users\stndn\Documents\season7_allaccess_pose_pack.anims.json";
             var pathToJson2 = pathToAnimJson;
@@ -99,7 +105,7 @@ namespace Easy_AMM_Poses
                 entries.Items.Add(poseName);
 
                 // Create a new pose object for each value in the list.
-                poseList.Add(new Pose(poseName));
+                poseList.Add(new Pose(poseName, bodyType));
             }
         }
 
@@ -172,33 +178,38 @@ namespace Easy_AMM_Poses
         private async void ButtonConvertHandler(object sender, RoutedEventArgs e)
         {
             // If the user has not provided any animation files
-            if (config.animPathFemaleAvg == "" && config.animPathMaleAvg == "")
+            if (string.IsNullOrEmpty(config.animPathFemaleAvg) && string.IsNullOrEmpty(config.animPathMaleAvg))
             {
                 Debug.WriteLine("DEBUG: No animation files provided.");
+                updateAppStatus("No animation files provided.");
                 return;
             }
 
             // Call conversion method. Each call runs on a separate task, allowing them to run concurrently.
-            Task task1 = Task.Run(() => WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg));
-            Task task2 = Task.Run(() => WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg));
+            // Using async await so that we can don't block the main thread.This lets us update the UI while the tasks are running.
+            // Without async, the GUI would be unresponsive for the user until the tasks are completed.
+            updateAppStatus("Converting animation file(s). Please wait 5 to 30 seconds..");
+            Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg));
+            Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg));
 
-            // Block the main thread until all tasks have completed or else subsequent methods won't work.
-            // WARNING: If a task crashes, the main thread will be locked indefinitely.
-            // Ensure the ConvertAnimToJson method is fail proof.
-            Task.WaitAll(task1, task2);
+            // Wait until all tasks are completed before proceeding. Await temporarily suspends the method.
+            await Task.WhenAll(task1, task2);
 
             // Animation data will only be read after both tasks have completed.
-            if (config.animJsonPathFemaleAvg != "")
+            // Read data for all applicable rigs.
+            if (!string.IsNullOrEmpty(config.animJsonPathFemaleAvg))
             {
+                updateAppStatus("Reading female animation data...");
                 Debug.WriteLine("DEBUG: Reading animation data [WA]");
-                readAnimData(config.animJsonPathFemaleAvg);
+                readAnimData(config.animJsonPathFemaleAvg, womanAverage);
             }
 
-            if (config.animJsonPathMaleAvg != "")
+            if (!string.IsNullOrEmpty(config.animJsonPathMaleAvg))
             {
-                Debug.WriteLine("DEBUG: Reading animation data [MA]");
-                readAnimData(config.animJsonPathMaleAvg);
+                updateAppStatus("Reading male animation data...");
+                readAnimData(config.animJsonPathMaleAvg, manAverage);
             }
+            updateAppStatus("Conversion complete. Ready to build.");
         }
 
         private void ButtonBuildHandler(object sender, RoutedEventArgs e)
@@ -206,5 +217,24 @@ namespace Easy_AMM_Poses
             Debug.WriteLine("DEBUG: Build requested...");
             Workspot.BuildWorkspotJson(poseList);       // example of a static class member
         }
+
+        public static void updateAppStatusWrapper(string message)
+        {
+            MainWindow newInstance = new MainWindow();
+            newInstance.updateAppStatus(message);
+        }
+
+        private int updateAppStatus(string message)
+        {
+
+            //Application.Current.Dispatcher.Invoke(() =>
+            //{
+            //    appStatus.Content = "Debug: " + message;
+            //});
+
+            appStatus.Content = "Debug: " + message;
+            return 1;
+        }
+
     }
 }

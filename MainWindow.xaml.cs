@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.IO;
+using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Text.Json;
 using Newtonsoft.Json;
@@ -80,10 +81,10 @@ namespace Easy_AMM_Poses
         /// <summary>
         /// Load poses from animation JSON file.
         /// </summary>
-        public void readAnimData()
+        public void readAnimData(String pathToAnimJson)
         {
             //var pathToJson2 = @"C:\Users\stndn\Documents\season7_allaccess_pose_pack.anims.json";
-            var pathToJson2 = config.animJsonPathFemaleAvg;
+            var pathToJson2 = pathToAnimJson;
 
             // Load the JSON and deserialize it into a JToken object.
             var result = JsonConvert.DeserializeObject<JToken>(File.ReadAllText(pathToJson2));
@@ -170,16 +171,33 @@ namespace Easy_AMM_Poses
         /// </summary>
         private async void ButtonConvertHandler(object sender, RoutedEventArgs e)
         {
-            
-            
-            
-            
-            var result = await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg);
-
-            if (result == 1)
+            // If the user has not provided any animation files
+            if (config.animPathFemaleAvg == "" && config.animPathMaleAvg == "")
             {
-                Debug.WriteLine("DEBUG: Conversion successful.");
-                readAnimData();
+                Debug.WriteLine("DEBUG: No animation files provided.");
+                return;
+            }
+
+            // Call conversion method. Each call runs on a separate task, allowing them to run concurrently.
+            Task task1 = Task.Run(() => WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg));
+            Task task2 = Task.Run(() => WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg));
+
+            // Block the main thread until all tasks have completed or else subsequent methods won't work.
+            // WARNING: If a task crashes, the main thread will be locked indefinitely.
+            // Ensure the ConvertAnimToJson method is fail proof.
+            Task.WaitAll(task1, task2);
+
+            // Animation data will only be read after both tasks have completed.
+            if (config.animJsonPathFemaleAvg != "")
+            {
+                Debug.WriteLine("DEBUG: Reading animation data [WA]");
+                readAnimData(config.animJsonPathFemaleAvg);
+            }
+
+            if (config.animJsonPathMaleAvg != "")
+            {
+                Debug.WriteLine("DEBUG: Reading animation data [MA]");
+                readAnimData(config.animJsonPathMaleAvg);
             }
         }
 

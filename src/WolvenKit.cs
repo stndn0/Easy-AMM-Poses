@@ -32,8 +32,6 @@ namespace Easy_AMM_Poses.src
                 .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))
                 .ExecuteAsync();
 
-            Debug.WriteLine(result);
-
             Debug.WriteLine(stdOutBuffer.ToString());
             Debug.WriteLine(stdErrBuffer.ToString());
             

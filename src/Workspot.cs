@@ -21,11 +21,11 @@ namespace Easy_AMM_Poses.src
         public static async Task<int> BuildWorkspotJson(List<Pose> poseList, Config config) {
             Debug.WriteLine("DEBUG: Building workspot JSON...");
             // Load core workspot file and deserialize to dynamic object.
-            string pathToWorkspotJson = @"C:\Home\Development\repos\csharp\Easy AMM Poses\templates\workspot.json";
+            string pathToWorkspotJson = @"templates\workspot.json";
             dynamic jsonWorkspotObj = JsonConvert.DeserializeObject(File.ReadAllText(pathToWorkspotJson));
 
             // Load workspot list entry file. We'l use this as a template to add new entries to the workspot JSON file.
-            string pathToWorkspotListEntry = @"C:\Home\Development\repos\csharp\Easy AMM Poses\templates\workspot_list_entry.json";
+            string pathToWorkspotListEntry = @"templates\workspot_list_entry.json";
 
             // For each pose, add a new entry to the workspot JSON file
             // Start at id 6 because the workspot usually already has 5 entries.
@@ -56,7 +56,8 @@ namespace Easy_AMM_Poses.src
 
             // Serialize and write updated data to the workspot JSON file.
             string output = JsonConvert.SerializeObject(jsonWorkspotObj, Formatting.Indented);
-            string pathToOutput = @"C:\Home\Development\repos\csharp\Easy AMM Poses\templates\workspot_output.json";
+            //string pathToOutput = @"temp\workspot_output.json";
+            string pathToOutput = @"projects\project1\project1\archive\base\testmod\controller\workspot_output.json";
             File.WriteAllText(pathToOutput, output);
 
             config.pathToWorkspotJsonMFA = pathToOutput;

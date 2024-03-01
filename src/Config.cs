@@ -25,6 +25,13 @@ namespace Easy_AMM_Poses.src
             Directory.CreateDirectory("config");
             Directory.CreateDirectory("temp");
 
+            // Store raw mod files
+            Directory.CreateDirectory(@"projects\project1\project1\archive\base\testmod\controller");
+
+            // Store mod resources (.lua files)
+            Directory.CreateDirectory(@"projects\project1\resources\");
+            //Directory.CreateDirectory(@"projects\project1\resources\bin\x64\plugins\cyber_engine_tweaks\mods\AppearanceMenuMod\Collabs\Custom Poses\NAMEHERE");
+
             // If the config file doesn't exist, create it.
             if (!File.Exists(config.configFilePath))
             {

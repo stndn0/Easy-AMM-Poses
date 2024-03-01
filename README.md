@@ -1,5 +1,7 @@
 # Easy AMM Poses
 ![Static Badge](https://img.shields.io/badge/status-active%20development-brightgreen)
+![Static Badge](https://img.shields.io/badge/platform-Windows%2010%20%26%2011-blue)
+
 
 
 Photomode to AMM converter for Cyberpunk 2077.

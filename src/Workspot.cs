@@ -57,7 +57,10 @@ namespace Easy_AMM_Poses.src
             // Serialize and write updated data to the workspot JSON file.
             string output = JsonConvert.SerializeObject(jsonWorkspotObj, Formatting.Indented);
             //string pathToOutput = @"temp\workspot_output.json";
-            string pathToOutput = @"projects\project1\project1\archive\base\testmod\controller\workspot_output.json";
+            //string pathToOutput = @"projects\project1\project1\archive\base\testmod\controller\workspot_output.json";
+
+            string pathToOutput = @"projects\" + config.projectName + @"\" + config.projectName + @"\archive\base\" + config.internalProjectName + @"\controller\workspot_output.json";
+
             File.WriteAllText(pathToOutput, output);
 
             config.pathToWorkspotJsonMFA = pathToOutput;

@@ -19,6 +19,11 @@ namespace Easy_AMM_Poses.src
         public string animJsonPathMaleAvg = "";
         public string pathToWorkspotJsonMFA = "";       // The workspot for Male/Fem Average is shared.
 
+        // Hard coded for now. 
+        public string projectName = "project1";
+        public string projectPath = "projects/project1";
+        public string internalProjectName = "testmod";
+
         public void SetConfigFile(Config config)
         {
             // Create the configuration directory. If the folder already exists, it'll be ignored.
@@ -26,10 +31,14 @@ namespace Easy_AMM_Poses.src
             Directory.CreateDirectory("temp");
 
             // Store raw mod files
-            Directory.CreateDirectory(@"projects\project1\project1\archive\base\testmod\controller");
+            //Directory.CreateDirectory(@"projects\project1\project1\archive\base\testmod\controller");
+
+            Directory.CreateDirectory(@"projects\" + projectName + @"\" + projectName + @"\archive\base\" + internalProjectName + @"\controller");
 
             // Store mod resources (.lua files)
-            Directory.CreateDirectory(@"projects\project1\resources\");
+            //Directory.CreateDirectory(@"projects\project1\resources\");
+            Directory.CreateDirectory(@"projects\" + projectName + @"\resources\");
+
             //Directory.CreateDirectory(@"projects\project1\resources\bin\x64\plugins\cyber_engine_tweaks\mods\AppearanceMenuMod\Collabs\Custom Poses\NAMEHERE");
 
             // If the config file doesn't exist, create it.

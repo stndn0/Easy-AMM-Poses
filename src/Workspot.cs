@@ -1,12 +1,7 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.IO;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+
 
 namespace Easy_AMM_Poses.src
 {
@@ -56,22 +51,13 @@ namespace Easy_AMM_Poses.src
 
             // Serialize and write updated data to the workspot JSON file.
             string output = JsonConvert.SerializeObject(jsonWorkspotObj, Formatting.Indented);
-            //string pathToOutput = @"temp\workspot_output.json";
-            //string pathToOutput = @"projects\project1\project1\archive\base\testmod\controller\workspot_output.json";
+            string pathToOutput = config.getProjectControllerDirectory() + @"workspot_output.json";
 
-            string pathToOutput = @"projects\" + config.projectName + @"\" + config.projectName + @"\archive\base\" + config.internalProjectName + @"\controller\workspot_output.json";
 
             File.WriteAllText(pathToOutput, output);
-
             config.pathToWorkspotJsonMFA = pathToOutput;
-
-            
             Debug.WriteLine("DEBUG: Build complete...");
-
-
             return 1;
-
-
         }
     }
 }

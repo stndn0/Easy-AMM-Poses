@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using CliWrap;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.IO;
 
 /* 
@@ -34,15 +29,14 @@ namespace Easy_AMM_Poses.src
                 return 0;
             }
 
-            // Copy animation to temp folder - this is where we do our work
+            // Copy animation to project folder - this is where we do our work
             // Note: File.Copy is a synchronous operation. 
             // Until the copy is complete, code below it will not run.
-            var newAnimationPath = "temp/" + Path.GetFileName(animPath);
+            var newAnimationPath = config.getProjectAnimsDirectory() + Path.GetFileName(animPath);
             File.Copy(animPath, newAnimationPath, true);
 
             var newAnimationPath2 = '"' + Path.GetFullPath(newAnimationPath) + '"';
             Debug.WriteLine("DEBUG: Internal animation path is: " + newAnimationPath2);
-
 
             // Start the WolvenKit CLI and pass the required arguments.
             await Cli.Wrap(cliPath)
@@ -56,7 +50,6 @@ namespace Easy_AMM_Poses.src
             Debug.WriteLine(stdErrBuffer.ToString());
             
             return 1;
-
         }
 
         /// <summary>
@@ -87,7 +80,6 @@ namespace Easy_AMM_Poses.src
             Debug.WriteLine(stdErrBuffer.ToString());
 
             return 1;
-
         }
 
         /// <summary>

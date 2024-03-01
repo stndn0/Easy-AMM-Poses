@@ -97,7 +97,7 @@ namespace Easy_AMM_Poses
             {
                 Debug.WriteLine("DEBUG: Anim file [WA], " + value);
                 config.animPathFemaleAvg = value;
-                config.animJsonPathFemaleAvg = "temp/" + Path.GetFileName(value) + ".json";
+                config.animJsonPathFemaleAvg = config.getProjectAnimsDirectory() + Path.GetFileName(value) + ".json";
                 pathToFemaleAverageAnim.Text = config.animPathFemaleAvg;
             }
         }
@@ -113,7 +113,7 @@ namespace Easy_AMM_Poses
             {
                 Debug.WriteLine("DEBUG: Anim file [MA], " + value);
                 config.animPathMaleAvg = value;
-                config.animJsonPathMaleAvg = "temp/" + Path.GetFileName(value) + ".json";
+                config.animJsonPathMaleAvg = config.getProjectAnimsDirectory() + Path.GetFileName(value) + ".json";
                 pathToMaleAverageAnim.Text = config.animPathMaleAvg;
             }
         }

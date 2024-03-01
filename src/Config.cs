@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+
 
 namespace Easy_AMM_Poses.src
 {
@@ -30,15 +26,11 @@ namespace Easy_AMM_Poses.src
             Directory.CreateDirectory("config");
             Directory.CreateDirectory("temp");
 
-            // Store raw mod files
-            //Directory.CreateDirectory(@"projects\project1\project1\archive\base\testmod\controller");
-
-            Directory.CreateDirectory(@"projects\" + projectName + @"\" + projectName + @"\archive\base\" + internalProjectName + @"\controller");
+            // Create mod directory
+            Directory.CreateDirectory(getProjectAnimsDirectory());
 
             // Store mod resources (.lua files)
-            //Directory.CreateDirectory(@"projects\project1\resources\");
-            Directory.CreateDirectory(@"projects\" + projectName + @"\resources\");
-
+            Directory.CreateDirectory(getProjectResourcesDirectory());
             //Directory.CreateDirectory(@"projects\project1\resources\bin\x64\plugins\cyber_engine_tweaks\mods\AppearanceMenuMod\Collabs\Custom Poses\NAMEHERE");
 
             // If the config file doesn't exist, create it.
@@ -53,7 +45,20 @@ namespace Easy_AMM_Poses.src
                 Json.ReadConfigData(config);
             }
         }
+
+        public string getProjectControllerDirectory()
+        {
+            return @"projects\" + projectName + @"\" + projectName + @"\archive\base\" + internalProjectName + @"\controller\";
+        }
+
+        public string getProjectResourcesDirectory()
+        {
+            return @"projects\" + projectName + @"\resources\";
+        }
+
+        public string getProjectAnimsDirectory()
+        {
+            return @"projects\" + projectName + @"\" + projectName + @"\archive\base\" + internalProjectName + @"\controller\anims\";
+        }
     }
-
-
 }

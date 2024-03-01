@@ -23,6 +23,7 @@ namespace Easy_AMM_Poses.src
         {
             // Create the configuration directory. If the folder already exists, it'll be ignored.
             Directory.CreateDirectory("config");
+            Directory.CreateDirectory("temp");
 
             // If the config file doesn't exist, create it.
             if (!File.Exists(config.configFilePath))

@@ -22,17 +22,31 @@ namespace Easy_AMM_Poses.src
         /// <param name="cliPath">Path to WolvenKit command line.</param>
         /// <param name="animPath">Path to users animation.</param>
         /// <returns></returns>
-        public static async Task<int> ConvertAnimToJson(String cliPath, String animPath)
+        public static async Task<int> ConvertAnimToJson(String cliPath, String animPath, Config config)
         {
             Debug.WriteLine("DEBUG: CONVERTING ANIMATION TO JSON");
             var stdOutBuffer = new StringBuilder();
             var stdErrBuffer = new StringBuilder();
 
-            Debug.WriteLine("DEBUG: Animation path:" + animPath);
+            // First check if the animation file was provided - handle empty path
+            if (animPath == "")
+            {
+                return 0;
+            }
+
+            // Copy animation to temp folder - this is where we do our work
+            // Note: File.Copy is a synchronous operation. 
+            // Until the copy is complete, code below it will not run.
+            var newAnimationPath = "temp/" + Path.GetFileName(animPath);
+            File.Copy(animPath, newAnimationPath, true);
+
+            var newAnimationPath2 = '"' + Path.GetFullPath(newAnimationPath) + '"';
+            Debug.WriteLine("DEBUG: Internal animation path is: " + newAnimationPath2);
+
 
             // Start the WolvenKit CLI and pass the required arguments.
             await Cli.Wrap(cliPath)
-                .WithArguments($"convert s {animPath}")
+                .WithArguments($"convert s {newAnimationPath2}")
                 .WithValidation(CommandResultValidation.None)
                 .WithStandardOutputPipe(PipeTarget.ToStringBuilder(stdOutBuffer))
                 .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))

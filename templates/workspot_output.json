@@ -764,7 +764,7 @@
                     "idleAnim": {
                       "$type": "CName",
                       "$storage": "string",
-                      "$value": "tpp_01"
+                      "$value": "aapp_twelvefiftyone"
                     },
                     "list": [
                       {
@@ -774,7 +774,7 @@
                           "animName": {
                             "$type": "CName",
                             "$storage": "string",
-                            "$value": "tpp_01"
+                            "$value": "aapp_twelvefiftyone"
                           },
                           "blendOutTime": 0.5,
                           "flags": 2,
@@ -803,7 +803,7 @@
                     "idleAnim": {
                       "$type": "CName",
                       "$storage": "string",
-                      "$value": "tpp_02"
+                      "$value": "aapp_absolution"
                     },
                     "list": [
                       {
@@ -813,7 +813,7 @@
                           "animName": {
                             "$type": "CName",
                             "$storage": "string",
-                            "$value": "tpp_02"
+                            "$value": "aapp_absolution"
                           },
                           "blendOutTime": 0.5,
                           "flags": 2,
@@ -842,7 +842,7 @@
                     "idleAnim": {
                       "$type": "CName",
                       "$storage": "string",
-                      "$value": "tpp_03"
+                      "$value": "aapp_andromeda1"
                     },
                     "list": [
                       {
@@ -852,7 +852,7 @@
                           "animName": {
                             "$type": "CName",
                             "$storage": "string",
-                            "$value": "tpp_03"
+                            "$value": "aapp_andromeda1"
                           },
                           "blendOutTime": 0.5,
                           "flags": 2,
@@ -881,7 +881,7 @@
                     "idleAnim": {
                       "$type": "CName",
                       "$storage": "string",
-                      "$value": "tpp_04"
+                      "$value": "aapp_andromeda2"
                     },
                     "list": [
                       {
@@ -891,7 +891,7 @@
                           "animName": {
                             "$type": "CName",
                             "$storage": "string",
-                            "$value": "tpp_04"
+                            "$value": "aapp_andromeda2"
                           },
                           "blendOutTime": 0.5,
                           "flags": 2,
@@ -920,7 +920,7 @@
                     "idleAnim": {
                       "$type": "CName",
                       "$storage": "string",
-                      "$value": "tpp_05"
+                      "$value": "aapp_antifragile"
                     },
                     "list": [
                       {
@@ -930,7 +930,7 @@
                           "animName": {
                             "$type": "CName",
                             "$storage": "string",
-                            "$value": "tpp_05"
+                            "$value": "aapp_antifragile"
                           },
                           "blendOutTime": 0.5,
                           "flags": 2,
@@ -959,7 +959,7 @@
                     "idleAnim": {
                       "$type": "CName",
                       "$storage": "string",
-                      "$value": "tpp_06"
+                      "$value": "aapp_backinflesh"
                     },
                     "list": [
                       {
@@ -969,7 +969,7 @@
                           "animName": {
                             "$type": "CName",
                             "$storage": "string",
-                            "$value": "tpp_06"
+                            "$value": "aapp_backinflesh"
                           },
                           "blendOutTime": 0.5,
                           "flags": 2,
@@ -998,7 +998,7 @@
                     "idleAnim": {
                       "$type": "CName",
                       "$storage": "string",
-                      "$value": "tpp_07"
+                      "$value": "aapp_bemyprizm"
                     },
                     "list": [
                       {
@@ -1008,7 +1008,7 @@
                           "animName": {
                             "$type": "CName",
                             "$storage": "string",
-                            "$value": "tpp_07"
+                            "$value": "aapp_bemyprizm"
                           },
                           "blendOutTime": 0.5,
                           "flags": 2,
@@ -1037,7 +1037,7 @@
                     "idleAnim": {
                       "$type": "CName",
                       "$storage": "string",
-                      "$value": "tpp_08"
+                      "$value": "aapp_begforyou"
                     },
                     "list": [
                       {
@@ -1047,7 +1047,7 @@
                           "animName": {
                             "$type": "CName",
                             "$storage": "string",
-                            "$value": "tpp_08"
+                            "$value": "aapp_begforyou"
                           },
                           "blendOutTime": 0.5,
                           "flags": 2,
@@ -1076,7 +1076,7 @@
                     "idleAnim": {
                       "$type": "CName",
                       "$storage": "string",
-                      "$value": "tpp_09"
+                      "$value": "aapp_bubblegumdreamz"
                     },
                     "list": [
                       {
@@ -1086,7 +1086,7 @@
                           "animName": {
                             "$type": "CName",
                             "$storage": "string",
-                            "$value": "tpp_09"
+                            "$value": "aapp_bubblegumdreamz"
                           },
                           "blendOutTime": 0.5,
                           "flags": 2,
@@ -1115,7 +1115,7 @@
                     "idleAnim": {
                       "$type": "CName",
                       "$storage": "string",
-                      "$value": "tpp_10"
+                      "$value": "aapp_callmetonight"
                     },
                     "list": [
                       {
@@ -1125,13 +1125,1612 @@
                           "animName": {
                             "$type": "CName",
                             "$storage": "string",
-                            "$value": "tpp_10"
+                            "$value": "aapp_callmetonight"
                           },
                           "blendOutTime": 0.5,
                           "flags": 2,
                           "id": {
                             "$type": "workWorkEntryId",
                             "id": 25
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "26",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 26
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_chickhabit"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "27",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_chickhabit"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 27
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "28",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 28
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_christiandor"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "29",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_christiandor"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 29
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "30",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 30
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_citiezindust"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "31",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_citiezindust"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 31
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "32",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 32
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_dontstartnow"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "33",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_dontstartnow"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 33
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "34",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 34
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_doubledare"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "35",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_doubledare"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 35
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "36",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 36
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_exo"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "37",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_exo"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 37
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "38",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 38
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_goturnumber"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "39",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_goturnumber"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 39
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "40",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 40
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_gurluwant"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "41",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_gurluwant"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 41
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "42",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 42
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_gurlzonfilm"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "43",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_gurlzonfilm"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 43
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "44",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 44
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_heaven"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "45",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_heaven"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 45
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "46",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 46
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_hairsprayheart"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "47",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_hairsprayheart"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 47
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "48",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 48
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_hangingaround"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "49",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_hangingaround"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 49
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "50",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 50
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_heavymetalluvr"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "51",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_heavymetalluvr"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 51
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "52",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 52
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_hellagood"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "53",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_hellagood"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 53
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "54",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 54
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_hotinit"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "55",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_hotinit"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 55
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "56",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 56
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_hungup"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "57",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_hungup"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 57
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "58",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 58
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_ifuseekamy"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "59",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_ifuseekamy"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 59
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "60",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 60
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_luckyu"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "61",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_luckyu"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 61
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "62",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 62
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_luckyme"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "63",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_luckyme"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 63
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "64",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 64
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_maybeurtheproblem"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "65",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_maybeurtheproblem"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 65
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "66",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 66
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_mummydust"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "67",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_mummydust"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 67
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "68",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 68
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_nowheregirl"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "69",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_nowheregirl"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 69
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "70",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 70
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_rockysteady"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "71",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_rockysteady"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 71
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "72",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 72
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_ruexperienced"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "73",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_ruexperienced"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 73
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "74",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 74
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_sabbathmater"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "75",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_sabbathmater"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 75
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "76",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 76
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_schemin"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "77",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_schemin"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 77
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "78",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 78
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_spellbound"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "79",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_spellbound"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 79
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "80",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 80
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_standanddeliver"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "81",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_standanddeliver"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 81
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "82",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 82
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_stopouencore"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "83",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_stopouencore"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 83
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "84",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 84
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_stylishspit"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "85",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_stylishspit"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 85
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "86",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 86
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_telephoneoperator"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "87",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_telephoneoperator"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 87
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "88",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 88
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_thewayiwalk"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "89",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_thewayiwalk"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 89
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "90",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 90
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_thisfffire"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "91",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_thisfffire"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 91
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "92",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 92
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_totallifeforever"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "93",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_totallifeforever"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 93
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "94",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 94
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_touchngo"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "95",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_touchngo"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 95
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "96",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 96
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_tslamp"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "97",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_tslamp"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 97
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "98",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 98
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_unchainmyheart"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "99",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_unchainmyheart"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 99
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "100",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 100
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_venushour"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "101",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_venushour"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 101
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "102",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 102
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_wickedgravity"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "103",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_wickedgravity"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 103
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "104",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 104
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_workforluv"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "105",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_workforluv"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 105
+                          }
+                        }
+                      }
+                    ],
+                    "loopInfinitely": 1,
+                    "previousLoopInfinitely": 0
+                  }
+                },
+                {
+                  "HandleId": "106",
+                  "Data": {
+                    "$type": "workSequence",
+                    "category": "Any",
+                    "disableAutoTransition": 0,
+                    "flags": 0,
+                    "id": {
+                      "$type": "workWorkEntryId",
+                      "id": 106
+                    },
+                    "idleAnim": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "aapp_wutheringheightz"
+                    },
+                    "list": [
+                      {
+                        "HandleId": "107",
+                        "Data": {
+                          "$type": "workAnimClip",
+                          "animName": {
+                            "$type": "CName",
+                            "$storage": "string",
+                            "$value": "aapp_wutheringheightz"
+                          },
+                          "blendOutTime": 0.5,
+                          "flags": 2,
+                          "id": {
+                            "$type": "workWorkEntryId",
+                            "id": 107
                           }
                         }
                       }

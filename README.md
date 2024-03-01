@@ -1,12 +1,12 @@
-# Easy AMM Poses
 <p align="center">
   <img src="https://i.imgur.com/nfjqICL.png"/>
 </p>
 
-![Static Badge](https://img.shields.io/badge/Cyberpunk%202077-Custom%20Development%20Tool-black?labelColor=%23FCF55F)
 ![Static Badge](https://img.shields.io/badge/status-active%20development-blue?style=flat&color=%237FFF00)
 ![Static Badge](https://img.shields.io/badge/platform-windows-blue?style=flat)
 ![Static Badge](https://img.shields.io/badge/.NET-v8.0%2B-purple)
+
+![Static Badge](https://img.shields.io/badge/Cyberpunk%202077-Custom%20Development%20Tool-black?labelColor=%23FCF55F)
 
 
 

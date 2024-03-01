@@ -1,4 +1,4 @@
-# Easy AMM Poses
+[# Easy AMM Poses](https://i.imgur.com/7eO8139.png)
 ![Static Badge](https://img.shields.io/badge/Cyberpunk%202077-Custom%20Development%20Tool-black?labelColor=%23FCF55F)
 
 ![Static Badge](https://img.shields.io/badge/status-active%20development-blue?style=flat&color=%237FFF00)

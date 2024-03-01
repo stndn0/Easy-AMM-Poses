@@ -20,7 +20,7 @@ namespace Easy_AMM_Poses.src
         /// <param name="poses">
         /// </param>
         /// 
-        public static void BuildWorkspotJson(List<Pose> poseList) {
+        public static async Task<int> BuildWorkspotJson(List<Pose> poseList, Config config) {
             Debug.WriteLine("DEBUG: Building workspot JSON...");
             // Load core workspot file and deserialize to dynamic object.
             string pathToWorkspotJson = @"C:\Home\Development\repos\csharp\Easy AMM Poses\templates\workspot.json";
@@ -61,11 +61,14 @@ namespace Easy_AMM_Poses.src
             string pathToOutput = @"C:\Home\Development\repos\csharp\Easy AMM Poses\templates\workspot_output.json";
             File.WriteAllText(pathToOutput, output);
 
+            config.pathToWorkspotJsonMFA = pathToOutput;
+
+            
             Debug.WriteLine("DEBUG: Build complete...");
 
 
             // TODO - PACK TO .WORKSPOT FROM JSON
-
+            return 1;
 
 
         }

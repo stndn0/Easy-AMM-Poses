@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.IO;
 
 /* 
  * * This class acts as a brige between EAP and WolvenKit.
@@ -39,5 +40,41 @@ namespace Easy_AMM_Poses.src
             return 1;
 
         }
+        public static async Task<int> ConvertJsonToWorkspot(String cliPath, String jsonPath)
+        {
+            Debug.WriteLine("DEBUG: CONVERTING WORKSPOT JSON TO WORKSPOT FILE");
+            var stdOutBuffer = new StringBuilder();
+            var stdErrBuffer = new StringBuilder();
+
+            jsonPath = '"' + jsonPath + '"';
+
+            Debug.WriteLine("DEBUG: JSON path:" + jsonPath);
+
+            // Start the WolvenKit CLI and pass the required arguments.
+            var result = await Cli.Wrap(cliPath)
+                .WithArguments($"convert d {jsonPath}")
+                .WithValidation(CommandResultValidation.None)
+                .WithStandardOutputPipe(PipeTarget.ToStringBuilder(stdOutBuffer))
+                .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))
+                .ExecuteAsync();
+
+            // Rename the output file to workspot file
+            Debug.WriteLine(stdOutBuffer.ToString());
+            Debug.WriteLine(stdErrBuffer.ToString());
+
+            return 1;
+
+        }
+
+        public static void AddWorkspotExtension(string jsonPath)
+        {
+            Debug.WriteLine("DEBUG: ADDING .WORKSPOT EXTENSION TO WORKSPOT FILE");
+
+            // Rename the output file to workspot file
+            var workspotFilePath = jsonPath.Replace(".json", ".workspot");
+            File.Move(jsonPath.Replace(".json", ""), workspotFilePath);
+
+        }
+
     }
 }

@@ -1,18 +1,7 @@
-﻿using System.Text;
-using System.IO;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Diagnostics;
-using System.Text.Json;
 using Newtonsoft.Json;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Easy_AMM_Poses.src;
 using Newtonsoft.Json.Linq;
 
@@ -20,20 +9,9 @@ namespace Easy_AMM_Poses
 {
     public partial class MainWindow : Window
     {
-        // Create a new class to store the configuration data, and set the default values.
-        public class Config
-        {
-            public string cliPath = "Select the path to your WolvenKit CLI";
-            public string modFolderPath = "Select the path to your Cyberpunk 2077 mod folder";
-            public string configFilePath = "config/config.json";
-            public string animPathFemaleAvg = "";
-            public string animJsonPathFemaleAvg = "";
-            public string animPathMaleAvg = "";
-            public string animJsonPathMaleAvg = "";
-        }
         Config config = new Config();
 
-        // List of poses to be populated from the users animation JSON file.
+        // Create list of poses to be populated from the users animation json files.
         List<Pose> poseList = new List<Pose>();
 
         string womanAverage = "WA";
@@ -41,114 +19,78 @@ namespace Easy_AMM_Poses
         string manAverage = "MA";
         string manBig = "MB";
 
-
-
         public MainWindow()
         {
             InitializeComponent();
             InitializeConfiguration();
-
-            // Read the animation data from the JSON file.
-
-            // Construct the workspot json using animation data.
-
-            //Workspot.BuildWorkspotJson(poseList);       // example of a static class member
-
-            // Convert the workspot from raw json to .workspot.
-
         }
 
 
-        // Initialize the configuration file and set the appropriate variables.
-        // The config file is used to store paths to the CLI & the mod folder.
+        /// <summary>
+        /// Initialize the configuration file and set the appropriate variables.
+        /// </summary>
         private void InitializeConfiguration()
         {
-            // Create the configuration directory. If the folder already exists, it'll be ignored.
-            Directory.CreateDirectory("config");
+            // Create or load configuration file.
+            config.SetConfigFile(config);
 
-            // If the config file doesn't exist, create it.
-            if (!File.Exists(config.configFilePath))
-            {
-                File.Create(config.configFilePath).Close();
-                Json.WriteConfigData(config);
-            }
-            else
-            // If the file already exists, read it's properties and update the variables.
-            {
-                Json.ReadConfigData(config);
-            }
-
-            // Frontend XAML varaiables.
+            // Set frontend XAML varaiables.
             pathToCli.Text = config.cliPath;
             pathToGame.Text = config.modFolderPath;
-            myLabel.Content = "Debug: " + config.cliPath;
         }
 
         /// <summary>
-        /// Load poses from animation JSON file.
+        /// Update the GUI status label.
         /// </summary>
-        public void readAnimData(string pathToAnimJson, string bodyType)
+        /// <param name="message">name of status message</param>
+        /// <returns></returns>
+        private int updateAppStatus(string message)
         {
-            //var pathToJson2 = @"C:\Users\stndn\Documents\season7_allaccess_pose_pack.anims.json";
-            var pathToJson2 = pathToAnimJson;
-
-            // Load the JSON and deserialize it into a JToken object.
-            var result = JsonConvert.DeserializeObject<JToken>(File.ReadAllText(pathToJson2));
-
-            // Iterate through the JToken object - we're only iterating through what we want.
-            foreach (var item in result["Data"]["RootChunk"]["animations"])
-            {
-                // The item we're after is called $value - this is the name of the animation.
-                // Store all $value items into a new list
-                // Debug.WriteLine(item["Data"]["animation"]["Data"]["name"]["$value"]);
-                string poseName = item["Data"]["animation"]["Data"]["name"]["$value"].ToString();
-                entries.Items.Add(poseName);
-
-                // Create a new pose object for each value in the list.
-                poseList.Add(new Pose(poseName, bodyType));
-            }
+            appStatus.Content = "Debug: " + message;
+            return 1;
         }
 
-
-        // Event handler for when the user clicks the cli path textbox.
-        private void CliPathClickHandler(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Handle user input on textbox for CLI path.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextboxCliPathHandler(object sender, RoutedEventArgs e)
         {
             // Open a file dialog to select the path to the WolvenKit CLI
             string value = FileIO.OpenFile();
             if (value != null)
             {
-                System.Diagnostics.Debug.WriteLine("File selected, " + value);
+                Debug.WriteLine("File selected, " + value);
                 config.cliPath = value;
                 pathToCli.Text = config.cliPath;
-                myLabel.Content = "Debug: " + config.cliPath;
                 Json.WriteConfigData(config);
             }
         }
 
-        // Event handler for when the user clicks the game path textbox.
-        private void ModFolderPathClickHandler(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Handle user input on textbox for mod folder path.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextboxGamePathHandler(object sender, RoutedEventArgs e)
         {
-            // Open file dialog to select the path to the Cyberpunk 2077 mod folder
             string value = FileIO.OpenFolder();
             if (value != null)
             {
-                System.Diagnostics.Debug.WriteLine("Folder selected, " + value);
+                Debug.WriteLine("Folder selected, " + value);
                 config.modFolderPath = value;
                 pathToGame.Text = config.modFolderPath;
                 Json.WriteConfigData(config);
             }
         }
 
-        private void CliPathEventHandler(object sender, EventArgs e)
-        {
-            config.cliPath = pathToCli.Text;
-            System.Diagnostics.Debug.WriteLine(config.cliPath);
-
-            // Update the label myLabel to show the cliPath string
-            myLabel.Content = "Debug: " + config.cliPath;
-        }
-
-        private void AnimFilePathClickHandlerFemaleAvg(object sender, EventArgs e)
+        /// <summary>
+        /// Handle user input on textbox for WA animation file path.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextboxFemAnimPathHandler(object sender, EventArgs e)
         {
             string value = FileIO.OpenAnim();
             if (value != null)
@@ -159,7 +101,12 @@ namespace Easy_AMM_Poses
                 pathToFemaleAverageAnim.Text = config.animPathFemaleAvg;
             }
         }
-        private void AnimFilePathClickHandlerMaleAvg(object sender, EventArgs e)
+        /// <summary>
+        /// Handle user input on textbox for MA animation file path.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextboxMascAnimPathHandler(object sender, EventArgs e)
         {
             string value = FileIO.OpenAnim();
             if (value != null)
@@ -172,8 +119,7 @@ namespace Easy_AMM_Poses
         }
 
         /// <summary>
-        /// Button handler for "Load Poses from .ANIM".
-        /// Calls the method that converts the animation file to JSON.
+        /// Handle button press for "Load Poses from .ANIM".
         /// </summary>
         private async void ButtonConvertHandler(object sender, RoutedEventArgs e)
         {
@@ -212,29 +158,69 @@ namespace Easy_AMM_Poses
             updateAppStatus("Conversion complete. Ready to build.");
         }
 
-        private void ButtonBuildHandler(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Handle button press for "Build Workspot".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void ButtonBuildHandler(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("DEBUG: Build requested...");
-            Workspot.BuildWorkspotJson(poseList);       // example of a static class member
+            updateAppStatus("Building workspot JSON...");
+
+            Task task1 = Task.Run(async () => await Workspot.BuildWorkspotJson(poseList, config));
+            await Task.WhenAll(task1);
+
+            Debug.WriteLine("Finished building workspot JSON..");
+            updateAppStatus("Converting workspot to RedEngine format...please wait.");
+
+            Task task2 = Task.Run(async () => await WolvenKit.ConvertJsonToWorkspot(config.cliPath, config.pathToWorkspotJsonMFA));
+            await Task.WhenAll(task2);
+            WolvenKit.AddWorkspotExtension(config.pathToWorkspotJsonMFA);
+            Debug.WriteLine("Finished building workspot.workspot");
+            updateAppStatus("Finished building workspot. Path: " + config.pathToWorkspotJsonMFA);
+
         }
 
-        public static void updateAppStatusWrapper(string message)
+        /// <summary>
+        /// Load poses from the converted animation JSON file.
+        /// </summary>
+        /// <param name="pathToAnimJson"></param>
+        /// <param name="bodyType"></param>
+        public void readAnimData(string pathToAnimJson, string bodyType)
         {
-            MainWindow newInstance = new MainWindow();
-            newInstance.updateAppStatus(message);
+            //var pathToJson2 = @"C:\Users\stndn\Documents\season7_allaccess_pose_pack.anims.json";
+            var pathToJson2 = pathToAnimJson;
+
+            // Load the JSON and deserialize it into a JToken object.
+            var result = JsonConvert.DeserializeObject<JToken>(File.ReadAllText(pathToJson2));
+
+            // Iterate through the JToken object - we're only iterating through what we want.
+            foreach (var item in result["Data"]["RootChunk"]["animations"])
+            {
+                // The item we're after is called $value - this is the name of the animation.
+                // Store all $value items into a new list
+                // Debug.WriteLine(item["Data"]["animation"]["Data"]["name"]["$value"]);
+                string poseName = item["Data"]["animation"]["Data"]["name"]["$value"].ToString();
+
+                // Todo - if posename already in list of poses, skip it.
+                bool poseExists = false;
+                foreach (Pose pose in poseList)
+                {
+                    if (pose.Name == poseName)
+                    {
+                        Debug.WriteLine("DEBUG: Pose already in list, skipping... " + poseName);
+                        poseExists = true;
+                        break;
+                    }
+                }
+                if (!poseExists)
+                {
+                    entries.Items.Add(poseName);
+                    poseList.Add(new Pose(poseName, bodyType)); ;
+                }
+
+            }
         }
-
-        private int updateAppStatus(string message)
-        {
-
-            //Application.Current.Dispatcher.Invoke(() =>
-            //{
-            //    appStatus.Content = "Debug: " + message;
-            //});
-
-            appStatus.Content = "Debug: " + message;
-            return 1;
-        }
-
     }
 }

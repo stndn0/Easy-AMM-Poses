@@ -7,7 +7,7 @@ Easy AMM Poses (EAP) provides a <b> fast and fully automated way of creating App
 <b>Capabilities:</b>
 - Automatically detect all poses from your animation file(s).
 - Automatically generate the necessary .workspot, .lua, and .ent files using detected pose data.
-- Automatically creates a packed "ready to share", Cyberpunk 2077 mod.
+- Automatically creates a packed Cyberpunk 2077 mod that can be shared with the community.
 
 ## Thank you
 

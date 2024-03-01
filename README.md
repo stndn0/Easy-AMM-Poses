@@ -1,5 +1,5 @@
 ## Easy AMM Poses
-Fully automated, easy to use "Photomode to AMM" converter for Cyberpunk 2077.
+Photomode to AMM" converter for Cyberpunk 2077.
 
 ## Thank you
 

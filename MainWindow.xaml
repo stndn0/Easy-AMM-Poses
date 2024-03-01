@@ -8,7 +8,7 @@
         Title="Easy AMM Poses" Height="800" Width="1200">
     <StackPanel>
         <Label FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center">Easy AMM Poses</Label>
-        <Label FontSize="14" FontFamily="Cascadia Code Light" Content="pre-alpha 2 | work in progress" HorizontalAlignment="Center"/>
+        <Label FontSize="14" FontFamily="Cascadia Code Light" Content="pre-alpha 3 | work in progress" HorizontalAlignment="Center"/>
         <Label x:Name="appStatus"
             FontSize="14" FontFamily="Cascadia Code Light" 
             HorizontalAlignment="Left"
@@ -42,14 +42,22 @@
             x:Name="btnConvert"
             Click="ButtonConvertHandler"
             FontSize="16"
-            Content="Load Poses from .ANIM" FontFamily="Arial" Margin="0,8,0,8" Padding="12,12,12,12"
+            Content="Load poses from .anim file(s)" FontFamily="Arial" Margin="0,8,0,8" Padding="12,12,12,12"
         />
         <Button
             x:Name="btnBuild"
             Click="ButtonBuildHandler"
             FontSize="16"
-            Content="Build" FontFamily="Arial" Margin="0,8,0,8" Padding="12,12,12,12"
+            Content="Build .workspot file" FontFamily="Arial" Margin="0,8,0,8" Padding="12,12,12,12"
         />
+
+        <Button
+            x:Name="btnBuildEntity"
+            Click="ButtonEntityHandler"
+            FontSize="16"
+            Content="Build .ent file" FontFamily="Arial" Margin="0,8,0,8" Padding="12,12,12,12"
+        />
+
         <Label FontSize="14">Detected Poses</Label>
         <ListView Name="entries" Grid.Row="1">
         </ListView>

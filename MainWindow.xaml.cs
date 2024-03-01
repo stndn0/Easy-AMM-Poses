@@ -183,6 +183,17 @@ namespace Easy_AMM_Poses
 
         }
 
+        private async void ButtonEntityHandler(Object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("DEBUG: Building entity JSON...");
+            updateAppStatus("Building entity JSON...");
+
+            Task task1 = Task.Run(async () => await Entity.buildEntityJson(config));
+            await Task.WhenAll(task1);
+
+            updateAppStatus("Finished building entity JSON.");
+        }
+
         /// <summary>
         /// Load poses from the converted animation JSON file.
         /// </summary>

@@ -2,7 +2,7 @@
   <img src="https://i.imgur.com/PEihudd.png"/>
 </p>
 
----
+
 
 ![Static Badge](https://img.shields.io/badge/status-active%20development-blue?style=flat&color=%237FFF00)
 ![Static Badge](https://img.shields.io/badge/platform-windows-blue?style=flat)

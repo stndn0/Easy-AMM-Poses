@@ -5,9 +5,9 @@ Photomode to AMM converter for Cyberpunk 2077.
 Easy AMM Poses (EAP) provides a <b> fast and fully automated way of creating Appearance Menu Mod (AMM) pose packs</b>. Simply provide your animation file(s) and EAP will handle the rest. 
 
 <b>Capabilities:</b>
-- Automatically detect all poses from your animation file(s).
-- Automatically generate the necessary .workspot, .lua, and .ent files using detected pose data.
-- Automatically creates a packed Cyberpunk 2077 mod that can be shared with the community.
+- Automatically detects all poses from your animation file(s).
+- Automatically generates the necessary .workspot, .lua, and .ent files using detected pose data.
+- Automatically generates a packed Cyberpunk 2077 mod that you can share with the community.
 
 ## Thank you
 

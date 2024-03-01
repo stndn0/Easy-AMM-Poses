@@ -17,7 +17,7 @@ namespace Easy_AMM_Poses.src
         public string animJsonPathFemaleAvg = "";
         public string animPathMaleAvg = "";
         public string animJsonPathMaleAvg = "";
-        public string pathToWorkspotJsonMFA = "";
+        public string pathToWorkspotJsonMFA = "";       // The workspot for Male/Fem Average is shared.
 
         public void SetConfigFile(Config config)
         {

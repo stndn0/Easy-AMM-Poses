@@ -14,12 +14,10 @@ namespace Easy_AMM_Poses.src
     {
         /// <summary>
         /// Build and populates the workspot JSON file using the users pose data.
-        /// 
-        /// TODO: Change absolute paths to relative paths.
         /// </summary>
-        /// <param name="poses">
-        /// </param>
-        /// 
+        /// <param name="poseList">List of poses.</param>
+        /// <param name="config">Configuration object.</param>
+        /// <returns></returns>
         public static async Task<int> BuildWorkspotJson(List<Pose> poseList, Config config) {
             Debug.WriteLine("DEBUG: Building workspot JSON...");
             // Load core workspot file and deserialize to dynamic object.
@@ -67,7 +65,6 @@ namespace Easy_AMM_Poses.src
             Debug.WriteLine("DEBUG: Build complete...");
 
 
-            // TODO - PACK TO .WORKSPOT FROM JSON
             return 1;
 
 

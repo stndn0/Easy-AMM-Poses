@@ -3,6 +3,7 @@
 ![Static Badge](https://img.shields.io/badge/platform-windows-blue?style=flat)
 ![Static Badge](https://img.shields.io/badge/.NET-v8.0%2B-purple)
 
+
 Photomode to AMM converter for Cyberpunk 2077.
 
 ## What does it do?

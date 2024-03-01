@@ -1,5 +1,8 @@
 ## Easy AMM Poses
-Photomode to AMM" converter for Cyberpunk 2077.
+Photomode to AMM converter for Cyberpunk 2077.
+
+## What does it to?
+The goal of Easy AMM Poses (EAP) is to provide an [b]easy to use, fully automated way of creating Appearance Menu Mod (AMM) pose packs[/b]. All you have to do is provide your animation file and EAP will handle the rest.
 
 ## Thank you
 

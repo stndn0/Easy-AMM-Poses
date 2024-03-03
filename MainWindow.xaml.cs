@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.Windows;
 using Easy_AMM_Poses.src;
 using Newtonsoft.Json.Linq;
+using System.Windows.Controls;
 
 namespace Easy_AMM_Poses
 {
@@ -46,7 +47,7 @@ namespace Easy_AMM_Poses
         /// <returns></returns>
         private int updateAppStatus(string message)
         {
-            appStatus.Content = "Debug: " + message;
+            appStatus.Content = "Status: " + message;
             return 1;
         }
 
@@ -207,6 +208,15 @@ namespace Easy_AMM_Poses
 
             updateAppStatus("Finished building entity .ent: " + config.pathToEntityMFA);
         }
+
+        private void ListView_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+            listScrollView.ScrollToVerticalOffset(listScrollView.VerticalOffset - e.Delta);
+            e.Handled = true;
+        }
+
+
+
 
         /// <summary>
         /// Load poses from the converted animation JSON file.

@@ -10,6 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\fonts\Rajdhani-Bold.ttf" />
+    <None Remove="assets\fonts\Rajdhani-Light.ttf" />
+    <None Remove="assets\fonts\Rajdhani-Medium.ttf" />
+    <None Remove="assets\fonts\Rajdhani-Regular.ttf" />
+    <None Remove="assets\fonts\Rajdhani-SemiBold.ttf" />
+    <None Remove="assets\gifs\fire.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CliWrap" Version="3.6.6" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
@@ -24,6 +33,17 @@
     <None Update="templates\workspot_list_entry.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\fonts\Rajdhani-Bold.ttf" />
+    <Resource Include="assets\fonts\Rajdhani-Light.ttf" />
+    <Resource Include="assets\fonts\Rajdhani-Medium.ttf" />
+    <Resource Include="assets\fonts\Rajdhani-Regular.ttf" />
+    <Resource Include="assets\fonts\Rajdhani-SemiBold.ttf" />
+    <Content Include="assets\gifs\fire.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

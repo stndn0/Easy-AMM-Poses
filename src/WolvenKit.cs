@@ -2,6 +2,7 @@
 using CliWrap;
 using System.Text;
 using System.IO;
+using System.Windows;
 
 /* 
  * * This class acts as a brige between EAP and WolvenKit.
@@ -86,7 +87,7 @@ namespace Easy_AMM_Poses.src
         /// Add .workspot extension to deserialized REDEngine file.
         /// </summary>
         /// <param name="jsonPath">Path to serialized workspot</param>
-        public static void AddWorkspotExtension(string jsonPath)
+        public static void AddWorkspotExtension(string jsonPath, Config config)
         {
             Debug.WriteLine("DEBUG: ADDING .WORKSPOT EXTENSION TO WORKSPOT FILE");
 
@@ -96,6 +97,16 @@ namespace Easy_AMM_Poses.src
             // FIX REQUIRED
             // TODO: Can cause crash if file already exists - delete it first.
             File.Move(jsonPath.Replace(".json", ""), workspotFilePath);
+
+            string finalPath = config.convertToRedengineFilepath(workspotFilePath);
+            if (finalPath != "null")
+            {
+                config.pathToWorkspotMFA = finalPath;
+            }
+            else
+            {
+                MessageBox.Show("Error: Could not convert path to REDEngine format.");
+            }
         }
     }
 }

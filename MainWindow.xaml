@@ -8,7 +8,7 @@
         Title="Easy AMM Poses" Height="800" Width="1200">
     <StackPanel>
         <Label FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center">Easy AMM Poses</Label>
-        <Label FontSize="14" FontFamily="Cascadia Code Light" Content="pre-alpha 3 | work in progress" HorizontalAlignment="Center"/>
+        <Label FontSize="14" FontFamily="Cascadia Code Light" Content="pre-alpha 4 | work in progress" HorizontalAlignment="Center"/>
         <Label x:Name="appStatus"
             FontSize="14" FontFamily="Cascadia Code Light" 
             HorizontalAlignment="Left"
@@ -58,6 +58,12 @@
             Content="Build .ent file" FontFamily="Arial" Margin="0,8,0,8" Padding="12,12,12,12"
         />
 
+        <Button
+            x:Name="btnBuildLua"
+            Click="ButtonEntityHandler"
+            FontSize="16"
+            Content="Build .lua file [to-do]" FontFamily="Arial" Margin="0,8,0,8" Padding="12,12,12,12"
+        />
         <Label FontSize="14">Detected Poses</Label>
         <ListView Name="entries" Grid.Row="1">
         </ListView>

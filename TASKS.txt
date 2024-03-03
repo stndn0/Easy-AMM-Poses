@@ -5,16 +5,15 @@ general:
 	- remove unused code
 	- adhere to proper c# style guidelines
 
-workspot:
-1. Remove hardcoded paths and use GUI paths instead.
-2. Add GUI input to allow user to change the workspot rig types.
-	- Rig should match that of the animation type.
-3. Convert workspot from raw json to actual .workspot file
-
 ent:
+1. Generate ent file
 
-1. Code the ent json and template
+workspot:
+1. Add .workspot for "big" rigs
 
 lua:
-Low priority for now.
-1. Generate the lua
+1. Generate lua file
+
+Bugs:
+- Fix crash when user clicks "Build" without loading any animations
+- Fix crash caused when user builds the same file twice

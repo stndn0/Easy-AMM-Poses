@@ -177,7 +177,7 @@ namespace Easy_AMM_Poses
 
             Task task2 = Task.Run(async () => await WolvenKit.ConvertJsonToWorkspot(config.cliPath, config.pathToWorkspotJsonMFA));
             await Task.WhenAll(task2);
-            WolvenKit.AddWorkspotExtension(config.pathToWorkspotJsonMFA);
+            WolvenKit.AddWorkspotExtension(config.pathToWorkspotJsonMFA, config);
             Debug.WriteLine("Finished building workspot.workspot");
             updateAppStatus("Finished building workspot. Path: " + config.pathToWorkspotJsonMFA);
 

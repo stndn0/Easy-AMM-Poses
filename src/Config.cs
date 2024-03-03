@@ -14,6 +14,9 @@ namespace Easy_AMM_Poses.src
         public string animPathMaleAvg = "";
         public string animJsonPathMaleAvg = "";
         public string pathToWorkspotJsonMFA = "";       // The workspot for Male/Fem Average is shared.
+        public string pathToWorkspotMFA = "";           // Path to final generated workspot file.
+        public string pathToEntityJsonMFA = "";
+        public string pathToEntityMFA = "";             // Path to final generated entity file
 
         // Hard coded for now. 
         public string projectName = "project1";
@@ -59,6 +62,30 @@ namespace Easy_AMM_Poses.src
         public string getProjectAnimsDirectory()
         {
             return @"projects\" + projectName + @"\" + projectName + @"\archive\base\" + internalProjectName + @"\controller\anims\";
+        }
+
+        /// <summary>
+        /// For a given filepath, strip everything before the base" substring.
+        /// When we're generating JSON files, the filepaths contains extra folders that we don't need.
+        /// Example: "projects\project1\project1\archive\base\testmod\controller\workspot_output.workspot"
+        /// We want to remove "projects\project1\project1\archive\" from the filepath so that
+        /// we have a relative path to the "base" folder for the mod.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public string convertToRedengineFilepath(string filepath)
+        {
+            string substring = @"base";
+
+            // Return index of substring in filepath
+            int index = filepath.IndexOf(substring);
+
+            if (index >= 0)
+            {
+                return filepath.Substring(index);
+            }
+
+            return "null";
         }
     }
 }

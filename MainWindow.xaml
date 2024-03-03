@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Easy_AMM_Poses"
         mc:Ignorable="d"
         Title="Easy AMM Poses" Height="800" Width="1200">
-    <StackPanel>
+    <StackPanel Margin="16,16,16,16">
         <Label FontSize="24" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center">Easy AMM Poses</Label>
         <Label FontSize="14" FontFamily="Cascadia Code Light" Content="pre-alpha 4 | work in progress" HorizontalAlignment="Center"/>
         <Label x:Name="appStatus"
@@ -15,7 +15,7 @@
             Content="Debug: " VerticalAlignment="Center" Margin="0,0,0,8"
         />
         <Label FontSize="14" FontFamily="Arial" FontWeight="Bold" Padding="5,5,5,1">Configuration</Label>
-        <Label FontStyle="Italic">Path to WolvenKit CLI executable</Label>
+        <Label FontStyle="Italic">Path to WolvenKit CLI executable. Use stable version only (version 8.12 or above)</Label>
         <!-- Binding stops the program from crashing. You need to learn why it works... -->
         <TextBox
             x:Name="pathToCli"

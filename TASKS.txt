@@ -5,11 +5,9 @@ general:
 	- remove unused code
 	- adhere to proper c# style guidelines
 
-ent:
-1. Generate ent file
-
 workspot:
 1. Add .workspot for "big" rigs
+2. Point rig to .ANIMS file
 
 lua:
 1. Generate lua file

@@ -57,11 +57,11 @@ namespace Easy_AMM_Poses.src
         /// Use the WolvenKit command line to deserialize json file to REDEngine.
         /// </summary>
         /// <param name="cliPath">Path to WolvenKit command line.</param>
-        /// <param name="jsonPath">Path to serialized workspot.</param>
+        /// <param name="jsonPath">Path to serialized json.</param>
         /// <returns></returns>
-        public static async Task<int> ConvertJsonToWorkspot(String cliPath, String jsonPath)
+        public static async Task<int> ConvertJsonToRedEngine(String cliPath, String jsonPath)
         {
-            Debug.WriteLine("DEBUG: CONVERTING WORKSPOT JSON TO WORKSPOT FILE");
+            Debug.WriteLine("DEBUG: CONVERTING JSON TO REDENGINE OUTPUT FILE");
             var stdOutBuffer = new StringBuilder();
             var stdErrBuffer = new StringBuilder();
             jsonPath = '"' + jsonPath + '"';
@@ -76,7 +76,6 @@ namespace Easy_AMM_Poses.src
                 .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))
                 .ExecuteAsync();
 
-            // Rename the output file to workspot file
             Debug.WriteLine(stdOutBuffer.ToString());
             Debug.WriteLine(stdErrBuffer.ToString());
 
@@ -84,24 +83,57 @@ namespace Easy_AMM_Poses.src
         }
 
         /// <summary>
-        /// Add .workspot extension to deserialized REDEngine file.
+        /// Add .workspot or .ent file extension to deserialized REDEngine file.
         /// </summary>
-        /// <param name="jsonPath">Path to serialized workspot</param>
-        public static void AddWorkspotExtension(string jsonPath, Config config)
+        /// <param name="jsonOutputPath">Path to json file,</param>
+        public static void AddFileExtension(string jsonOutputPath, string newExtension, Config config)
         {
-            Debug.WriteLine("DEBUG: ADDING .WORKSPOT EXTENSION TO WORKSPOT FILE");
+            /* How this works.
+             * 
+             * Renaming a file is pretty weird. There is no .rename method.
+             * We essentially create a new filepath that has the extension we want.
+             * Then we move the current file to the new filepath.
+             * 
+            */
 
-            // Rename the output file to workspot file
-            var workspotFilePath = jsonPath.Replace(".json", ".workspot");
+            Debug.WriteLine("DEBUG: ADDING EXTENSION TO FILE");
+            var newFilePath = "";
 
-            // FIX REQUIRED
-            // TODO: Can cause crash if file already exists - delete it first.
-            File.Move(jsonPath.Replace(".json", ""), workspotFilePath);
+            // Create a new file path to the output file but with the extension we want.
+            if (newExtension == ".ent")
+            {
+                newFilePath = jsonOutputPath.Replace(".json", ".ent");
+            }
 
-            string finalPath = config.convertToRedengineFilepath(workspotFilePath);
+            else if (newExtension == ".workspot")
+            {
+                newFilePath = jsonOutputPath.Replace(".json", ".workspot");
+            }
+
+            // If the file already exists, perhaps from earlier usage of the program, we
+            // need to delete it or else it'll cause a crash.
+            if (File.Exists(newFilePath))
+            {
+                File.Delete(newFilePath);
+            }
+
+            // Move the file to the new file path.
+            File.Move(jsonOutputPath.Replace(".json", ""), newFilePath);
+
+            // Strip the junk from the file path so that it starts with "base\...."
+            string finalPath = config.convertToRedengineFilepath(newFilePath);
+
+            // Set the final file path.
             if (finalPath != "null")
             {
-                config.pathToWorkspotMFA = finalPath;
+                if (newExtension == ".ent")
+                {
+                    config.pathToEntityMFA = finalPath;
+                }
+                else if (newExtension == ".workspot")
+                {
+                    config.pathToWorkspotMFA = finalPath;
+                }
             }
             else
             {

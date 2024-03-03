@@ -1,11 +1,11 @@
 {
   "Header": {
-    "WolvenKitVersion": "8.12.3-nightly.2024-02-04\u002B00437f805b3b85cadf8d22184311d931958f26f1",
+    "WolvenKitVersion": "8.12.2\u002B0e283c958d795f6aa4cd34f29d4f4409a0a1681e",
     "WKitJsonVersion": "0.0.8",
     "GameVersion": 2110,
-    "ExportedDateTime": "2024-03-01T06:51:49.3563721Z",
+    "ExportedDateTime": "2024-03-03T08:12:23.0112002Z",
     "DataType": "CR2W",
-    "ArchiveFileName": "E:\\Games\\Cyberpunk 2077\\Cyberpunk 2077 Modding\\WOLVENKIT PROJECTS 2\\elf_Season7_Halloween_AMM\\source\\archive\\wolv_internal_season7_halloween\\controller\\elf_wolv_poses.ent"
+    "ArchiveFileName": "E:\\Games\\Cyberpunk 2077\\Cyberpunk 2077 Modding\\WOLVENKIT PROJECTS 2\\EasyAMMPoses\\source\\archive\\entity_output.ent"
   },
   "Data": {
     "Version": 195,
@@ -18,7 +18,7 @@
       "compiledData": {
         "BufferId": "0",
         "Flags": 4063232,
-        "Type": "WolvenKit.RED4.Archive.Buffer.RedPackage, WolvenKit.RED4, Version=8.12.3.0, Culture=neutral, PublicKeyToken=null",
+        "Type": "WolvenKit.RED4.Archive.Buffer.RedPackage, WolvenKit.RED4, Version=2.1.1.0, Culture=neutral, PublicKeyToken=null",
         "Data": {
           "Version": 4,
           "Sections": 7,
@@ -763,7 +763,7 @@
                 "DepotPath": {
                   "$type": "ResourcePath",
                   "$storage": "string",
-                  "$value": "wolv_internal_season7_halloween\\controller\\wolv.workspot"
+                  "$value": "base\\testmod\\controller\\workspot_output.workspot"
                 },
                 "Flags": "Default"
               }
@@ -1082,7 +1082,7 @@
             "DepotPath": {
               "$type": "ResourcePath",
               "$storage": "string",
-              "$value": "wolv_internal_season7_halloween\\controller\\wolv.workspot"
+              "$value": "base\\testmod\\controller\\workspot_output.workspot"
             },
             "Flags": "Default"
           }

@@ -169,15 +169,20 @@ namespace Easy_AMM_Poses
             Debug.WriteLine("DEBUG: Build requested...");
             updateAppStatus("Building workspot JSON...");
 
+            // Build the raw workspot JSON file.
             Task task1 = Task.Run(async () => await Workspot.BuildWorkspotJson(poseList, config));
             await Task.WhenAll(task1);
-
             Debug.WriteLine("Finished building workspot JSON..");
-            updateAppStatus("Converting workspot to RedEngine format...please wait.");
 
-            Task task2 = Task.Run(async () => await WolvenKit.ConvertJsonToWorkspot(config.cliPath, config.pathToWorkspotJsonMFA));
+            // Convert the raw JSON file to RedEngine format.
+            updateAppStatus("Converting workspot to RedEngine format...please wait.");
+            Task task2 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToWorkspotJsonMFA));
             await Task.WhenAll(task2);
-            WolvenKit.AddWorkspotExtension(config.pathToWorkspotJsonMFA, config);
+
+            // Add the ".workspot" file extension so that the game can read it.
+            WolvenKit.AddFileExtension(config.pathToWorkspotJsonMFA, ".workspot", config);
+
+
             Debug.WriteLine("Finished building workspot.workspot");
             updateAppStatus("Finished building workspot. Path: " + config.pathToWorkspotJsonMFA);
 
@@ -188,10 +193,19 @@ namespace Easy_AMM_Poses
             Debug.WriteLine("DEBUG: Building entity JSON...");
             updateAppStatus("Building entity JSON...");
 
+            // Build the entity JSON file.
             Task task1 = Task.Run(async () => await Entity.buildEntityJson(config));
             await Task.WhenAll(task1);
 
-            updateAppStatus("Finished building entity JSON.");
+            // Convert the raw JSON file to RedEngine format.
+            Task task2 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToEntityJsonMFA));
+
+            await Task.WhenAll(task2);
+            // Add the ".ent" file extension so that the game can read it.
+            WolvenKit.AddFileExtension(config.pathToEntityJsonMFA, ".ent", config);
+
+
+            updateAppStatus("Finished building entity .ent: " + config.pathToEntityMFA);
         }
 
         /// <summary>

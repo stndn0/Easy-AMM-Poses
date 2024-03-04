@@ -10,13 +10,23 @@ namespace Easy_AMM_Poses.src
         public string modFolderPath = "Select the path to your Cyberpunk 2077 mod folder";
         public string configFilePath = "config/config.json";
         public string animPathFemaleAvg = "";
+        public string animPathFemaleBig = "";
         public string animJsonPathFemaleAvg = "";
+        public string animJsonPathFemaleBig = "";
         public string animPathMaleAvg = "";
+        public string animPathMaleBig = "";
         public string animJsonPathMaleAvg = "";
+        public string animJsonPathMaleBig = "";
         public string pathToWorkspotJsonMFA = "";       // The workspot for Male/Fem Average is shared.
         public string pathToWorkspotMFA = "";           // Path to final generated workspot file.
         public string pathToEntityJsonMFA = "";
         public string pathToEntityMFA = "";             // Path to final generated entity file
+
+        public string pathToWorkspotJsonMFB = "";       // The workspot for Male/Fem Big is shared.
+        public string pathToWorkspotMFB = "";           // Path to final generated workspot file.
+        public string pathToEntityJsonMFB = "";
+        public string pathToEntityMFB = "";             // Path to final generated entity file
+
 
         // Hard coded for now. 
         public string projectName = "project1";
@@ -86,6 +96,16 @@ namespace Easy_AMM_Poses.src
             }
 
             return "null";
+        }
+
+        public bool checkIfAllAnimPathsEmpty(Config config)
+        {
+            if (string.IsNullOrEmpty(config.animPathFemaleAvg) && string.IsNullOrEmpty(config.animPathMaleAvg) && string.IsNullOrEmpty(config.animPathMaleBig) && string.IsNullOrEmpty(config.animPathFemaleBig))
+            {
+                // All paths are empty. The user hasn't selected any animation files.
+                return true;
+            }
+            return false;
         }
     }
 }

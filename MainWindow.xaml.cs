@@ -16,7 +16,7 @@ namespace Easy_AMM_Poses
         List<Pose> poseList = new List<Pose>();
 
         string womanAverage = "WA";
-        string womanBig = "MB";
+        string womanBig = "WB";
         string manAverage = "MA";
         string manBig = "MB";
 
@@ -37,7 +37,7 @@ namespace Easy_AMM_Poses
 
             // Set frontend XAML varaiables.
             pathToCli.Text = config.cliPath;
-            pathToGame.Text = config.modFolderPath;
+            //pathToGame.Text = config.modFolderPath;
         }
 
         /// <summary>
@@ -74,17 +74,17 @@ namespace Easy_AMM_Poses
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TextboxGamePathHandler(object sender, RoutedEventArgs e)
-        {
-            string value = FileIO.OpenFolder();
-            if (value != null)
-            {
-                Debug.WriteLine("Folder selected, " + value);
-                config.modFolderPath = value;
-                pathToGame.Text = config.modFolderPath;
-                Json.WriteConfigData(config);
-            }
-        }
+        //private void TextboxGamePathHandler(object sender, RoutedEventArgs e)
+        //{
+        //    string value = FileIO.OpenFolder();
+        //    if (value != null)
+        //    {
+        //        Debug.WriteLine("Folder selected, " + value);
+        //        config.modFolderPath = value;
+        //        pathToGame.Text = config.modFolderPath;
+        //        Json.WriteConfigData(config);
+        //    }
+        //}
 
         /// <summary>
         /// Handle user input on textbox for WA animation file path.
@@ -120,43 +120,97 @@ namespace Easy_AMM_Poses
         }
 
         /// <summary>
+        /// Handle user input on textbox for WB animation file path.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextboxWBAnimPathHandler(object sender, EventArgs e)
+        {
+            string value = FileIO.OpenAnim();
+            if (value != null)
+            {
+                Debug.WriteLine("DEBUG: Anim file [WB], " + value);
+                config.animPathFemaleBig = value;
+                config.animJsonPathFemaleBig = config.getProjectAnimsDirectory() + Path.GetFileName(value) + ".json";
+                pathToFemaleBigAnim.Text = config.animPathFemaleBig;
+            }
+        }
+
+        /// <summary>
+        /// Handle user input on textbox for MB animation file path.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextboxMBAnimPathHandler(object sender, EventArgs e)
+        {
+            string value = FileIO.OpenAnim();
+            if (value != null)
+            {
+                Debug.WriteLine("DEBUG: Anim file [WB], " + value);
+                config.animPathMaleBig = value;
+                config.animJsonPathMaleBig = config.getProjectAnimsDirectory() + Path.GetFileName(value) + ".json";
+                pathToMaleBigAnim.Text = config.animPathMaleBig;
+            }
+        }
+
+        /// <summary>
         /// Handle button press for "Load Poses from .ANIM".
         /// </summary>
         private async void ButtonConvertHandler(object sender, RoutedEventArgs e)
         {
             // If the user has not provided any animation files
-            if (string.IsNullOrEmpty(config.animPathFemaleAvg) && string.IsNullOrEmpty(config.animPathMaleAvg))
+            if (config.checkIfAllAnimPathsEmpty(config))
             {
-                Debug.WriteLine("DEBUG: No animation files provided.");
-                updateAppStatus("No animation files provided.");
+                updateAppStatus("Error: No animation files were provided.");
                 return;
             }
+
 
             // Call conversion method. Each call runs on a separate thread, allowing them to run concurrently.
             // Using async await so that we can don't block the main thread.
             // This lets us update the UI while the tasks are running.
             // Without async, the GUI would be unresponsive for the user until the tasks are completed.
             updateAppStatus("Converting animation file(s). Please wait 5 to 30 seconds..");
-            Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg, config));
-            Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg, config));
+            Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg, config, womanAverage));
+            Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg, config, manAverage));
+            Task task3 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleBig, config, manBig));
+            Task task4 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleBig, config, womanBig));
 
             // Wait until all tasks are completed before proceeding. Await temporarily suspends the method.
-            await Task.WhenAll(task1, task2);
+            await Task.WhenAll(task1, task2, task3, task4);
 
             // Animation data will only be read after both tasks have completed.
             // Read data for all applicable rigs.
             if (!string.IsNullOrEmpty(config.animJsonPathFemaleAvg))
             {
-                updateAppStatus("Reading female animation data...");
+                updateAppStatus("Reading female average animation data...");
                 Debug.WriteLine("DEBUG: Reading animation data [WA]");
                 readAnimData(config.animJsonPathFemaleAvg, womanAverage);
             }
 
             if (!string.IsNullOrEmpty(config.animJsonPathMaleAvg))
             {
-                updateAppStatus("Reading male animation data...");
+                Debug.WriteLine("DEBUG: Reading animation data [MA]");
+                updateAppStatus("Reading male average animation data...");
                 readAnimData(config.animJsonPathMaleAvg, manAverage);
             }
+
+            if (!string.IsNullOrEmpty(config.animJsonPathFemaleBig))
+            {
+                Debug.WriteLine("DEBUG: Reading animation data [WB]");
+                updateAppStatus("Reading female big animation data...");
+                readAnimData(config.animJsonPathFemaleBig, womanBig);
+            }
+
+            if (!string.IsNullOrEmpty(config.animJsonPathMaleBig))
+            {
+                Debug.WriteLine("DEBUG: Reading animation data [MB]");
+                updateAppStatus("Reading male big animation data...");
+                readAnimData(config.animJsonPathMaleBig, manBig);
+            }
+
+
+
             updateAppStatus("Conversion complete. Ready to build.");
         }
 

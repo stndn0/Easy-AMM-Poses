@@ -18,7 +18,7 @@ namespace Easy_AMM_Poses.src
         /// <param name="cliPath">Path to WolvenKit command line.</param>
         /// <param name="animPath">Path to users animation.</param>
         /// <returns></returns>
-        public static async Task<int> ConvertAnimToJson(String cliPath, String animPath, Config config)
+        public static async Task<int> ConvertAnimToJson(string cliPath, string animPath, Config config, string rigType)
         {
             Debug.WriteLine("DEBUG: CONVERTING ANIMATION TO JSON");
             var stdOutBuffer = new StringBuilder();
@@ -38,6 +38,30 @@ namespace Easy_AMM_Poses.src
 
             var newAnimationPath2 = '"' + Path.GetFullPath(newAnimationPath) + '"';
             Debug.WriteLine("DEBUG: Internal animation path is: " + newAnimationPath2);
+
+            // Update file path for anim file 
+            if (rigType == "WA")
+            {
+                config.animPathFemaleAvg = config.convertToRedengineFilepath(newAnimationPath);
+                Debug.WriteLine("DEBUG: Path to WA: " + config.animPathFemaleAvg);
+            }
+            else if (rigType == "WB")
+            {
+                config.animPathFemaleBig = config.convertToRedengineFilepath(newAnimationPath);
+                Debug.WriteLine("DEBUG: Path to WB: " + config.animPathFemaleBig);
+            }
+            else if (rigType == "MA")
+            {
+                config.animPathMaleAvg = config.convertToRedengineFilepath(newAnimationPath);
+                Debug.WriteLine("DEBUG: Path to MA: " + config.animPathMaleAvg);
+            }
+            else if (rigType == "MB")
+            {
+                config.animPathMaleBig = config.convertToRedengineFilepath(newAnimationPath);
+                Debug.WriteLine("DEBUG: Path to MB: " + config.animPathMaleBig);
+            }
+
+
 
             // Start the WolvenKit CLI and pass the required arguments.
             await Cli.Wrap(cliPath)

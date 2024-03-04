@@ -26,6 +26,22 @@ namespace Easy_AMM_Poses.src
             // Start at id 6 because the workspot usually already has 5 entries.
             int currentId = 6;
 
+            // Update the "rig" fields depending on the animations that the user has provided
+            // Setup woman average rig
+            jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][2]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = config.animPathFemaleAvg;
+
+            jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][2]["loadingHandles"][0]["DepotPath"]["$value"] = config.animPathFemaleAvg;
+
+            Debug.WriteLine("Path to WA" + config.animPathFemaleAvg);
+            Debug.WriteLine("Path to MA" + config.animPathMaleAvg);
+
+
+            // Setup male average rig
+            //jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][0]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = config.animPathMaleAvg;
+
+            //jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][0]["loadingHandles"][0]["DepotPath"]["$value"] = config.animPathMaleAvg;
+
+
             foreach (Pose pose in poseList)
             {
                 // Deserialize entry template in order to write to it.

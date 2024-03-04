@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Easy_AMM_Poses"
         mc:Ignorable="d"
-        Title="Easy AMM Poses by wolv (pre-alpha)" Height="900" Width="800" Background="#FF1F1F1F">
+        Title="Easy AMM Poses by wolv (pre-alpha)" Height="1000" Width="800" Background="#FF1F1F1F">
 
     <Window.Resources>
         <Style x:Key="Logo" TargetType="Label">
@@ -76,25 +76,49 @@
             PreviewMouseDown="TextboxCliPathHandler"
             Style="{StaticResource Textbox}"
          />
-            <Label Style="{StaticResource PropertyLabel}">Path to your Cyberpunk mod folder</Label>
+            <!--<Label Style="{StaticResource PropertyLabel}">Path to your Cyberpunk mod folder</Label>
             <TextBox
             x:Name="pathToGame"
             PreviewMouseDown="TextboxGamePathHandler"
             Style="{StaticResource Textbox}"
-         ></TextBox>
+         ></TextBox>-->
+            
             <Label Style="{StaticResource SubheaderLabel}" Padding="5,16,5,1">Pose Pack Creator</Label>
-            <Label Style="{StaticResource PropertyLabel}">Load WA (female average) animation file (.anims)</Label>
+            <Label Style="{StaticResource PropertyLabel}">Load WA (woman average) animation file </Label>
             <TextBox
             x:Name="pathToFemaleAverageAnim"
             PreviewMouseDown="TextboxFemAnimPathHandler"
             Style="{StaticResource Textbox}"    
          />
-            <Label Style="{StaticResource PropertyLabel}">Load MA (masc average) animation file (.anims)</Label>
+            <Label Style="{StaticResource PropertyLabel}">Load MA (masc average) animation file</Label>
             <TextBox
             x:Name="pathToMaleAverageAnim"
             PreviewMouseDown="TextboxMascAnimPathHandler"
-            Style="{StaticResource Textbox}"    
-         />
+            Style="{StaticResource Textbox}"/>
+
+            <Label Style="{StaticResource PropertyLabel}">Load WB (woman big) animation file</Label>
+            <TextBox
+            x:Name="pathToFemaleBigAnim"
+            PreviewMouseDown="TextboxWBAnimPathHandler"
+            Style="{StaticResource Textbox}"/>
+
+            <Label Style="{StaticResource PropertyLabel}">Load MB (man big) animation file</Label>
+            <TextBox
+            x:Name="pathToMaleBigAnim"
+            PreviewMouseDown="TextboxMBAnimPathHandler"
+            Style="{StaticResource Textbox}"/>
+            
+
+            <Label Style="{StaticResource PropertyLabel}">Enter name of your new mod</Label>
+            <TextBox
+            x:Name="pathToProjectName"
+            Style="{StaticResource Textbox}"/>
+
+            <Label Style="{StaticResource PropertyLabel}">Enter AMM category name</Label>
+            <TextBox
+            x:Name="CategoryName"
+            Style="{StaticResource Textbox}"/>
+
             <Label Padding="5,5,5,12"></Label>
             <Button
             x:Name="btnConvert"
@@ -126,7 +150,7 @@
 
         </StackPanel>
 
-        <Grid Grid.Row="1" ShowGridLines="True">
+        <Grid Grid.Row="1" ShowGridLines="False">
             <ScrollViewer Name="listScrollView" VerticalScrollBarVisibility="Visible">
                 <ListView Name="entries" PreviewMouseWheel="ListView_PreviewMouseWheel" Style="{StaticResource Poses}" ></ListView>
             </ScrollViewer>

@@ -594,7 +594,7 @@
                 "DepotPath": {
                   "$type": "ResourcePath",
                   "$storage": "string",
-                  "$value": "base\\characters\\base_entities\\man_child\\man_child.rig"
+                  "$value": "base\\characters\\base_entities\\man_big\\man_big.rig"
                 },
                 "Flags": "Soft"
               }
@@ -610,7 +610,7 @@
                       "DepotPath": {
                         "$type": "ResourcePath",
                         "$storage": "string",
-                        "$value": "wolv_internal_season7_halloween\\season_7_special_halloween_pose_pack.anims"
+                        "$value": "0"
                       },
                       "Flags": "Default"
                     },
@@ -626,7 +626,7 @@
                   "DepotPath": {
                     "$type": "ResourcePath",
                     "$storage": "string",
-                    "$value": "wolv_internal_season7_halloween\\season_7_special_halloween_pose_pack.anims"
+                    "$value": "0"
                   },
                   "Flags": "Default"
                 }
@@ -636,6 +636,47 @@
                   "$type": "ResourcePath",
                   "$storage": "string",
                   "$value": "base\\characters\\base_entities\\woman_base\\woman_base.rig"
+                },
+                "Flags": "Soft"
+              }
+            },
+            {
+              "$type": "workWorkspotAnimsetEntry",
+              "animations": {
+                "$type": "animAnimSetup",
+                "cinematics": [
+                  {
+                    "$type": "animAnimSetupEntry",
+                    "animSet": {
+                      "DepotPath": {
+                        "$type": "ResourcePath",
+                        "$storage": "string",
+                        "$value": "0"
+                      },
+                      "Flags": "Default"
+                    },
+                    "priority": 128,
+                    "variableNames": []
+                  }
+                ],
+                "gameplay": [],
+                "hash": "2090797394152133000"
+              },
+              "loadingHandles": [
+                {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "0"
+                  },
+                  "Flags": "Default"
+                }
+              ],
+              "rig": {
+                "DepotPath": {
+                  "$type": "ResourcePath",
+                  "$storage": "string",
+                  "$value": "base\\characters\\base_entities\\woman_big\\woman_big.rig"
                 },
                 "Flags": "Soft"
               }

@@ -527,7 +527,7 @@
                     "animSet": {
                       "DepotPath": {
                         "$type": "ResourcePath",
-                        "$storage": "uint64",
+                        "$storage": "string",
                         "$value": "0"
                       },
                       "Flags": "Default"
@@ -543,7 +543,7 @@
                 {
                   "DepotPath": {
                     "$type": "ResourcePath",
-                    "$storage": "uint64",
+                    "$storage": "string",
                     "$value": "0"
                   },
                   "Flags": "Default"
@@ -568,7 +568,7 @@
                     "animSet": {
                       "DepotPath": {
                         "$type": "ResourcePath",
-                        "$storage": "uint64",
+                        "$storage": "string",
                         "$value": "0"
                       },
                       "Flags": "Default"
@@ -584,7 +584,7 @@
                 {
                   "DepotPath": {
                     "$type": "ResourcePath",
-                    "$storage": "uint64",
+                    "$storage": "string",
                     "$value": "0"
                   },
                   "Flags": "Default"
@@ -733,7 +733,7 @@
                       "DepotPath": {
                         "$type": "ResourcePath",
                         "$storage": "string",
-                        "$value": "wolv_internal_season7_halloween\\season_7_special_halloween_pose_pack.anims"
+                        "$value": ""
                       },
                       "Flags": "Default"
                     },
@@ -749,7 +749,7 @@
                   "DepotPath": {
                     "$type": "ResourcePath",
                     "$storage": "string",
-                    "$value": "wolv_internal_season7_halloween\\season_7_special_halloween_pose_pack.anims"
+                    "$value": ""
                   },
                   "Flags": "Default"
                 }

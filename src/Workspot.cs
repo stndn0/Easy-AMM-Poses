@@ -27,19 +27,33 @@ namespace Easy_AMM_Poses.src
             int currentId = 6;
 
             // Update the "rig" fields depending on the animations that the user has provided
-            // Setup woman average rig
-            jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][2]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = config.animPathFemaleAvg;
+            // Woman average
+            if (config.animPathFemaleAvg != "")
+            {
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][2]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = config.animPathFemaleAvg;
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][2]["loadingHandles"][0]["DepotPath"]["$value"] = config.animPathFemaleAvg;
+            }
 
-            jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][2]["loadingHandles"][0]["DepotPath"]["$value"] = config.animPathFemaleAvg;
+            // Male average
+            if (config.animPathMaleAvg != "")
+            {
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][0]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = config.animPathMaleAvg;
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][0]["loadingHandles"][0]["DepotPath"]["$value"] = config.animPathMaleAvg;
+            }
 
-            Debug.WriteLine("Path to WA" + config.animPathFemaleAvg);
-            Debug.WriteLine("Path to MA" + config.animPathMaleAvg);
+            // Woman big
+            if (config.animPathFemaleBig != "") {
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][3]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = config.animPathFemaleBig;
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][3]["loadingHandles"][0]["DepotPath"]["$value"] = config.animPathFemaleBig;
+            }
 
+            // Male big
+            if (config.animPathMaleBig != "")
+            {
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][1]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = config.animPathMaleBig;
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][1]["loadingHandles"][0]["DepotPath"]["$value"] = config.animPathMaleBig;
+            }
 
-            // Setup male average rig
-            //jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][0]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = config.animPathMaleAvg;
-
-            //jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][0]["loadingHandles"][0]["DepotPath"]["$value"] = config.animPathMaleAvg;
 
 
             foreach (Pose pose in poseList)

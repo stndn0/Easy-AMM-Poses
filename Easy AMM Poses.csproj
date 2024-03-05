@@ -26,6 +26,9 @@
     <None Update="templates\entity_template.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="templates\lua_template.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="templates\workspot.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

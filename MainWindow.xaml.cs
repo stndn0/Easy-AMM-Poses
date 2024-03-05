@@ -263,6 +263,14 @@ namespace Easy_AMM_Poses
             updateAppStatus("Finished building entity .ent: " + config.pathToEntityMFA);
         }
 
+        private async void ButtonLuaHandler(Object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("DEBUG: Building lua file...");
+            updateAppStatus("Building lua file...");
+
+            Lua.readLuaTemplate(poseList, config);
+        }
+
         private void ListView_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
             listScrollView.ScrollToVerticalOffset(listScrollView.VerticalOffset - e.Delta);
@@ -293,13 +301,15 @@ namespace Easy_AMM_Poses
                 // Debug.WriteLine(item["Data"]["animation"]["Data"]["name"]["$value"]);
                 string poseName = item["Data"]["animation"]["Data"]["name"]["$value"].ToString();
 
-                // Todo - if posename already in list of poses, skip it.
+                // If posename already in list of poses, don't add a new pose.
+                // Instead, update the pose and add the new body type.
                 bool poseExists = false;
                 foreach (Pose pose in poseList)
                 {
                     if (pose.Name == poseName)
                     {
                         Debug.WriteLine("DEBUG: Pose already in list, skipping... " + poseName);
+                        pose.ExtraBodyTypes.Add(bodyType);
                         poseExists = true;
                         break;
                     }

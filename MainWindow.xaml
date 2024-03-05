@@ -142,8 +142,8 @@
 
             <Button
             x:Name="btnBuildLua"
-            Click="ButtonEntityHandler"
-            Content="Build .lua file [to-do]" 
+            Click="ButtonLuaHandler"
+            Content="Build .lua file" 
             Style="{StaticResource Button}"
 />
             <Label Style="{StaticResource PropertyLabel}" FontFamily="#Rajdhani Light">Detected poses will be displayed below...</Label>

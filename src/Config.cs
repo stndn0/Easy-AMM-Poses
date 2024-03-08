@@ -6,7 +6,7 @@ namespace Easy_AMM_Poses.src
     // Store user configuration settings.
     public class Config
     {
-        public string cliPath = "Select the path to your WolvenKit CLI";
+        public string cliPath = "";
         public string modFolderPath = "Select the path to your Cyberpunk 2077 mod folder";
         public string configFilePath = "config/config.json";
         public string animPathFemaleAvg = "";
@@ -28,11 +28,16 @@ namespace Easy_AMM_Poses.src
         public string pathToEntityMFB = "";             // Path to final generated entity file
 
         public string luaCategoryName = "";
+        public string projectUsername = "";
+        public string projectName = "";
+        public string projectPath = "";
 
-        // Hard coded for now. 
-        public string projectName = "project1";
-        public string projectPath = "projects/project1";
-        public string internalProjectName = "testmod";
+        // Internal project name needs to be unique and random so that it 
+        // doesn't conflict with other mods created with the user, or other
+        // mods created by EAP.
+        Random rnd = new Random();
+        public string internalProjectName = "";
+
 
         public void SetConfigFile(Config config)
         {
@@ -41,11 +46,13 @@ namespace Easy_AMM_Poses.src
             Directory.CreateDirectory("temp");
 
             // Create mod directory
-            Directory.CreateDirectory(getProjectAnimsDirectory());
+            //Directory.CreateDirectory(getProjectAnimsDirectory());
 
             // Store mod resources (.lua files)
-            Directory.CreateDirectory(getProjectResourcesDirectory());
+            //Directory.CreateDirectory(getProjectResourcesDirectory());
             //Directory.CreateDirectory(@"projects\project1\resources\bin\x64\plugins\cyber_engine_tweaks\mods\AppearanceMenuMod\Collabs\Custom Poses\NAMEHERE");
+
+            internalProjectName = "eap_" + rnd.Next(100000, 10000000);
 
             // If the config file doesn't exist, create it.
             if (!File.Exists(config.configFilePath))
@@ -62,7 +69,7 @@ namespace Easy_AMM_Poses.src
 
         public string getProjectControllerDirectory()
         {
-            return @"projects\" + projectName + @"\" + projectName + @"\archive\base\" + internalProjectName + @"\controller\";
+            return @"projects\" + projectName + @"\" + projectName + @"\base\" + internalProjectName + @"\controller\";
         }
 
         public string getProjectResourcesDirectory()
@@ -73,7 +80,12 @@ namespace Easy_AMM_Poses.src
 
         public string getProjectAnimsDirectory()
         {
-            return @"projects\" + projectName + @"\" + projectName + @"\archive\base\" + internalProjectName + @"\controller\anims\";
+            return @"projects\" + projectName + @"\" + projectName + @"\base\" + internalProjectName + @"\controller\anims\";
+        }
+
+        public string getProjectRootDirectory()
+        {
+            return @"projects\" + projectName + @"\" + projectName;
         }
 
         /// <summary>
@@ -108,6 +120,15 @@ namespace Easy_AMM_Poses.src
                 return true;
             }
             return false;
+        }
+
+        public void setInternalProjectName()
+        {
+            // Internal project name needs to be unique and random so that it 
+            // doesn't conflict with other mods created with the user, or other
+            // mods created by EAP.
+            Random rnd = new Random();
+            internalProjectName = "eap_" + rnd.Next(1, 20000);
         }
     }
 }

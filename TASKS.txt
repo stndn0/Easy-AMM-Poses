@@ -1,17 +1,16 @@
 To-Do
 
-general:
+General:
 - Clean up the codebase
-	- remove unused code
-	- adhere to proper c# style guidelines
+	- Check to ensure adherence toproper c# style guidelines
+	- Try to adhere to SOLID.
+	- Try to move some logic (e.g. setting up config) to App.xaml.cs as this is 
+	where app logic goes.
 
-workspot:
-1. Add .workspot for "big" rigs
-2. Point rig to .ANIMS file
 
-lua:
-1. Generate lua file
 
-Bugs:
-- Fix crash when user clicks "Build" without loading any animations
-- Fix crash caused when user builds the same file twice
+UI:
+- Stop user from clicking button without setting up CLI OR without providing
+valid input.
+- Stop user from clicking buttons WHILE app is doing work.
+- Add reset button that clears all fields and resets the app to its initial state.

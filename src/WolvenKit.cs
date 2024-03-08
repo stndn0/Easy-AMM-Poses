@@ -106,6 +106,31 @@ namespace Easy_AMM_Poses.src
             return 1;
         }
 
+        public static async Task<int> packMod(Config config)
+        {
+            Debug.WriteLine("DEBUG: Packing mod...");
+            var stdOutBuffer = new StringBuilder();
+            var stdErrBuffer = new StringBuilder();
+            string projectPath = '"' + config.getProjectRootDirectory() + '"';
+
+
+            // Create Cyberpunk 2077 directory structure
+            Directory.CreateDirectory(@"projects\" + config.projectName + @"\# PACKED\archive\pc\mod");
+
+            // Start the WolvenKit CLI and pass the required arguments.
+            await Cli.Wrap(config.cliPath)
+                .WithArguments($"pack p {projectPath}")
+                .WithValidation(CommandResultValidation.None)
+                .WithStandardOutputPipe(PipeTarget.ToStringBuilder(stdOutBuffer))
+                .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))
+                .ExecuteAsync();
+
+            Debug.WriteLine(stdOutBuffer.ToString());
+            Debug.WriteLine(stdErrBuffer.ToString());
+
+            return 1;
+        }
+
         /// <summary>
         /// Add .workspot or .ent file extension to deserialized REDEngine file.
         /// </summary>

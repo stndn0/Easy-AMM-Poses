@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Easy_AMM_Poses"
         mc:Ignorable="d"
-        Title="Easy AMM Poses by wolv (pre-alpha)" Height="1000" Width="800" Background="#FF1F1F1F">
+        Title="Easy AMM Poses by wolv (pre-alpha)" Height="1080" Width="800" Background="#FF1F1F1F">
 
     <Window.Resources>
         <Style x:Key="Logo" TargetType="Label">
@@ -19,8 +19,14 @@
             <Setter Property="Foreground" Value="#dbdbdb"/>
             <Setter Property ="FontFamily" Value="/assets/fonts/#Rajdhani Medium"/>
         </Style>
-        <Style x:Key="SubheaderLabel" TargetType="Label">
+        <Style x:Key="SubheaderLabel01" TargetType="Label">
             <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#dbdbdb"/>
+            <Setter Property ="FontFamily" Value="/assets/fonts/#Rajdhani Bold"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="SubheaderLabel02" TargetType="Label">
+            <Setter Property="FontSize" Value="17"/>
             <Setter Property="Foreground" Value="#dbdbdb"/>
             <Setter Property ="FontFamily" Value="/assets/fonts/#Rajdhani Bold"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -31,7 +37,7 @@
             <Setter Property ="FontFamily" Value="/assets/fonts/#Rajdhani Medium"/>
             <Setter Property="Margin" Value="5 0 5 0"/>
             <Setter Property="BorderThickness" Value="0.5"/>
-            
+
         </Style>
         <Style x:Key="Poses" TargetType="ListView">
             <Setter Property="Background" Value="#FF232323"/>
@@ -67,7 +73,7 @@
 
             <Label Style="{StaticResource Logo}" HorizontalAlignment="Center" VerticalAlignment="Center">Easy AMM Poses</Label>
             <Label FontSize="14" Foreground="white" FontFamily="Cascadia Code Light" Content="pre-alpha 0.6 | work in progress" HorizontalAlignment="Center"/>
-            <Label Style="{StaticResource SubheaderLabel}" Padding="5,5,5,1">Configuration</Label>
+            <Label Style="{StaticResource SubheaderLabel01}" Padding="5,5,5,1">Configuration</Label>
             <Label Style="{StaticResource PropertyLabel}">Path to WolvenKit CLI executable. Use stable version only (version 8.12 or above)</Label>
             <!-- Binding stops the program from crashing. You need to learn why it works... -->
             <TextBox 
@@ -82,44 +88,59 @@
             PreviewMouseDown="TextboxGamePathHandler"
             Style="{StaticResource Textbox}"
          ></TextBox>-->
-            
-            <Label Style="{StaticResource SubheaderLabel}" Padding="5,16,5,1">Pose Pack Creator</Label>
-            <Label Style="{StaticResource PropertyLabel}">Load WA (woman average) animation file </Label>
+
+            <Label Style="{StaticResource SubheaderLabel01}" Padding="5,16,5,1">Pose Pack Creator</Label>
+            <Label Style="{StaticResource SubheaderLabel02}" Padding="5,16,5,1">Mod details</Label>
+            <Label Style="{StaticResource PropertyLabel}">Enter your username (to be displayed in .lua file)</Label>
+            <TextBox
+                x:Name="textboxUsername"
+                TextChanged="TextboxUsernameHandler"
+                Style="{StaticResource Textbox}"/>
+
+            <Label Style="{StaticResource PropertyLabel}">Enter mod name (the name of the .archive file)</Label>
+            <TextBox
+                x:Name="textboxProjectName"
+                TextChanged="TextboxProjectNameHandler"
+                Style="{StaticResource Textbox}"/>
+
+            <Label Style="{StaticResource PropertyLabel}">Enter AMM category name (what the user sees in-game)</Label>
+            <TextBox 
+                x:Name="textboxCategory" 
+                TextChanged="TextboxCategoryHandler"
+                    Style="{StaticResource Textbox}"  />
+
+
+
+            <Label Style="{StaticResource SubheaderLabel02}" Padding="5,16,5,1">Load animation files (one or more)</Label>
+            <Label Style="{StaticResource PropertyLabel}">Load WA (woman average) animation file</Label>
             <TextBox
             x:Name="pathToFemaleAverageAnim"
             PreviewMouseDown="TextboxFemAnimPathHandler"
+            IsEnabled="False"
             Style="{StaticResource Textbox}"    
          />
             <Label Style="{StaticResource PropertyLabel}">Load MA (masc average) animation file</Label>
             <TextBox
             x:Name="pathToMaleAverageAnim"
             PreviewMouseDown="TextboxMascAnimPathHandler"
+            IsEnabled="False"
             Style="{StaticResource Textbox}"/>
 
             <Label Style="{StaticResource PropertyLabel}">Load WB (woman big) animation file</Label>
             <TextBox
             x:Name="pathToFemaleBigAnim"
             PreviewMouseDown="TextboxWBAnimPathHandler"
+            IsEnabled="False"
             Style="{StaticResource Textbox}"/>
 
             <Label Style="{StaticResource PropertyLabel}">Load MB (man big) animation file</Label>
             <TextBox
             x:Name="pathToMaleBigAnim"
             PreviewMouseDown="TextboxMBAnimPathHandler"
+            IsEnabled="False"
             Style="{StaticResource Textbox}"/>
+
             
-
-            <Label Style="{StaticResource PropertyLabel}">Enter name of your new mod</Label>
-            <TextBox
-            x:Name="pathToProjectName"
-            Style="{StaticResource Textbox}"/>
-
-            <Label Style="{StaticResource PropertyLabel}">Enter AMM category name</Label>
-            <TextBox 
-                x:Name="textboxCategory" 
-                TextChanged="TextboxCategoryHandler"
-                Style="{StaticResource Textbox}"  />
-
             <Label Padding="5,5,5,12"></Label>
             <Button
             x:Name="btnConvert"
@@ -145,8 +166,14 @@
             x:Name="btnBuildLua"
             Click="ButtonLuaHandler"
             Content="Build .lua file" 
-            Style="{StaticResource Button}"
-/>
+            Style="{StaticResource Button}"/>
+
+            <Button
+            x:Name="btnPackMod"
+            Click="ButtonPackHandler"
+            Content="Pack Cyberpunk 2077 mod" 
+            Style="{StaticResource Button}"/>
+
             <Label Style="{StaticResource PropertyLabel}" FontFamily="#Rajdhani Light">Detected poses will be displayed below...</Label>
 
         </StackPanel>

@@ -37,6 +37,15 @@ namespace Easy_AMM_Poses
             // Set frontend XAML varaiables.
             pathToCli.Text = config.cliPath;
             //pathToGame.Text = config.modFolderPath;
+
+            if (config.cliPath == "")
+            {
+                updateAppStatus("Select the path to your WolvenKit console before proceeding...");
+            }
+            else
+            {
+                updateAppStatus("Waiting for choomba to input something...");
+            }
         }
 
         /// <summary>
@@ -97,6 +106,8 @@ namespace Easy_AMM_Poses
             {
                 Debug.WriteLine("DEBUG: Anim file [WA], " + value);
                 config.animPathFemaleAvg = value;
+                Debug.WriteLine("DEBUG: Project anims directory: " + config.getProjectAnimsDirectory());
+                Debug.WriteLine("DEBUG: Path.GetFileName(Value): " + Path.GetFileName(value));
                 config.animJsonPathFemaleAvg = config.getProjectAnimsDirectory() + Path.GetFileName(value) + ".json";
                 pathToFemaleAverageAnim.Text = config.animPathFemaleAvg;
             }
@@ -143,7 +154,7 @@ namespace Easy_AMM_Poses
         private void TextboxMBAnimPathHandler(object sender, EventArgs e)
         {
             string value = FileIO.OpenAnim();
-            if (value != null)
+            if (value != null && config.projectName != "")
             {
                 Debug.WriteLine("DEBUG: Anim file [WB], " + value);
                 config.animPathMaleBig = value;
@@ -164,6 +175,18 @@ namespace Easy_AMM_Poses
                 return;
             }
 
+            // Build project directory 
+            if (config.projectName != "")
+            {
+                Directory.CreateDirectory(config.getProjectAnimsDirectory());
+                Directory.CreateDirectory(config.getProjectResourcesDirectory());
+                Debug.WriteLine("DEBUG: Project directory created: " + config.getProjectAnimsDirectory());
+            }
+            else
+            {
+                updateAppStatus("Error: You need to provide a project name first.");
+                return;
+            }
 
             // Call conversion method. Each call runs on a separate thread, allowing them to run concurrently.
             // Using async await so that we can don't block the main thread.
@@ -274,6 +297,17 @@ namespace Easy_AMM_Poses
 
         }
 
+        private async void ButtonPackHandler(Object sender, RoutedEventArgs e)
+        {
+            updateAppStatus("Packing mod...");
+
+            Task task1 = Task.Run(async () => await WolvenKit.packMod(config));
+            await Task.WhenAll(task1);
+
+            updateAppStatus("Finished packing mod.");
+
+        }
+
         private void TextboxCategoryHandler(object sender, EventArgs e)
         {
             Debug.WriteLine("DEBUG: AMM Category Name, " + textboxCategory.Text);
@@ -284,6 +318,45 @@ namespace Easy_AMM_Poses
             else
             {
                 config.luaCategoryName = "Uncategorized Pose Pack";
+            }
+        }
+
+        private void TextboxUsernameHandler(object sender, EventArgs e)
+        {
+            Debug.WriteLine("DEBUG: Modder Name, " + textboxUsername.Text);
+            if (textboxUsername.Text != null)
+            {
+                config.projectUsername = textboxUsername.Text;
+            }
+            else
+            {
+                config.projectUsername = "Johnny Silverhand";
+            }
+        }
+
+        private void TextboxProjectNameHandler(object sender, EventArgs e)
+        {
+            //Debug.WriteLine("DEBUG: Project Name, " + textboxProjectName.Text);
+            if (textboxProjectName.Text != "")
+            {
+                config.projectName = textboxProjectName.Text;
+                config.projectPath = "projects/" + textboxProjectName.Text;
+                Debug.WriteLine("DEBUG: Project Name, " + config.projectName);
+                Debug.WriteLine("DEBUG: Project Path, " + config.projectPath);
+
+                pathToFemaleAverageAnim.IsEnabled = true;
+                pathToMaleAverageAnim.IsEnabled = true;
+                pathToFemaleBigAnim.IsEnabled = true;
+                pathToMaleBigAnim.IsEnabled = true;
+            }
+            else
+            {
+                config.projectName = "project1";
+                config.projectPath = "projects/project1";
+                pathToFemaleAverageAnim.IsEnabled = false;
+                pathToMaleAverageAnim.IsEnabled = false;
+                pathToFemaleBigAnim.IsEnabled = false;
+                pathToMaleBigAnim.IsEnabled = false;
             }
         }
 

@@ -27,6 +27,7 @@ namespace Easy_AMM_Poses.src
         public string pathToEntityJsonMFB = "";
         public string pathToEntityMFB = "";             // Path to final generated entity file
 
+        public string luaCategoryName = "";
 
         // Hard coded for now. 
         public string projectName = "project1";
@@ -68,6 +69,7 @@ namespace Easy_AMM_Poses.src
         {
             return @"projects\" + projectName + @"\resources\";
         }
+
 
         public string getProjectAnimsDirectory()
         {

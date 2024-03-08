@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using System.Windows;
 using Easy_AMM_Poses.src;
 using Newtonsoft.Json.Linq;
-using System.Windows.Controls;
 
 namespace Easy_AMM_Poses
 {
@@ -268,7 +267,24 @@ namespace Easy_AMM_Poses
             Debug.WriteLine("DEBUG: Building lua file...");
             updateAppStatus("Building lua file...");
 
-            Lua.readLuaTemplate(poseList, config);
+            Task task1 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config));
+            await Task.WhenAll(task1);
+
+            updateAppStatus("Finished.");
+
+        }
+
+        private void TextboxCategoryHandler(object sender, EventArgs e)
+        {
+            Debug.WriteLine("DEBUG: AMM Category Name, " + textboxCategory.Text);
+            if (textboxCategory.Text != null)
+            {
+                config.luaCategoryName = textboxCategory.Text;
+            }
+            else
+            {
+                config.luaCategoryName = "Uncategorized Pose Pack";
+            }
         }
 
         private void ListView_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)

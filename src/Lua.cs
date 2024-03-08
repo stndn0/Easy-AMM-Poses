@@ -17,7 +17,7 @@ namespace Easy_AMM_Poses.src
     public class Lua
     {
 
-        public static void readLuaTemplate(List<Pose> poseList, Config config)
+        public static async Task<int> readLuaTemplate(List<Pose> poseList, Config config)
         {
             Debug.WriteLine("DEBUG: Reading Lua template");
             string luaFile = File.ReadAllText(@"templates\lua_template.lua");
@@ -26,9 +26,14 @@ namespace Easy_AMM_Poses.src
             string femaleAveragePoses = "";
             string bigPoses = "";
 
-            //  Update entity path
+            //  Update entity path. Add extra backlash within the path string or else .lua will be unhappy.
             string pattern = @"(entity_path\s*=\s*)"".*?""";
-            string replacement = "$1" + '"' + config.pathToEntityMFA + '"';
+            string replacement = "$1" + '"' + config.pathToEntityMFA.Replace(@"\", @"\\") + '"';
+            luaFile = Regex.Replace(luaFile, pattern, replacement);
+
+            // Update category name
+            pattern = @"(category\s*=\s*)"".*?""";
+            replacement = "$1" + '"' + config.luaCategoryName + '"';
             luaFile = Regex.Replace(luaFile, pattern, replacement);
 
 
@@ -36,44 +41,17 @@ namespace Easy_AMM_Poses.src
             {
                 if (poseList[i].BodyType == "MA" || poseList[i].ExtraBodyTypes.Contains("MA"))
                 {
-                    // If last iteration, add the comma and space.
-                    if (i != poseList.Count - 1)
-                    {
-                        maleAveragePoses += poseList[i].Name + ", ";
-                    }
-                    // If last iteration, don't add comma and space.
-                    else
-                    {
-                        maleAveragePoses += poseList[i].Name;
-                    }
+                    maleAveragePoses += '"' + poseList[i].Name + '"' + ", ";
                 }
 
                 if (poseList[i].BodyType == "WA" || poseList[i].ExtraBodyTypes.Contains("WA"))
                 {
-                    // If last iteration, add the comma and space.
-                    if (i != poseList.Count - 1)
-                    {
-                        femaleAveragePoses += poseList[i].Name + ", ";
-                    }
-                    // If last iteration, don't add comma and space.
-                    else
-                    {
-                        femaleAveragePoses += poseList[i].Name;
-                    }
+                    femaleAveragePoses += '"' + poseList[i].Name + '"' + ", ";
                 }
 
                 if (poseList[i].BodyType == "MB" || poseList[i].ExtraBodyTypes.Contains("MB"))
                 {
-                    // If last iteration, add the comma and space.
-                    if (i != poseList.Count - 1)
-                    {
-                        bigPoses += poseList[i].Name + ", ";
-                    }
-                    // If last iteration, don't add comma and space.
-                    else
-                    {
-                        bigPoses += poseList[i].Name;
-                    }
+                    bigPoses += '"' + poseList[i].Name + '"' + ", ";
                 }
 
                 if (poseList[i].BodyType == "WB" || poseList[i].ExtraBodyTypes.Contains("WB"))
@@ -82,24 +60,19 @@ namespace Easy_AMM_Poses.src
                     // We don't want to add the same pose twice.
                     if (bigPoses.Contains(poseList[i].Name))
                     {
-                        break;
+                        continue;
                     }
                     else
                     {
-                        // If last iteration, add the comma and space.
-                        if (i != poseList.Count - 1)
-                        {
-                            bigPoses += poseList[i].Name + ", ";
-                        }
-                        // If last iteration, don't add comma and space.
-                        else
-                        {
-                            bigPoses += poseList[i].Name;
-                        }
+                        bigPoses += '"' + poseList[i].Name + '"' + ", ";
                     }
                 }
             }
 
+            // Remove trailing whitespace and comma from end of string
+            maleAveragePoses = maleAveragePoses.TrimEnd().TrimEnd(',');
+            femaleAveragePoses = femaleAveragePoses.TrimEnd().TrimEnd(',');
+            bigPoses = bigPoses.TrimEnd().TrimEnd(',');
 
             // Use regex to find and update the Man Average field
             pattern = @"\[\""Man Average\""\] = \{\}";
@@ -116,7 +89,14 @@ namespace Easy_AMM_Poses.src
             replacement = @"[""Big""] = " + "{" + bigPoses + "}";
             luaFile = Regex.Replace(luaFile, pattern, replacement);
 
+            // Write updated lua file to disk
+            string pathToOutput = config.getProjectResourcesDirectory() + @"poses.lua";
+
+            File.WriteAllText(pathToOutput, luaFile);
+
             Debug.WriteLine("Lua file: \n" + luaFile);
+
+            return 1;
         }
     }
 }

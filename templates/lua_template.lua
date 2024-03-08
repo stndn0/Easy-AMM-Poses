@@ -3,9 +3,9 @@
 -- #######################################
 
 return {
-  modder = "test",
+  modder = "username",
   category = "EAP Test Pack",
-  entity_path = "wolv_internal\\controller\\wolv_fem_love_v1.ent",
+  entity_path = "path",
   
   anims = {        
       ["Man Average"] = {},                    

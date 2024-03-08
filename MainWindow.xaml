@@ -66,7 +66,7 @@
         <StackPanel Grid.Row="0">
 
             <Label Style="{StaticResource Logo}" HorizontalAlignment="Center" VerticalAlignment="Center">Easy AMM Poses</Label>
-            <Label FontSize="14" Foreground="white" FontFamily="Cascadia Code Light" Content="pre-alpha 4 | work in progress" HorizontalAlignment="Center"/>
+            <Label FontSize="14" Foreground="white" FontFamily="Cascadia Code Light" Content="pre-alpha 0.6 | work in progress" HorizontalAlignment="Center"/>
             <Label Style="{StaticResource SubheaderLabel}" Padding="5,5,5,1">Configuration</Label>
             <Label Style="{StaticResource PropertyLabel}">Path to WolvenKit CLI executable. Use stable version only (version 8.12 or above)</Label>
             <!-- Binding stops the program from crashing. You need to learn why it works... -->
@@ -115,9 +115,10 @@
             Style="{StaticResource Textbox}"/>
 
             <Label Style="{StaticResource PropertyLabel}">Enter AMM category name</Label>
-            <TextBox
-            x:Name="CategoryName"
-            Style="{StaticResource Textbox}"/>
+            <TextBox 
+                x:Name="textboxCategory" 
+                TextChanged="TextboxCategoryHandler"
+                Style="{StaticResource Textbox}"  />
 
             <Label Padding="5,5,5,12"></Label>
             <Button

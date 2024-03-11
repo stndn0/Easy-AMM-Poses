@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:Easy_AMM_Poses"
         mc:Ignorable="d"
         Title="Easy AMM Poses by wolv (pre-alpha)" Height="1080" Width="800" Background="#FF1F1F1F">
-
     <Window.Resources>
         <Style x:Key="Logo" TargetType="Label">
             <Setter Property="FontSize" Value="30"/>
@@ -54,199 +53,213 @@
             <Setter Property="Margin" Value="5,8,5,8"/>
             <Setter Property="Padding" Value="12,12,12,12"/>
             <Setter Property="BorderThickness" Value="0.8"/>
-
         </Style>
+
+        
     </Window.Resources>
-
-    <Grid Margin="16,16,16,16">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
-            <Label Style="{StaticResource Logo}" HorizontalAlignment="Center" VerticalAlignment="Center">
-                Easy AMM Poses
-            </Label>
-            <Label FontSize="14" Foreground="white" FontFamily="Cascadia Code Light" 
-                   Content="pre-alpha 0.6 | work in progress" 
-                   HorizontalAlignment="Center"/>
-            <Label Style="{StaticResource SubheaderLabel01}" Padding="5,5,5,1">
-                Configuration
-            </Label>
-            <Label Style="{StaticResource PropertyLabel}">
-                Path to WolvenKit CLI executable. Use stable version only (version 8.12 or above)
-            </Label>
-            <TextBox 
-                x:Name="pathToCli"
-                Text="{Binding ElementName=textBox, Path=Text}"
-                PreviewMouseDown="TextboxCliPathHandler"
-                Style="{StaticResource Textbox}"/>
 
-            
-            <Label Style="{StaticResource SubheaderLabel01}" Padding="5,16,5,1">
-                Pose Pack Creator
-            </Label>
-            <Label Style="{StaticResource SubheaderLabel02}" Padding="5,16,5,1">
-                Mod details
-            </Label>
-            <Label Style="{StaticResource PropertyLabel}">
-                Enter your username (to be displayed in .lua file)
-            </Label>
-            <TextBox
-                x:Name="textboxUsername"
-                TextChanged="TextboxUsernameHandler"
-                Style="{StaticResource Textbox}"/>
-
-            <Label Style="{StaticResource PropertyLabel}">
-                Enter mod name (the name of the .archive file)
-            </Label>
-            <TextBox
-                x:Name="textboxProjectName"
-                TextChanged="TextboxProjectNameHandler"
-                Style="{StaticResource Textbox}"/>
-
-            <Label Style="{StaticResource PropertyLabel}">
-                Enter AMM category name (what the user sees in-game)
-            </Label>
-            <TextBox 
-                x:Name="textboxCategory" 
-                TextChanged="TextboxCategoryHandler"
-                    Style="{StaticResource Textbox}" />
-
-            <Label Style="{StaticResource SubheaderLabel02}" Padding="5,16,5,1">
-                Load animation files (one or more)
-            </Label>
-
-            <StackPanel Visibility="Visible">
-                <Label Style="{StaticResource PropertyLabel}">Load WA (woman average) animation file</Label>
-                <TextBox
-                x:Name="pathToFemaleAverageAnim"
-                PreviewMouseDown="TextboxFemAnimPathHandler"
-                IsEnabled="False"
-                Style="{StaticResource Textbox}"/>
-
-                <Label Style="{StaticResource PropertyLabel}">Load MA (masc average) animation file</Label>
-                <TextBox
-                x:Name="pathToMaleAverageAnim"
-                PreviewMouseDown="TextboxMascAnimPathHandler"
-                IsEnabled="False"
-                Style="{StaticResource Textbox}"/>
-
-                <Label Style="{StaticResource PropertyLabel}">Load WB (woman big) animation file</Label>
-                <TextBox
-                x:Name="pathToFemaleBigAnim"
-                PreviewMouseDown="TextboxWBAnimPathHandler"
-                IsEnabled="False"
-                Style="{StaticResource Textbox}"/>
-
-                <Label Style="{StaticResource PropertyLabel}">Load MB (man big) animation file</Label>
-                <TextBox
-                x:Name="pathToMaleBigAnim"
-                PreviewMouseDown="TextboxMBAnimPathHandler"
-                IsEnabled="False"
-                Style="{StaticResource Textbox}"/>
-            </StackPanel>
-
-            <Expander>
-                <StackPanel>
-                    <Label Style="{StaticResource SubheaderLabel02}" Padding="5,16,5,1">
-                        Optional: load more animation files...
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="0">
+            <Grid Margin="16,16,16,16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <Label Style="{StaticResource Logo}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        Easy AMM Poses
                     </Label>
-                    <Label Style="{StaticResource PropertyLabel}">Load WA (woman average) animation file</Label>
-                    <TextBox
-                        x:Name="pathToFemaleAverageAnim2"
-                        IsEnabled="False"
+                    <Label FontSize="14" Foreground="white" FontFamily="Cascadia Code Light" 
+                           Content="pre-alpha 0.6 | work in progress" 
+                           HorizontalAlignment="Center"/>
+                    <Label Style="{StaticResource SubheaderLabel01}" Padding="5,5,5,1">
+                        Configuration
+                    </Label>
+                    <Label Style="{StaticResource PropertyLabel}">
+                        Path to WolvenKit CLI executable. Use stable version only (version 8.12 or above)
+                    </Label>
+                    <TextBox 
+                        x:Name="pathToCli"
+                        Text="{Binding ElementName=textBox, Path=Text}"
+                        PreviewMouseDown="TextboxCliPathHandler"
                         Style="{StaticResource Textbox}"/>
-                    <Label Style="{StaticResource PropertyLabel}">Load MA (masc average) animation file</Label>
+                    <Label Style="{StaticResource SubheaderLabel01}" Padding="5,16,5,1">
+                        Pose Pack Creator
+                    </Label>
+                    <Label Style="{StaticResource SubheaderLabel02}" Padding="5,16,5,1">
+                        Mod details
+                    </Label>
+                    <Label Style="{StaticResource PropertyLabel}">
+                        Enter your username (to be displayed in .lua file)
+                    </Label>
                     <TextBox
-                        x:Name="pathToMaleAverageAnim2"
-                        IsEnabled="False"
+                        x:Name="textboxUsername"
+                        TextChanged="TextboxUsernameHandler"
                         Style="{StaticResource Textbox}"/>
 
-                    <Label Style="{StaticResource PropertyLabel}">Load WB (woman big) animation file</Label>
+                    <Label Style="{StaticResource PropertyLabel}">
+                        Enter mod name (the name of the .archive file)
+                    </Label>
                     <TextBox
-                        x:Name="pathToFemaleBigAnim2"
-                        IsEnabled="False"
+                        x:Name="textboxProjectName"
+                        TextChanged="TextboxProjectNameHandler"
                         Style="{StaticResource Textbox}"/>
 
-                    <Label Style="{StaticResource PropertyLabel}">Load MB (man big) animation file</Label>
-                    <TextBox
-                        x:Name="pathToMaleBigAnim2"
-                        IsEnabled="False"
-                        Style="{StaticResource Textbox}"/>
+                    <Label Style="{StaticResource PropertyLabel}">
+                        Enter AMM category name (what the user sees in-game)
+                    </Label>
+                    <TextBox 
+                        x:Name="textboxCategory" 
+                        TextChanged="TextboxCategoryHandler"
+                        Style="{StaticResource Textbox}" />
+
+                    <Label Style="{StaticResource SubheaderLabel02}" Padding="5,16,5,1">
+                        Load animation files (one or more)
+                    </Label>
+
+                    <StackPanel Visibility="Visible">
+                        <Label Style="{StaticResource PropertyLabel}">Load WA (woman average) animation file</Label>
+                        <TextBox
+                            x:Name="pathToFemaleAverageAnim"
+                            PreviewMouseDown="TextboxFemAnimPathHandler"
+                            IsEnabled="False"
+                            Style="{StaticResource Textbox}"/>
+
+                        <Label Style="{StaticResource PropertyLabel}">Load MA (masc average) animation file</Label>
+                        <TextBox
+                            x:Name="pathToMaleAverageAnim"
+                            PreviewMouseDown="TextboxMascAnimPathHandler"
+                            IsEnabled="False"
+                            Style="{StaticResource Textbox}"/>
+
+                        <Label Style="{StaticResource PropertyLabel}">Load WB (woman big) animation file</Label>
+                        <TextBox
+                            x:Name="pathToFemaleBigAnim"
+                            PreviewMouseDown="TextboxWBAnimPathHandler"
+                            IsEnabled="False"
+                            Style="{StaticResource Textbox}"/>
+                        <Label Style="{StaticResource PropertyLabel}">Load MB (man big) animation file</Label>
+                        <TextBox
+                            x:Name="pathToMaleBigAnim"
+                            PreviewMouseDown="TextboxMBAnimPathHandler"
+                            IsEnabled="False"
+                            Style="{StaticResource Textbox}"/>
+                    </StackPanel>
+
+                    <Label Margin="0,2,0,0"></Label>
+                    <Expander FlowDirection="RightToLeft" >
+                        <StackPanel FlowDirection="LeftToRight">
+                            <Label Style="{StaticResource SubheaderLabel02}" Padding="5,16,5,1">
+                                Optional: load more animation files...
+                            </Label>
+                            <Label Style="{StaticResource PropertyLabel}">Load WA (woman average) animation file</Label>
+                            <TextBox
+                                x:Name="pathToFemaleAverageAnim2"
+                                IsEnabled="False"
+                                Style="{StaticResource Textbox}"/>
+                            <Label Style="{StaticResource PropertyLabel}">Load MA (masc average) animation file</Label>
+                            <TextBox
+                                x:Name="pathToMaleAverageAnim2"
+                                IsEnabled="False"
+                                Style="{StaticResource Textbox}"/>
+
+                            <Label Style="{StaticResource PropertyLabel}">Load WB (woman big) animation file</Label>
+                            <TextBox
+                                x:Name="pathToFemaleBigAnim2"
+                                IsEnabled="False"
+                                Style="{StaticResource Textbox}"/>
+
+                            <Label Style="{StaticResource PropertyLabel}">Load MB (man big) animation file</Label>
+                            <TextBox
+                                x:Name="pathToMaleBigAnim2"
+                                IsEnabled="False"
+                                Style="{StaticResource Textbox}"/>
+                        </StackPanel>
+                    </Expander>
+
+                    <Label Padding="5,5,5,12"></Label>
+                    <Button
+                        x:Name="btnConvert"
+                        Click="ButtonConvertHandler"
+                        Content="Load poses from .anim file(s)"
+                        Style="{StaticResource Button}"/>
+                    
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Button
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            x:Name="btnBuild"
+                            Click="ButtonBuildHandler"
+                            Content="Build .workspot file" 
+                            Style="{StaticResource Button}"/>
+
+                        <Button
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            x:Name="btnBuildEntity"
+                            Click="ButtonEntityHandler"
+                            Content="Build .ent file" 
+                            Style="{StaticResource Button}"/>
+
+                        <Button
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            x:Name="btnBuildLua"
+                            Click="ButtonLuaHandler"
+                            Content="Build .lua file" 
+                            Style="{StaticResource Button}"/>
+
+                        <Button
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            x:Name="btnPackMod"
+                            Click="ButtonPackHandler"
+                            Content="Pack Cyberpunk 2077 mod" 
+                            Style="{StaticResource Button}"/>
+                    </Grid>
+
+                    <Label Style="{StaticResource PropertyLabel}" FontFamily="#Rajdhani Light">
+                        Detected poses will be displayed below...
+                    </Label>
+
                 </StackPanel>
-            </Expander>
-
-
-
-
-            <Label Padding="5,5,5,12"></Label>
-            <Button
-                x:Name="btnConvert"
-                Click="ButtonConvertHandler"
-                Content="Load poses from .anim file(s)"
-                Style="{StaticResource Button}"/>
-            
-            <Button
-                x:Name="btnBuild"
-                Click="ButtonBuildHandler"
-                Content="Build .workspot file" 
-                Style="{StaticResource Button}"/>
-
-            <Button
-                x:Name="btnBuildEntity"
-                Click="ButtonEntityHandler"
-                Content="Build .ent file" 
-                Style="{StaticResource Button}"/>
-
-            <Button
-                x:Name="btnBuildLua"
-                Click="ButtonLuaHandler"
-                Content="Build .lua file" 
-                Style="{StaticResource Button}"/>
-
-            <Button
-                x:Name="btnPackMod"
-                Click="ButtonPackHandler"
-                Content="Pack Cyberpunk 2077 mod" 
-                Style="{StaticResource Button}"/>
-            
-            <Label Style="{StaticResource PropertyLabel}" FontFamily="#Rajdhani Light">
-                Detected poses will be displayed below...
-            </Label>
-
-        </StackPanel>
-
-        <Grid Grid.Row="1" ShowGridLines="False">
-            <ScrollViewer Name="listScrollView" VerticalScrollBarVisibility="Visible">
-                <ListView Name="entries" PreviewMouseWheel="ListView_PreviewMouseWheel" Style="{StaticResource Poses}"></ListView>
-            </ScrollViewer>
-        </Grid>
+                <Grid Grid.Row="1" ShowGridLines="False">
+                    <ScrollViewer Name="listScrollView" VerticalScrollBarVisibility="Hidden">
+                        <ListView Name="entries" PreviewMouseWheel="ListView_PreviewMouseWheel" Style="{StaticResource Poses}"></ListView>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
 
         <Grid Grid.Row="2">
-            <ScrollViewer HorizontalScrollBarVisibility="Hidden">
-                <Label x:Name="appStatus" 
+            <Label x:Name="appStatus" 
                        FontFamily="Cascadia Code Light" 
                        Foreground="white"
                        HorizontalAlignment="Left"
                        Content="Status: " 
                        VerticalAlignment="Center" 
-                       Margin="5,5,5,5" 
-                       FontWeight="Bold"
-                       />
-            </ScrollViewer>
+                       Margin="20,8,20,20" 
+                       FontWeight="Bold" />
         </Grid>
-        <MediaElement 
-                Source="" 
-                Height="50" Width="50" LoadedBehavior="Play" 
-                UnloadedBehavior="Manual" >
-
-        </MediaElement>
     </Grid>
 </Window>

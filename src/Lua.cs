@@ -31,9 +31,14 @@ namespace Easy_AMM_Poses.src
             string replacement = "$1" + '"' + config.pathToEntityMFA.Replace(@"\", @"\\") + '"';
             luaFile = Regex.Replace(luaFile, pattern, replacement);
 
-            // Update category name
+            // Update category field
             pattern = @"(category\s*=\s*)"".*?""";
             replacement = "$1" + '"' + config.luaCategoryName + '"';
+            luaFile = Regex.Replace(luaFile, pattern, replacement);
+
+            // Update username field
+            pattern = @"(modder\s*=\s*)"".*?""";
+            replacement = "$1" + '"' + config.projectUsername + '"';
             luaFile = Regex.Replace(luaFile, pattern, replacement);
 
 

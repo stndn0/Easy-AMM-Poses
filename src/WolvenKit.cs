@@ -40,22 +40,22 @@ namespace Easy_AMM_Poses.src
             Debug.WriteLine("DEBUG: Internal animation path is: " + newAnimationPath2);
 
             // Update file path for anim file 
-            if (rigType == "WA")
+            if (rigType == config.womanAverage)
             {
                 config.animPathFemaleAvg = config.convertToRedengineFilepath(newAnimationPath);
                 Debug.WriteLine("DEBUG: Path to WA: " + config.animPathFemaleAvg);
             }
-            else if (rigType == "WB")
+            else if (rigType == config.womanBig)
             {
                 config.animPathFemaleBig = config.convertToRedengineFilepath(newAnimationPath);
                 Debug.WriteLine("DEBUG: Path to WB: " + config.animPathFemaleBig);
             }
-            else if (rigType == "MA")
+            else if (rigType == config.manAverage)
             {
                 config.animPathMaleAvg = config.convertToRedengineFilepath(newAnimationPath);
                 Debug.WriteLine("DEBUG: Path to MA: " + config.animPathMaleAvg);
             }
-            else if (rigType == "MB")
+            else if (rigType == config.manBig)
             {
                 config.animPathMaleBig = config.convertToRedengineFilepath(newAnimationPath);
                 Debug.WriteLine("DEBUG: Path to MB: " + config.animPathMaleBig);

@@ -32,6 +32,12 @@ namespace Easy_AMM_Poses.src
         public string projectName = "";
         public string projectPath = "";
 
+        public string womanAverage = "WA";
+        public string womanBig = "WB";
+        public string manAverage = "MA";
+        public string manBig = "MB";
+
+
         // Internal project name needs to be unique and random so that it 
         // doesn't conflict with other mods created with the user, or other
         // mods created by EAP.
@@ -89,7 +95,7 @@ namespace Easy_AMM_Poses.src
         }
 
         /// <summary>
-        /// For a given filepath, strip everything before the base" substring.
+        /// For a given filepath, strip everything before the "base" substring.
         /// When we're generating JSON files, the filepaths contains extra folders that we don't need.
         /// Example: "projects\project1\project1\archive\base\testmod\controller\workspot_output.workspot"
         /// We want to remove "projects\project1\project1\archive\" from the filepath so that
@@ -99,6 +105,10 @@ namespace Easy_AMM_Poses.src
         /// <returns></returns>
         public string convertToRedengineFilepath(string filepath)
         {
+            // Bug warning
+            // If user project name contains "base" substring, this will return the wrong index.
+            // This needs to be re-evaulated.
+
             string substring = @"base";
 
             // Return index of substring in filepath
@@ -125,7 +135,7 @@ namespace Easy_AMM_Poses.src
         public void setInternalProjectName()
         {
             // Internal project name needs to be unique and random so that it 
-            // doesn't conflict with other mods created with the user, or other
+            // doesn't conflict with other mods created by the user, or other
             // mods created by EAP.
             Random rnd = new Random();
             internalProjectName = "eap_" + rnd.Next(1, 20000);

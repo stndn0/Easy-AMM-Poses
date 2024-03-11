@@ -14,10 +14,6 @@ namespace Easy_AMM_Poses
         // Create list of poses to be populated from the users animation json files.
         List<Pose> poseList = new List<Pose>();
 
-        string womanAverage = "WA";
-        string womanBig = "WB";
-        string manAverage = "MA";
-        string manBig = "MB";
 
         public MainWindow()
         {
@@ -175,7 +171,7 @@ namespace Easy_AMM_Poses
                 return;
             }
 
-            // Build project directory 
+            // When the user provides a project name, build the project directory automatically. 
             if (config.projectName != "")
             {
                 Directory.CreateDirectory(config.getProjectAnimsDirectory());
@@ -184,55 +180,52 @@ namespace Easy_AMM_Poses
             }
             else
             {
+                // The user cannot proceed without a project name.
                 updateAppStatus("Error: You need to provide a project name first.");
                 return;
             }
 
             // Call conversion method. Each call runs on a separate thread, allowing them to run concurrently.
-            // Using async await so that we can don't block the main thread.
-            // This lets us update the UI while the tasks are running.
+            // Using async await so that we can don't block the main thread. UI can now update while tasks are running.
             // Without async, the GUI would be unresponsive for the user until the tasks are completed.
             updateAppStatus("Converting animation file(s). Please wait 5 to 30 seconds..");
-            Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg, config, womanAverage));
-            Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg, config, manAverage));
-            Task task3 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleBig, config, manBig));
-            Task task4 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleBig, config, womanBig));
+            Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg, config, config.womanAverage));
+            Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg, config, config.manAverage));
+            Task task3 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleBig, config, config.manBig));
+            Task task4 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleBig, config, config.womanBig));
 
             // Wait until all tasks are completed before proceeding. Await temporarily suspends the method.
             await Task.WhenAll(task1, task2, task3, task4);
 
-            // Animation data will only be read after both tasks have completed.
-            // Read data for all applicable rigs.
+            // Animation data will only be read after all tasks have completed.
+            // We should only read data for rigs that the user has provided.
             if (!string.IsNullOrEmpty(config.animJsonPathFemaleAvg))
             {
                 updateAppStatus("Reading female average animation data...");
                 Debug.WriteLine("DEBUG: Reading animation data [WA]");
-                readAnimData(config.animJsonPathFemaleAvg, womanAverage);
+                readAnimData(config.animJsonPathFemaleAvg, config.womanAverage);
             }
 
             if (!string.IsNullOrEmpty(config.animJsonPathMaleAvg))
             {
                 Debug.WriteLine("DEBUG: Reading animation data [MA]");
                 updateAppStatus("Reading male average animation data...");
-                readAnimData(config.animJsonPathMaleAvg, manAverage);
+                readAnimData(config.animJsonPathMaleAvg, config.manAverage);
             }
 
             if (!string.IsNullOrEmpty(config.animJsonPathFemaleBig))
             {
                 Debug.WriteLine("DEBUG: Reading animation data [WB]");
                 updateAppStatus("Reading female big animation data...");
-                readAnimData(config.animJsonPathFemaleBig, womanBig);
+                readAnimData(config.animJsonPathFemaleBig, config.womanBig);
             }
 
             if (!string.IsNullOrEmpty(config.animJsonPathMaleBig))
             {
                 Debug.WriteLine("DEBUG: Reading animation data [MB]");
                 updateAppStatus("Reading male big animation data...");
-                readAnimData(config.animJsonPathMaleBig, manBig);
+                readAnimData(config.animJsonPathMaleBig, config.manBig);
             }
-
-
-
             updateAppStatus("Conversion complete. Ready to build.");
         }
 
@@ -243,7 +236,6 @@ namespace Easy_AMM_Poses
         /// <param name="e"></param>
         private async void ButtonBuildHandler(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("DEBUG: Build requested...");
             updateAppStatus("Building workspot JSON...");
 
             // Build the raw workspot JSON file.
@@ -258,7 +250,6 @@ namespace Easy_AMM_Poses
 
             // Add the ".workspot" file extension so that the game can read it.
             WolvenKit.AddFileExtension(config.pathToWorkspotJsonMFA, ".workspot", config);
-
 
             Debug.WriteLine("Finished building workspot.workspot");
             updateAppStatus("Finished building workspot. Path: " + config.pathToWorkspotJsonMFA);
@@ -293,7 +284,7 @@ namespace Easy_AMM_Poses
             Task task1 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config));
             await Task.WhenAll(task1);
 
-            updateAppStatus("Finished.");
+            updateAppStatus("Finished buiding lua file.");
 
         }
 
@@ -336,7 +327,7 @@ namespace Easy_AMM_Poses
 
         private void TextboxProjectNameHandler(object sender, EventArgs e)
         {
-            //Debug.WriteLine("DEBUG: Project Name, " + textboxProjectName.Text);
+            // If the user has provided a project name, enable the animation file input fields.
             if (textboxProjectName.Text != "")
             {
                 config.projectName = textboxProjectName.Text;
@@ -365,8 +356,6 @@ namespace Easy_AMM_Poses
             listScrollView.ScrollToVerticalOffset(listScrollView.VerticalOffset - e.Delta);
             e.Handled = true;
         }
-
-
 
 
         /// <summary>

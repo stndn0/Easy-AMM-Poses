@@ -101,11 +101,7 @@ namespace Easy_AMM_Poses
             string value = FileIO.OpenAnim();
             if (value != null)
             {
-                Debug.WriteLine("DEBUG: Anim file [WA], " + value);
-                config.animPathFemaleAvg = value;
-                Debug.WriteLine("DEBUG: Project anims directory: " + config.getProjectAnimsDirectory());
-                Debug.WriteLine("DEBUG: Path.GetFileName(Value): " + Path.GetFileName(value));
-                config.animJsonPathFemaleAvg = config.getProjectAnimsDirectory() + Path.GetFileName(value) + ".json";
+                config.setFemaleAvgAnimation1(config, value);
                 pathToFemaleAverageAnim.Text = config.animPathFemaleAvg;
             }
         }
@@ -120,8 +116,7 @@ namespace Easy_AMM_Poses
             if (value != null)
             {
                 Debug.WriteLine("DEBUG: Anim file [MA], " + value);
-                config.animPathMaleAvg = value;
-                config.animJsonPathMaleAvg = config.getProjectAnimsDirectory() + Path.GetFileName(value) + ".json";
+                config.setMaleAvgAnimation1(config, value);
                 pathToMaleAverageAnim.Text = config.animPathMaleAvg;
             }
         }
@@ -137,8 +132,7 @@ namespace Easy_AMM_Poses
             if (value != null)
             {
                 Debug.WriteLine("DEBUG: Anim file [WB], " + value);
-                config.animPathFemaleBig = value;
-                config.animJsonPathFemaleBig = config.getProjectAnimsDirectory() + Path.GetFileName(value) + ".json";
+                config.setFemaleBigAnimation1(config, value);
                 pathToFemaleBigAnim.Text = config.animPathFemaleBig;
             }
         }
@@ -151,11 +145,10 @@ namespace Easy_AMM_Poses
         private void TextboxMBAnimPathHandler(object sender, EventArgs e)
         {
             string value = FileIO.OpenAnim();
-            if (value != null && config.projectName != "")
+            if (value != null)
             {
                 Debug.WriteLine("DEBUG: Anim file [WB], " + value);
-                config.animPathMaleBig = value;
-                config.animJsonPathMaleBig = config.getProjectAnimsDirectory() + Path.GetFileName(value) + ".json";
+                config.setMaleBigAnimation1(config, value);
                 pathToMaleBigAnim.Text = config.animPathMaleBig;
             }
         }

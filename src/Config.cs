@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Newtonsoft.Json.Linq;
+using System.IO;
 
 
 namespace Easy_AMM_Poses.src
@@ -139,6 +140,31 @@ namespace Easy_AMM_Poses.src
             // mods created by EAP.
             Random rnd = new Random();
             internalProjectName = "eap_" + rnd.Next(1, 20000);
+        }
+
+
+        public void setFemaleAvgAnimation1(Config config, string filepath)
+        {
+            config.animPathFemaleAvg = filepath;
+            config.animJsonPathFemaleAvg = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
+        }
+
+        public void setFemaleBigAnimation1(Config config, string filepath)
+        {
+            config.animPathFemaleBig = filepath;
+            config.animJsonPathFemaleBig = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
+        }
+
+        public void setMaleAvgAnimation1(Config config, string filepath)
+        {
+            config.animPathMaleAvg = filepath;
+            config.animJsonPathMaleAvg = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
+        }
+
+        public void setMaleBigAnimation1(Config config, string filepath)
+        {
+            config.animPathMaleBig = filepath;
+            config.animJsonPathMaleBig = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
         }
     }
 }

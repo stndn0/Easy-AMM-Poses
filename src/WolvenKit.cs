@@ -177,11 +177,11 @@ namespace Easy_AMM_Poses.src
             {
                 if (newExtension == ".ent")
                 {
-                    config.pathToEntityMFA = finalPath;
+                    config.pathToEntity1 = finalPath;
                 }
                 else if (newExtension == ".workspot")
                 {
-                    config.pathToWorkspotMFA = finalPath;
+                    config.pathToWorkspot1 = finalPath;
                 }
             }
             else

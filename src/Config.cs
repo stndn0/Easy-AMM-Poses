@@ -6,9 +6,19 @@ namespace Easy_AMM_Poses.src
     // Store user configuration settings.
     public class Config
     {
+        Random rnd = new Random();                      // Used in method to set internal project name.
+
+        // Project and general configuration settings
         public string cliPath = "";
         public string modFolderPath = "Select the path to your Cyberpunk 2077 mod folder";
         public string configFilePath = "config/config.json";
+        public string luaCategoryName = "";
+        public string projectUsername = "Johnny Silverhand";
+        public string projectName = "";
+        public string projectPath = "";
+        public string internalProjectName = "";
+
+        // Animation file paths - workspot #1
         public string animPathFemaleAvg = "";
         public string animPathFemaleBig = "";
         public string animJsonPathFemaleAvg = "";
@@ -17,32 +27,22 @@ namespace Easy_AMM_Poses.src
         public string animPathMaleBig = "";
         public string animJsonPathMaleAvg = "";
         public string animJsonPathMaleBig = "";
-        public string pathToWorkspotJsonMFA = "";       // The workspot for Male/Fem Average is shared.
-        public string pathToWorkspotMFA = "";           // Path to final generated workspot file.
-        public string pathToEntityJsonMFA = "";
-        public string pathToEntityMFA = "";             // Path to final generated entity file
+        public string pathToWorkspotJson1 = "";      
+        public string pathToWorkspot1 = "";           // Path to final generated workspot file.
+        public string pathToEntityJson1 = "";
+        public string pathToEntity1 = "";             // Path to final generated entity file
 
-        public string pathToWorkspotJsonMFB = "";       // The workspot for Male/Fem Big is shared.
-        public string pathToWorkspotMFB = "";           // Path to final generated workspot file.
-        public string pathToEntityJsonMFB = "";
-        public string pathToEntityMFB = "";             // Path to final generated entity file
+        // Animation file paths - workspot #2
+        public string pathToWorkspotJson2 = "";       
+        public string pathToWorkspot2 = "";           // Path to final generated workspot file.
+        public string pathToEntityJson2 = "";
+        public string pathToEntity2 = "";             // Path to final generated entity file
 
-        public string luaCategoryName = "";
-        public string projectUsername = "";
-        public string projectName = "";
-        public string projectPath = "";
-
+        // Gender and rig types
         public string womanAverage = "WA";
         public string womanBig = "WB";
         public string manAverage = "MA";
         public string manBig = "MB";
-
-
-        // Internal project name needs to be unique and random so that it 
-        // doesn't conflict with other mods created with the user, or other
-        // mods created by EAP.
-        Random rnd = new Random();
-        public string internalProjectName = "";
 
 
         public void SetConfigFile(Config config)

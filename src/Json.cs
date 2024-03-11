@@ -20,7 +20,8 @@ namespace Easy_AMM_Poses.src
                 var jsonData = new
                 {
                     cliPath = config.cliPath,
-                    modFolderPath = config.modFolderPath
+                    modFolderPath = config.modFolderPath,
+                    projectUsername = config.projectUsername
                 };
 
                 // Write new data to the configuration file
@@ -38,6 +39,7 @@ namespace Easy_AMM_Poses.src
 
             config.cliPath = deserializedData.cliPath;
             config.modFolderPath = deserializedData.modFolderPath;
+            config.projectUsername = deserializedData.projectUsername;
         }
     }
 }

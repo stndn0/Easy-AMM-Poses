@@ -28,7 +28,7 @@ namespace Easy_AMM_Poses.src
 
             //  Update entity path. Add extra backlash within the path string or else .lua will be unhappy.
             string pattern = @"(entity_path\s*=\s*)"".*?""";
-            string replacement = "$1" + '"' + config.pathToEntityMFA.Replace(@"\", @"\\") + '"';
+            string replacement = "$1" + '"' + config.pathToEntity1.Replace(@"\", @"\\") + '"';
             luaFile = Regex.Replace(luaFile, pattern, replacement);
 
             // Update category field

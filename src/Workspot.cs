@@ -85,7 +85,7 @@ namespace Easy_AMM_Poses.src
 
 
             File.WriteAllText(pathToOutput, output);
-            config.pathToWorkspotJsonMFA = pathToOutput;
+            config.pathToWorkspotJson1 = pathToOutput;
             Debug.WriteLine("DEBUG: Build complete...");
             return 1;
         }

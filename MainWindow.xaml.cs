@@ -32,6 +32,7 @@ namespace Easy_AMM_Poses
 
             // Set frontend XAML varaiables.
             pathToCli.Text = config.cliPath;
+            textboxUsername.Text = config.projectUsername;
             //pathToGame.Text = config.modFolderPath;
 
             if (config.cliPath == "")
@@ -40,7 +41,7 @@ namespace Easy_AMM_Poses
             }
             else
             {
-                updateAppStatus("Waiting for choomba to input something...");
+                updateAppStatus("Waiting for input...");
             }
         }
 
@@ -245,14 +246,14 @@ namespace Easy_AMM_Poses
 
             // Convert the raw JSON file to RedEngine format.
             updateAppStatus("Converting workspot to RedEngine format...please wait.");
-            Task task2 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToWorkspotJsonMFA));
+            Task task2 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToWorkspotJson1));
             await Task.WhenAll(task2);
 
             // Add the ".workspot" file extension so that the game can read it.
-            WolvenKit.AddFileExtension(config.pathToWorkspotJsonMFA, ".workspot", config);
+            WolvenKit.AddFileExtension(config.pathToWorkspotJson1, ".workspot", config);
 
             Debug.WriteLine("Finished building workspot.workspot");
-            updateAppStatus("Finished building workspot. Path: " + config.pathToWorkspotJsonMFA);
+            updateAppStatus("Finished building workspot. Path: " + config.pathToWorkspotJson1);
 
         }
 
@@ -266,14 +267,14 @@ namespace Easy_AMM_Poses
             await Task.WhenAll(task1);
 
             // Convert the raw JSON file to RedEngine format.
-            Task task2 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToEntityJsonMFA));
+            Task task2 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToEntityJson1));
 
             await Task.WhenAll(task2);
             // Add the ".ent" file extension so that the game can read it.
-            WolvenKit.AddFileExtension(config.pathToEntityJsonMFA, ".ent", config);
+            WolvenKit.AddFileExtension(config.pathToEntityJson1, ".ent", config);
 
 
-            updateAppStatus("Finished building entity .ent: " + config.pathToEntityMFA);
+            updateAppStatus("Finished building entity .ent: " + config.pathToEntity1);
         }
 
         private async void ButtonLuaHandler(Object sender, RoutedEventArgs e)
@@ -318,10 +319,7 @@ namespace Easy_AMM_Poses
             if (textboxUsername.Text != null)
             {
                 config.projectUsername = textboxUsername.Text;
-            }
-            else
-            {
-                config.projectUsername = "Johnny Silverhand";
+                Json.WriteConfigData(config);
             }
         }
 

@@ -17,7 +17,7 @@ namespace Easy_AMM_Poses.src
         /// </summary>
         /// <param name="cliPath">Path to WolvenKit command line.</param>
         /// <param name="animPath">Path to users animation.</param>
-        /// <param name="animSlot">Slot number for animation. If the user loads an optional slot (e.g woman average 2) then this slot is 2.</param>
+        /// <param name="animSlot">Slot 1 = main four anim paths, Slot 2 = optional extra four anim paths.</param>
         /// <returns></returns>
         public static async Task<int> ConvertAnimToJson(string cliPath, string animPath, int animSlot, Config config, string rigType)
         {
@@ -45,10 +45,10 @@ namespace Easy_AMM_Poses.src
             if (rigType == config.womanAverage)
             {
                if (animSlot == 1)
-                {
+               {
                     config.animPathFemaleAvg = config.convertToRedengineFilepath(newAnimationPath);
                     Debug.WriteLine("DEBUG: Path to WA: " + config.animPathFemaleAvg);
-                }
+               }
                 else if (animSlot == 2)
                 {
                     config.animPathFemaleAvg2 = config.convertToRedengineFilepath(newAnimationPath);

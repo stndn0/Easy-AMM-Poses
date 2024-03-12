@@ -12,11 +12,13 @@ namespace Easy_AMM_Poses.src
         /// </summary>
         /// <param name="poseList">List of poses.</param>
         /// <param name="config">Configuration object.</param>
+        /// <param name="animSlot">Slot number for provided animations. Optional animations are loaded in slot 2. As two workspots can be created, the slot number determines the workspot number.</param>
         /// <returns></returns>
         public static async Task<int> BuildWorkspotJson(List<Pose> poseList, Config config, string femAnimPath, string manAnimPath, string femBigAnimPath, string manBigAnimPath, int animSlot) {
             if (femAnimPath == "" && manAnimPath == "" && femBigAnimPath == "" && manBigAnimPath == "")
             {
-                Debug.WriteLine("DEBUG: Critical error. All animation paths are NULL. Cannot build workspot!...");
+                Debug.WriteLine("DEBUG: Error. All animation paths are empty. Cannot build workspot!...");
+                Debug.WriteLine("DEBUG: Cannot build workspot on slot: " + animSlot);
                 return -1;
             }
 
@@ -24,8 +26,6 @@ namespace Easy_AMM_Poses.src
 
             // Load core workspot file and deserialize to dynamic object.
             string pathToWorkspotJson = @"templates\workspot.json";
-
-
             dynamic jsonWorkspotObj = JsonConvert.DeserializeObject(File.ReadAllText(pathToWorkspotJson));
 
             // Load workspot list entry file. We'l use this as a template to add new entries to the workspot JSON file.
@@ -70,14 +70,12 @@ namespace Easy_AMM_Poses.src
 
                 // Add a new pose entries to the workspot template json.
                 Debug.WriteLine("POSE SLOT: " + pose.Slot + "ANIM SLOT: " + animSlot);
+
+                // If the pose belongs to the current animation slot for the workspot then it is relevant to us.
                 if (pose.Slot == animSlot)
                 {
-                    Debug.WriteLine("POSE SLOT == AnimSLOT");
-                    Debug.WriteLine(pose);
-
                     // Deserialize entry template in order to write to it.
                     dynamic jsonWorkspotListEntryObj = JsonConvert.DeserializeObject(File.ReadAllText(pathToWorkspotListEntry));
-
                     jsonWorkspotListEntryObj["Data"]["idleAnim"]["$value"] = pose.Name;
                     jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["animName"]["$value"] = pose.Name;
 
@@ -117,7 +115,6 @@ namespace Easy_AMM_Poses.src
                 Debug.WriteLine("DEBUG: Build workspot2 complete...");
             }
 
-            
             return 1;
         }
     }

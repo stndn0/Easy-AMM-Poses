@@ -15,6 +15,11 @@ namespace Easy_AMM_Poses.src
         public string Name { get; set; }
         public string BodyType { get; set; }
 
+        // By default, users load poses into slot 1.
+        // However, if the user clicks the optional button to add more animation files, then poses from these optional 
+        // files are loaded into slot 2.
+        // We need slot seperation to determine which poses to load into which workspot.
+        // Poses with slot 1 is for the first workspot, and slot 2 is for the second workspot.
         public int Slot { get; set; }
 
         // A pose name might belong to more than one body type.

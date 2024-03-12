@@ -160,7 +160,7 @@
                     <Expander FlowDirection="RightToLeft" >
                         <StackPanel FlowDirection="LeftToRight">
                             <Label Style="{StaticResource SubheaderLabel02}" Padding="5,16,5,1">
-                                Optional: load more animation files...
+                                Optional: load more animation files (slot 2)
                             </Label>
                             <Label Style="{StaticResource PropertyLabel}">Load WA (woman average) animation file</Label>
                             <TextBox

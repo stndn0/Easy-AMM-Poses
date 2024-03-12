@@ -16,13 +16,6 @@ namespace Easy_AMM_Poses.src
             string pathToEntityJsonTemplate = @"templates\entity_template.json";
             dynamic jsonEntityObj = JsonConvert.DeserializeObject(File.ReadAllText(pathToEntityJsonTemplate));
 
-            //string path1 = JsonConvert.SerializeObject(jsonEntityObj["Data"]["RootChunk"]["compiledData"]["Data"]["Chunks"][4]["workspotResource"]["DepotPath"]["$value"], Formatting.Indented);
-
-            //string path2 = JsonConvert.SerializeObject(jsonEntityObj["Data"]["RootChunk"]["components"][3]["workspotResource"]["DepotPath"]["$value"], Formatting.Indented);
-
-
-            //string output = JsonConvert.SerializeObject(jsonEntityObj["Data"]["RootChunk"]["components"][3]["workspotResource"]["DepotPath"]["$value"], Formatting.Indented);
-
 
             // Update the ent file so that it points to the newly created workspot file.
             jsonEntityObj["Data"]["RootChunk"]["compiledData"]["Data"]["Chunks"][4]["workspotResource"]["DepotPath"]["$value"] = config.pathToWorkspot1;

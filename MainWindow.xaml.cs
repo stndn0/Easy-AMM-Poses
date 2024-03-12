@@ -182,6 +182,8 @@ namespace Easy_AMM_Poses
 
         /// <summary>
         /// Handle button press for "Load Poses from .ANIM".
+        /// Note that this method is quite verbose due to the amount of checks going on.
+        /// Perhaps this could be refactored into a separate sub-methods.
         /// </summary>
         private async void ButtonConvertHandler(object sender, RoutedEventArgs e)
         {

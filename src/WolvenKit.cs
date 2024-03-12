@@ -17,8 +17,9 @@ namespace Easy_AMM_Poses.src
         /// </summary>
         /// <param name="cliPath">Path to WolvenKit command line.</param>
         /// <param name="animPath">Path to users animation.</param>
+        /// <param name="animSlot">Slot number for animation. If the user loads an optional slot (e.g woman average 2) then this slot is 2.</param>
         /// <returns></returns>
-        public static async Task<int> ConvertAnimToJson(string cliPath, string animPath, Config config, string rigType)
+        public static async Task<int> ConvertAnimToJson(string cliPath, string animPath, int animSlot, Config config, string rigType)
         {
             Debug.WriteLine("DEBUG: CONVERTING ANIMATION TO JSON");
             var stdOutBuffer = new StringBuilder();
@@ -27,6 +28,7 @@ namespace Easy_AMM_Poses.src
             // First check if the animation file was provided - handle empty path
             if (animPath == "")
             {
+                Debug.WriteLine("DEBUG: Animation path is empty. Skipping...");
                 return 0;
             }
 
@@ -42,25 +44,53 @@ namespace Easy_AMM_Poses.src
             // Update file path for anim file 
             if (rigType == config.womanAverage)
             {
-                config.animPathFemaleAvg = config.convertToRedengineFilepath(newAnimationPath);
-                Debug.WriteLine("DEBUG: Path to WA: " + config.animPathFemaleAvg);
+               if (animSlot == 1)
+                {
+                    config.animPathFemaleAvg = config.convertToRedengineFilepath(newAnimationPath);
+                    Debug.WriteLine("DEBUG: Path to WA: " + config.animPathFemaleAvg);
+                }
+                else if (animSlot == 2)
+                {
+                    config.animPathFemaleAvg2 = config.convertToRedengineFilepath(newAnimationPath);
+                    Debug.WriteLine("DEBUG: Path to WA2: " + config.animPathFemaleAvg2);
+                }
+                
             }
             else if (rigType == config.womanBig)
             {
+                if (animSlot == 1)
+                {
+                    config.animPathFemaleBig = config.convertToRedengineFilepath(newAnimationPath);
+                }
+                else if (animSlot == 2)
+                {
+                    config.animPathFemaleBig2 = config.convertToRedengineFilepath(newAnimationPath);
+                }
                 config.animPathFemaleBig = config.convertToRedengineFilepath(newAnimationPath);
-                Debug.WriteLine("DEBUG: Path to WB: " + config.animPathFemaleBig);
             }
             else if (rigType == config.manAverage)
             {
-                config.animPathMaleAvg = config.convertToRedengineFilepath(newAnimationPath);
-                Debug.WriteLine("DEBUG: Path to MA: " + config.animPathMaleAvg);
+                if (animSlot == 1)
+                {
+                    config.animPathMaleAvg = config.convertToRedengineFilepath(newAnimationPath);
+                }
+                else if (animSlot == 2)
+                {
+                    config.animPathMaleAvg2 = config.convertToRedengineFilepath(newAnimationPath);
+                }
+                
             }
             else if (rigType == config.manBig)
             {
-                config.animPathMaleBig = config.convertToRedengineFilepath(newAnimationPath);
-                Debug.WriteLine("DEBUG: Path to MB: " + config.animPathMaleBig);
+                if (animSlot == 1)
+                {
+                    config.animPathMaleBig = config.convertToRedengineFilepath(newAnimationPath);
+                }
+                else if (animSlot == 2)
+                {
+                    config.animPathMaleBig2 = config.convertToRedengineFilepath(newAnimationPath);
+                }
             }
-
 
 
             // Start the WolvenKit CLI and pass the required arguments.
@@ -144,6 +174,12 @@ namespace Easy_AMM_Poses.src
              * Then we move the current file to the new filepath.
              * 
             */
+
+            if (jsonOutputPath == "")
+            {
+                Debug.WriteLine("DEBUG: JSON output path is empty. Skipping...");
+                return;
+            }
 
             Debug.WriteLine("DEBUG: ADDING EXTENSION TO FILE");
             var newFilePath = "";

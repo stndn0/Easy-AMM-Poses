@@ -166,11 +166,13 @@
                             <TextBox
                                 x:Name="pathToFemaleAverageAnim2"
                                 IsEnabled="False"
+                                PreviewMouseDown="TextboxFemAnimPathHandler2"
                                 Style="{StaticResource Textbox}"/>
                             <Label Style="{StaticResource PropertyLabel}">Load MA (masc average) animation file</Label>
                             <TextBox
                                 x:Name="pathToMaleAverageAnim2"
                                 IsEnabled="False"
+                                PreviewMouseDown="TextboxMascAnimPathHandler2"
                                 Style="{StaticResource Textbox}"/>
 
                             <Label Style="{StaticResource PropertyLabel}">Load WB (woman big) animation file</Label>
@@ -192,6 +194,7 @@
                         x:Name="btnConvert"
                         Click="ButtonConvertHandler"
                         Content="Load poses from .anim file(s)"
+                        IsEnabled="False"
                         Style="{StaticResource Button}"/>
 
                     <Grid Grid.Row="1">

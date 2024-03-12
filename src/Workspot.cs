@@ -13,10 +13,19 @@ namespace Easy_AMM_Poses.src
         /// <param name="poseList">List of poses.</param>
         /// <param name="config">Configuration object.</param>
         /// <returns></returns>
-        public static async Task<int> BuildWorkspotJson(List<Pose> poseList, Config config) {
+        public static async Task<int> BuildWorkspotJson(List<Pose> poseList, Config config, string femAnimPath, string manAnimPath, string femBigAnimPath, string manBigAnimPath, int animSlot) {
+            if (femAnimPath == "" && manAnimPath == "" && femBigAnimPath == "" && manBigAnimPath == "")
+            {
+                Debug.WriteLine("DEBUG: Critical error. All animation paths are NULL. Cannot build workspot!...");
+                return -1;
+            }
+
             Debug.WriteLine("DEBUG: Building workspot JSON...");
+
             // Load core workspot file and deserialize to dynamic object.
             string pathToWorkspotJson = @"templates\workspot.json";
+
+
             dynamic jsonWorkspotObj = JsonConvert.DeserializeObject(File.ReadAllText(pathToWorkspotJson));
 
             // Load workspot list entry file. We'l use this as a template to add new entries to the workspot JSON file.
@@ -28,65 +37,87 @@ namespace Easy_AMM_Poses.src
 
             // Update the "rig" fields depending on the animations that the user has provided
             // Woman average
-            if (config.animPathFemaleAvg != "")
+            if (femAnimPath != "")
             {
-                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][2]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = config.animPathFemaleAvg;
-                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][2]["loadingHandles"][0]["DepotPath"]["$value"] = config.animPathFemaleAvg;
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][2]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = femAnimPath;
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][2]["loadingHandles"][0]["DepotPath"]["$value"] = femAnimPath;
             }
 
             // Male average
-            if (config.animPathMaleAvg != "")
+            if (manAnimPath != "")
             {
-                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][0]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = config.animPathMaleAvg;
-                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][0]["loadingHandles"][0]["DepotPath"]["$value"] = config.animPathMaleAvg;
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][0]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = manAnimPath;
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][0]["loadingHandles"][0]["DepotPath"]["$value"] = manAnimPath;
             }
 
             // Woman big
-            if (config.animPathFemaleBig != "") {
-                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][3]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = config.animPathFemaleBig;
-                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][3]["loadingHandles"][0]["DepotPath"]["$value"] = config.animPathFemaleBig;
+            if (femBigAnimPath != "") {
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][3]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = femBigAnimPath;
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][3]["loadingHandles"][0]["DepotPath"]["$value"] = femBigAnimPath;
             }
 
             // Male big
-            if (config.animPathMaleBig != "")
+            if (manBigAnimPath != "")
             {
-                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][1]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = config.animPathMaleBig;
-                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][1]["loadingHandles"][0]["DepotPath"]["$value"] = config.animPathMaleBig;
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][1]["animations"]["cinematics"][0]["animSet"]["DepotPath"]["$value"] = manBigAnimPath;
+                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][1]["loadingHandles"][0]["DepotPath"]["$value"] = manBigAnimPath;
             }
 
 
 
             foreach (Pose pose in poseList)
             {
-                // Deserialize entry template in order to write to it.
-                dynamic jsonWorkspotListEntryObj = JsonConvert.DeserializeObject(File.ReadAllText(pathToWorkspotListEntry));
 
                 // Add a new pose entries to the workspot template json.
-                jsonWorkspotListEntryObj["Data"]["idleAnim"]["$value"] = pose.Name;
-                jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["animName"]["$value"] = pose.Name;
+                Debug.WriteLine("POSE SLOT: " + pose.Slot + "ANIM SLOT: " + animSlot);
+                if (pose.Slot == animSlot)
+                {
+                    Debug.WriteLine("POSE SLOT == AnimSLOT");
+                    Debug.WriteLine(pose);
 
-                // Update id fields. Incremented the nested list field.
-                jsonWorkspotListEntryObj["HandleId"] = currentId.ToString();
-                jsonWorkspotListEntryObj["Data"]["list"][0]["HandleId"] = (currentId + 1).ToString();
+                    // Deserialize entry template in order to write to it.
+                    dynamic jsonWorkspotListEntryObj = JsonConvert.DeserializeObject(File.ReadAllText(pathToWorkspotListEntry));
 
-                jsonWorkspotListEntryObj["Data"]["id"]["id"] = currentId;
-                jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["id"]["id"] = currentId + 1;
+                    jsonWorkspotListEntryObj["Data"]["idleAnim"]["$value"] = pose.Name;
+                    jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["animName"]["$value"] = pose.Name;
 
-                // Increment counter for the next iteration.
-                currentId += 2;
+                    // Update id fields. Incremented the nested list field.
+                    jsonWorkspotListEntryObj["HandleId"] = currentId.ToString();
+                    jsonWorkspotListEntryObj["Data"]["list"][0]["HandleId"] = (currentId + 1).ToString();
 
-                // Merge template with the main workspot json.
-                jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["rootEntry"]["Data"]["list"].Add(jsonWorkspotListEntryObj);
+                    jsonWorkspotListEntryObj["Data"]["id"]["id"] = currentId;
+                    jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["id"]["id"] = currentId + 1;
+
+                    // Increment counter for the next iteration.
+                    currentId += 2;
+
+                    // Merge template with the main workspot json.
+                    jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["rootEntry"]["Data"]["list"].Add(jsonWorkspotListEntryObj);
+                }
+
+
             }
 
             // Serialize and write updated data to the workspot JSON file.
             string output = JsonConvert.SerializeObject(jsonWorkspotObj, Formatting.Indented);
-            string pathToOutput = config.getProjectControllerDirectory() + @"workspot_output.json";
+            string pathToOutput = "";
 
+            if (animSlot == 1)
+            {
+                pathToOutput = config.getProjectControllerDirectory() + @"workspot_output.json";
+                File.WriteAllText(pathToOutput, output);
+                config.pathToWorkspotJson1 = pathToOutput;
+                Debug.WriteLine("DEBUG: Build workspot1 complete...");
+            }
+            else if (animSlot == 2)
+            {
+                pathToOutput = config.getProjectControllerDirectory() + @"workspot_output02.json";
+                File.WriteAllText(pathToOutput, output);
+                config.pathToWorkspotJson2 = pathToOutput;
+                Debug.WriteLine("DEBUG: Build workspot2 complete...");
+            }
 
-            File.WriteAllText(pathToOutput, output);
-            config.pathToWorkspotJson1 = pathToOutput;
-            Debug.WriteLine("DEBUG: Build complete...");
+            
             return 1;
         }
     }

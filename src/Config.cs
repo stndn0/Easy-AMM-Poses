@@ -38,6 +38,14 @@ namespace Easy_AMM_Poses.src
         public string pathToWorkspot2 = "";           // Path to final generated workspot file.
         public string pathToEntityJson2 = "";
         public string pathToEntity2 = "";             // Path to final generated entity file
+        public string animPathFemaleAvg2 = "";
+        public string animPathFemaleBig2 = "";
+        public string animJsonPathFemaleAvg2 = "";
+        public string animJsonPathFemaleBig2 = "";
+        public string animPathMaleAvg2 = "";
+        public string animPathMaleBig2 = "";
+        public string animJsonPathMaleAvg2 = "";
+        public string animJsonPathMaleBig2 = "";
 
         // Gender and rig types
         public string womanAverage = "WA";
@@ -125,12 +133,62 @@ namespace Easy_AMM_Poses.src
 
         public bool checkIfAllAnimPathsEmpty(Config config)
         {
-            if (string.IsNullOrEmpty(config.animPathFemaleAvg) && string.IsNullOrEmpty(config.animPathMaleAvg) && string.IsNullOrEmpty(config.animPathMaleBig) && string.IsNullOrEmpty(config.animPathFemaleBig))
+            // At least one animation path must be provided.
+            bool allPathsEmpty = true;
+
+            if (!string.IsNullOrEmpty(config.animPathFemaleAvg))  {
+                allPathsEmpty = false;
+            }
+            else if (!string.IsNullOrEmpty(config.animPathMaleAvg))
             {
-                // All paths are empty. The user hasn't selected any animation files.
+                allPathsEmpty = false;
+            }
+            else if (!string.IsNullOrEmpty(config.animPathMaleBig))
+            {
+                allPathsEmpty = false;
+            }
+            else if (!string.IsNullOrEmpty(config.animPathFemaleBig))
+            {
+                allPathsEmpty = false;
+            }
+            else if (!string.IsNullOrEmpty(config.animPathFemaleAvg2))
+            {
+                allPathsEmpty = false;
+            }
+            else if (!string.IsNullOrEmpty(config.animPathMaleAvg2))
+            {
+                allPathsEmpty = false;
+            }
+            else if (!string.IsNullOrEmpty(config.animPathMaleBig2))
+            {
+                allPathsEmpty = false;
+            }
+            else if (!string.IsNullOrEmpty(config.animPathFemaleBig2))
+            {
+                allPathsEmpty = false;
+            }
+
+            if (allPathsEmpty)
+            {
                 return true;
             }
+
             return false;
+        }
+
+
+        public bool checkIfOptionalAnimsProvided(Config config)
+        {
+            if (string.IsNullOrEmpty(config.animPathFemaleAvg2) && string.IsNullOrEmpty(config.animPathMaleAvg2))
+            {
+                return false;
+            }
+            if (string.IsNullOrEmpty(config.animPathFemaleBig2) && string.IsNullOrEmpty(config.animPathMaleBig2))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public void setInternalProjectName()
@@ -165,6 +223,18 @@ namespace Easy_AMM_Poses.src
         {
             config.animPathMaleBig = filepath;
             config.animJsonPathMaleBig = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
+        }
+
+        public void setFemaleAvgAnimation2(Config config, string filepath)
+        {
+            config.animPathFemaleAvg2 = filepath;
+            config.animJsonPathFemaleAvg2 = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
+        }
+
+        public void setMaleAvgAnimation2(Config config, string filepath)
+        {
+            config.animPathMaleAvg2 = filepath;
+            config.animJsonPathMaleAvg2 = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
         }
     }
 }

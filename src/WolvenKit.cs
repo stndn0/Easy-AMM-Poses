@@ -165,7 +165,7 @@ namespace Easy_AMM_Poses.src
         /// Add .workspot or .ent file extension to deserialized REDEngine file.
         /// </summary>
         /// <param name="jsonOutputPath">Path to json file,</param>
-        public static void AddFileExtension(string jsonOutputPath, string newExtension, Config config)
+        public static void AddFileExtension(string jsonOutputPath, Config config, string newExtension, int fileNumber)
         {
             /* How this works.
              * 
@@ -213,11 +213,25 @@ namespace Easy_AMM_Poses.src
             {
                 if (newExtension == ".ent")
                 {
-                    config.pathToEntity1 = finalPath;
+                    if (fileNumber == 1)
+                    {
+                        config.pathToEntity1 = finalPath;
+                    }
+                    else if (fileNumber == 2)
+                    {
+                        config.pathToEntity2 = finalPath;
+                    }
                 }
                 else if (newExtension == ".workspot")
                 {
-                    config.pathToWorkspot1 = finalPath;
+                    if (fileNumber == 1)
+                    {
+                        config.pathToWorkspot1 = finalPath;
+                    }
+                    else if (fileNumber == 2)
+                    {
+                        config.pathToWorkspot2 = finalPath;
+                    }
                 }
             }
             else

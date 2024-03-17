@@ -404,11 +404,14 @@ namespace Easy_AMM_Poses
             await Task.WhenAll(task3, task4);
 
             // Add the ".workspot" file extension so that the game can read it.
-            WolvenKit.AddFileExtension(config.pathToWorkspotJson1, ".workspot", config);
-            WolvenKit.AddFileExtension(config.pathToWorkspotJson2, ".workspot", config);
+            WolvenKit.AddFileExtension(config.pathToWorkspotJson1, config, ".workspot", 1);
+            WolvenKit.AddFileExtension(config.pathToWorkspotJson2, config, ".workspot", 2);
 
             Debug.WriteLine("Finished building workspot.workspot");
             updateAppStatus("Finished building workspot. Path: " + config.pathToWorkspotJson1);
+
+            Debug.WriteLine("PATH to WS1: " + config.pathToWorkspot1);
+            Debug.WriteLine("PATH to WS2: " + config.pathToWorkspot2);
 
         }
 
@@ -418,18 +421,20 @@ namespace Easy_AMM_Poses
             updateAppStatus("Building entity JSON...");
 
             // Build the entity JSON file.
-            Task task1 = Task.Run(async () => await Entity.buildEntityJson(config));
-            await Task.WhenAll(task1);
+            Task task1 = Task.Run(async () => await Entity.buildEntityJson(config, 1, config.pathToWorkspot1));
+            Task task2 = Task.Run(async () => await Entity.buildEntityJson(config, 2, config.pathToWorkspot2));
+            await Task.WhenAll(task1, task2);
 
             // Convert the raw JSON file to RedEngine format.
-            Task task2 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToEntityJson1));
+            Task task3 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToEntityJson1));
+            Task task4 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToEntityJson2));
 
-            await Task.WhenAll(task2);
+            await Task.WhenAll(task3, task4);
             // Add the ".ent" file extension so that the game can read it.
-            WolvenKit.AddFileExtension(config.pathToEntityJson1, ".ent", config);
+            WolvenKit.AddFileExtension(config.pathToEntityJson1, config, ".ent", 1);
+            WolvenKit.AddFileExtension(config.pathToEntityJson2, config, ".ent", 2);
 
-
-            updateAppStatus("Finished building entity .ent: " + config.pathToEntity1);
+            updateAppStatus("Finished building .ent file(s)...");
         }
 
         private async void ButtonLuaHandler(Object sender, RoutedEventArgs e)
@@ -437,10 +442,11 @@ namespace Easy_AMM_Poses
             Debug.WriteLine("DEBUG: Building lua file...");
             updateAppStatus("Building lua file...");
 
-            Task task1 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config));
-            await Task.WhenAll(task1);
+            Task task1 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config, config.pathToEntity1, 1));
+            Task task2 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config, config.pathToEntity2, 2));
+            await Task.WhenAll(task1, task2);
 
-            updateAppStatus("Finished buiding lua file.");
+            updateAppStatus("Finished buiding lua file(s).");
 
         }
 

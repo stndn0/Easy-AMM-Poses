@@ -17,7 +17,7 @@ namespace Easy_AMM_Poses.src
     public class Lua
     {
 
-        public static async Task<int> readLuaTemplate(List<Pose> poseList, Config config)
+        public static async Task<int> readLuaTemplate(List<Pose> poseList, Config config, string pathToEntity, int fileNumber)
         {
             Debug.WriteLine("DEBUG: Reading Lua template");
             string luaFile = File.ReadAllText(@"templates\lua_template.lua");
@@ -28,7 +28,7 @@ namespace Easy_AMM_Poses.src
 
             //  Update entity path. Add extra backlash within the path string or else .lua will be unhappy.
             string pattern = @"(entity_path\s*=\s*)"".*?""";
-            string replacement = "$1" + '"' + config.pathToEntity1.Replace(@"\", @"\\") + '"';
+            string replacement = "$1" + '"' + pathToEntity.Replace(@"\", @"\\") + '"';
             luaFile = Regex.Replace(luaFile, pattern, replacement);
 
             // Update category field
@@ -95,7 +95,7 @@ namespace Easy_AMM_Poses.src
             luaFile = Regex.Replace(luaFile, pattern, replacement);
 
             // Write updated lua file to disk
-            string pathToOutput = config.getProjectResourcesDirectory() + @"poses.lua";
+            string pathToOutput = config.getProjectResourcesDirectory() + @"poses" + fileNumber + @".lua";
 
             File.WriteAllText(pathToOutput, luaFile);
 

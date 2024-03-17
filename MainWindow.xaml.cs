@@ -371,6 +371,7 @@ namespace Easy_AMM_Poses
                     {
                         Debug.WriteLine("DEBUG: Pose already in list, skipping... " + poseName);
                         pose.ExtraBodyTypes.Add(bodyType);
+                        pose.Slot = animSlot;
                         poseExists = true;
                         break;
                     }

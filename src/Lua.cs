@@ -34,6 +34,10 @@ namespace Easy_AMM_Poses.src
             // Update category field
             pattern = @"(category\s*=\s*)"".*?""";
             replacement = "$1" + '"' + config.luaCategoryName + '"';
+            if (fileNumber == 2)
+            {
+                replacement = "$1" + '"' + config.luaCategoryName + " (Extra)" + '"';
+            }
             luaFile = Regex.Replace(luaFile, pattern, replacement);
 
             // Update username field
@@ -44,32 +48,39 @@ namespace Easy_AMM_Poses.src
 
             for (int i = 0; i < poseList.Count; i++)
             {
-                if (poseList[i].BodyType == "MA" || poseList[i].ExtraBodyTypes.Contains("MA"))
+                Debug.WriteLine("DEBUG: Pose name: " + poseList[i].Name + " fileNumber: " + fileNumber);
+                // Check if pose belongs to the current file number
+                // We don't want to add poses from another anim file that isn't linked to this lua.
+                if (poseList[i].Slot == fileNumber)
                 {
-                    maleAveragePoses += '"' + poseList[i].Name + '"' + ", ";
-                }
-
-                if (poseList[i].BodyType == "WA" || poseList[i].ExtraBodyTypes.Contains("WA"))
-                {
-                    femaleAveragePoses += '"' + poseList[i].Name + '"' + ", ";
-                }
-
-                if (poseList[i].BodyType == "MB" || poseList[i].ExtraBodyTypes.Contains("MB"))
-                {
-                    bigPoses += '"' + poseList[i].Name + '"' + ", ";
-                }
-
-                if (poseList[i].BodyType == "WB" || poseList[i].ExtraBodyTypes.Contains("WB"))
-                {
-                    // Check if exact pose name already exists in string
-                    // We don't want to add the same pose twice.
-                    if (bigPoses.Contains(poseList[i].Name))
+                    // Don't use else-if for this block. Multiple anim files may share the same pose name.
+                    if (poseList[i].BodyType == "MA" || poseList[i].ExtraBodyTypes.Contains("MA"))
                     {
-                        continue;
+                        maleAveragePoses += '"' + poseList[i].Name + '"' + ", ";
                     }
-                    else
+
+                    if (poseList[i].BodyType == "WA" || poseList[i].ExtraBodyTypes.Contains("WA"))
+                    {
+                        femaleAveragePoses += '"' + poseList[i].Name + '"' + ", ";
+                    }
+
+                    if (poseList[i].BodyType == "MB" || poseList[i].ExtraBodyTypes.Contains("MB"))
                     {
                         bigPoses += '"' + poseList[i].Name + '"' + ", ";
+                    }
+
+                    if (poseList[i].BodyType == "WB" || poseList[i].ExtraBodyTypes.Contains("WB"))
+                    {
+                        // Check if exact pose name already exists in string
+                        // We don't want to add the same pose twice.
+                        if (bigPoses.Contains(poseList[i].Name))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            bigPoses += '"' + poseList[i].Name + '"' + ", ";
+                        }
                     }
                 }
             }

@@ -76,6 +76,65 @@ namespace Easy_AMM_Poses
             }
         }
 
+        private void TextboxCategoryHandler(object sender, EventArgs e)
+        {
+            Debug.WriteLine("DEBUG: AMM Category Name, " + textboxCategory.Text);
+            if (textboxCategory.Text != null)
+            {
+                config.luaCategoryName = textboxCategory.Text;
+            }
+            else
+            {
+                config.luaCategoryName = "Uncategorized Pose Pack";
+            }
+        }
+
+        private void TextboxUsernameHandler(object sender, EventArgs e)
+        {
+            Debug.WriteLine("DEBUG: Modder Name, " + textboxUsername.Text);
+            if (textboxUsername.Text != null)
+            {
+                config.projectUsername = textboxUsername.Text;
+                Json.WriteConfigData(config);
+            }
+        }
+
+        private void TextboxProjectNameHandler(object sender, EventArgs e)
+        {
+            // If the user has provided a project name, enable the animation file input fields.
+            if (textboxProjectName.Text != "")
+            {
+                config.projectName = textboxProjectName.Text;
+                config.projectPath = "projects/" + textboxProjectName.Text;
+                Debug.WriteLine("DEBUG: Project Name, " + config.projectName);
+                Debug.WriteLine("DEBUG: Project Path, " + config.projectPath);
+
+                pathToFemaleAverageAnim.IsEnabled = true;
+                pathToMaleAverageAnim.IsEnabled = true;
+                pathToFemaleBigAnim.IsEnabled = true;
+                pathToMaleBigAnim.IsEnabled = true;
+                pathToFemaleAverageAnim2.IsEnabled = true;
+                pathToMaleAverageAnim2.IsEnabled = true;
+                pathToFemaleBigAnim2.IsEnabled = true;
+                pathToMaleBigAnim2.IsEnabled = true;
+            }
+            else
+            {
+                config.projectName = "project1";
+                config.projectPath = "projects/project1";
+                pathToFemaleAverageAnim.IsEnabled = false;
+                pathToMaleAverageAnim.IsEnabled = false;
+                pathToFemaleBigAnim.IsEnabled = false;
+                pathToMaleBigAnim.IsEnabled = false;
+                pathToFemaleAverageAnim2.IsEnabled = false;
+                pathToMaleAverageAnim2.IsEnabled = false;
+                pathToFemaleBigAnim2.IsEnabled = false;
+                pathToMaleBigAnim2.IsEnabled = false;
+
+
+            }
+        }
+
         /// <summary>
         /// Handle user input on textbox for mod folder path.
         /// </summary>
@@ -155,8 +214,6 @@ namespace Easy_AMM_Poses
             }
         }
 
-
-
         private void TextboxFemAnimPathHandler2(object sender, EventArgs e)
         {
             string value = FileIO.OpenAnim();
@@ -179,7 +236,6 @@ namespace Easy_AMM_Poses
             }
         }
 
-
         /// <summary>
         /// Handle button press for "Load Poses from .ANIM".
         /// Note that this method is quite verbose due to the amount of checks going on.
@@ -187,7 +243,7 @@ namespace Easy_AMM_Poses
         /// </summary>
         private async void ButtonConvertHandler(object sender, RoutedEventArgs e)
         {
-            // If the user has not provided any animation files
+            // If the user has not provided any animation files.
             if (config.checkIfAllAnimPathsEmpty(config))
             {
                 updateAppStatus("Error: No animation files were provided.");
@@ -210,7 +266,7 @@ namespace Easy_AMM_Poses
 
             // Call conversion method. Each call runs on a separate thread, allowing them to run concurrently.
             // Using async await so that we can don't block the main thread. UI can now update while tasks are running.
-            // Without async, the GUI would be unresponsive for the user until the tasks are completed.
+            // Without async, the GUI would be unresponsive until the tasks are completed.
             updateAppStatus("Converting animation file(s). Please wait 5 to 30 seconds..");
             Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg, 1, config, config.womanAverage));
             Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg, 1, config, config.manAverage));
@@ -224,8 +280,8 @@ namespace Easy_AMM_Poses
             // Wait until all tasks are completed before proceeding. Await temporarily suspends the method.
             await Task.WhenAll(task1, task2, task3, task4, task5, task6, task7, task8);
 
-            // Animation data will only be read after all tasks have completed.
-            // We should only read data for rigs that the user has provided.
+            // Animation data will only be read after all tasks have completed. Only read data for rigs that the user has provided.
+            // Note: This is very verbose - perhaps refactor into a separate method.
             if (!string.IsNullOrEmpty(config.animJsonPathFemaleAvg))
             {
                 updateAppStatus("Reading female average animation data...");
@@ -286,6 +342,46 @@ namespace Easy_AMM_Poses
             updateAppStatus("Conversion complete. Ready to build.");
         }
 
+        /// <summary>
+        /// Load poses from the converted animation JSON file.
+        /// </summary>
+        /// <param name="pathToAnimJson"></param>
+        /// <param name="bodyType"></param>
+        public void readAnimData(string pathToAnimJson, string bodyType, int animSlot)
+        {
+            //var pathToJson2 = @"C:\Users\stndn\Documents\season7_allaccess_pose_pack.anims.json";
+            var pathToJson2 = pathToAnimJson;
+
+            // Load the JSON and deserialize it into a JToken object.
+            var result = JsonConvert.DeserializeObject<JToken>(File.ReadAllText(pathToJson2));
+
+            // Iterate through the JToken object - we're only iterating through what we want.
+            foreach (var item in result["Data"]["RootChunk"]["animations"])
+            {
+                // The item we're after is called $value - this is the name of the animation.
+                // Store all $value items into a new list
+                string poseName = item["Data"]["animation"]["Data"]["name"]["$value"].ToString();
+
+                // If posename already in list of poses, don't add a new pose.
+                // Instead, update the pose and add the new body type.
+                bool poseExists = false;
+                foreach (Pose pose in poseList)
+                {
+                    if (pose.Name == poseName)
+                    {
+                        Debug.WriteLine("DEBUG: Pose already in list, skipping... " + poseName);
+                        pose.ExtraBodyTypes.Add(bodyType);
+                        poseExists = true;
+                        break;
+                    }
+                }
+                if (!poseExists)
+                {
+                    entries.Items.Add(poseName);
+                    poseList.Add(new Pose(poseName, bodyType, animSlot)); ;
+                }
+            }
+        }
         /// <summary>
         /// Handle button press for "Build Workspot".
         /// </summary>
@@ -359,113 +455,10 @@ namespace Easy_AMM_Poses
 
         }
 
-        private void TextboxCategoryHandler(object sender, EventArgs e)
-        {
-            Debug.WriteLine("DEBUG: AMM Category Name, " + textboxCategory.Text);
-            if (textboxCategory.Text != null)
-            {
-                config.luaCategoryName = textboxCategory.Text;
-            }
-            else
-            {
-                config.luaCategoryName = "Uncategorized Pose Pack";
-            }
-        }
-
-        private void TextboxUsernameHandler(object sender, EventArgs e)
-        {
-            Debug.WriteLine("DEBUG: Modder Name, " + textboxUsername.Text);
-            if (textboxUsername.Text != null)
-            {
-                config.projectUsername = textboxUsername.Text;
-                Json.WriteConfigData(config);
-            }
-        }
-
-        private void TextboxProjectNameHandler(object sender, EventArgs e)
-        {
-            // If the user has provided a project name, enable the animation file input fields.
-            if (textboxProjectName.Text != "")
-            {
-                config.projectName = textboxProjectName.Text;
-                config.projectPath = "projects/" + textboxProjectName.Text;
-                Debug.WriteLine("DEBUG: Project Name, " + config.projectName);
-                Debug.WriteLine("DEBUG: Project Path, " + config.projectPath);
-
-                pathToFemaleAverageAnim.IsEnabled = true;
-                pathToMaleAverageAnim.IsEnabled = true;
-                pathToFemaleBigAnim.IsEnabled = true;
-                pathToMaleBigAnim.IsEnabled = true;
-                pathToFemaleAverageAnim2.IsEnabled = true;
-                pathToMaleAverageAnim2.IsEnabled = true;
-                pathToFemaleBigAnim2.IsEnabled = true;
-                pathToMaleBigAnim2.IsEnabled = true;
-            }
-            else
-            {
-                config.projectName = "project1";
-                config.projectPath = "projects/project1";
-                pathToFemaleAverageAnim.IsEnabled = false;
-                pathToMaleAverageAnim.IsEnabled = false;
-                pathToFemaleBigAnim.IsEnabled = false;
-                pathToMaleBigAnim.IsEnabled = false;
-                pathToFemaleAverageAnim2.IsEnabled = false;
-                pathToMaleAverageAnim2.IsEnabled = false;
-                pathToFemaleBigAnim2.IsEnabled = false;
-                pathToMaleBigAnim2.IsEnabled = false;
-
-
-            }
-        }
-
         private void ListView_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
             listScrollView.ScrollToVerticalOffset(listScrollView.VerticalOffset - e.Delta);
             e.Handled = true;
-        }
-
-
-        /// <summary>
-        /// Load poses from the converted animation JSON file.
-        /// </summary>
-        /// <param name="pathToAnimJson"></param>
-        /// <param name="bodyType"></param>
-        public void readAnimData(string pathToAnimJson, string bodyType, int animSlot)
-        {
-            //var pathToJson2 = @"C:\Users\stndn\Documents\season7_allaccess_pose_pack.anims.json";
-            var pathToJson2 = pathToAnimJson;
-
-            // Load the JSON and deserialize it into a JToken object.
-            var result = JsonConvert.DeserializeObject<JToken>(File.ReadAllText(pathToJson2));
-
-            // Iterate through the JToken object - we're only iterating through what we want.
-            foreach (var item in result["Data"]["RootChunk"]["animations"])
-            {
-                // The item we're after is called $value - this is the name of the animation.
-                // Store all $value items into a new list
-                // Debug.WriteLine(item["Data"]["animation"]["Data"]["name"]["$value"]);
-                string poseName = item["Data"]["animation"]["Data"]["name"]["$value"].ToString();
-
-                // If posename already in list of poses, don't add a new pose.
-                // Instead, update the pose and add the new body type.
-                bool poseExists = false;
-                foreach (Pose pose in poseList)
-                {
-                    if (pose.Name == poseName)
-                    {
-                        Debug.WriteLine("DEBUG: Pose already in list, skipping... " + poseName);
-                        pose.ExtraBodyTypes.Add(bodyType);
-                        poseExists = true;
-                        break;
-                    }
-                }
-                if (!poseExists)
-                {
-                    entries.Items.Add(poseName);
-                    poseList.Add(new Pose(poseName, bodyType, animSlot)); ;
-                }
-
-            }
         }
     }
 }

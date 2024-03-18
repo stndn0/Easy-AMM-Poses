@@ -264,92 +264,103 @@ namespace Easy_AMM_Poses
                 return;
             }
 
+            try
+            {
+                updateAppStatus("Converting animation file(s). Please wait 5 to 30 seconds..");
+                Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg, 1, config, config.womanAverage));
+                Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg, 1, config, config.manAverage));
+                Task task3 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleBig, 1, config, config.manBig));
+                Task task4 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleBig, 1, config, config.womanBig));
+                Task task5 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg2, 2, config, config.womanAverage));
+                Task task6 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg2, 2, config, config.manAverage));
+                Task task7 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleBig2, 2, config, config.manBig));
+                Task task8 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleBig2, 2, config, config.womanBig));
+
+                // Wait until all tasks are completed before proceeding. Await temporarily suspends the method.
+                await Task.WhenAll(task1, task2, task3, task4, task5, task6, task7, task8);
+
+                // Animation data will only be read after all tasks have completed. Only read data for rigs that the user has provided.
+                // Note: This is very verbose - perhaps refactor into a separate method.
+                if (!string.IsNullOrEmpty(config.animJsonPathFemaleAvg))
+                {
+                    updateAppStatus("Reading female average animation data...");
+                    Debug.WriteLine("DEBUG: Reading animation data [WA]");
+                    readAnimData(config.animJsonPathFemaleAvg, config.womanAverage, 1);
+                }
+
+                if (!string.IsNullOrEmpty(config.animJsonPathMaleAvg))
+                {
+                    Debug.WriteLine("DEBUG: Reading animation data [MA]");
+                    updateAppStatus("Reading male average animation data...");
+                    readAnimData(config.animJsonPathMaleAvg, config.manAverage, 1);
+                }
+
+                if (!string.IsNullOrEmpty(config.animJsonPathFemaleBig))
+                {
+                    Debug.WriteLine("DEBUG: Reading animation data [WB]");
+                    updateAppStatus("Reading female big animation data...");
+                    readAnimData(config.animJsonPathFemaleBig, config.womanBig, 1);
+                }
+
+                if (!string.IsNullOrEmpty(config.animJsonPathMaleBig))
+                {
+                    Debug.WriteLine("DEBUG: Reading animation data [MB]");
+                    updateAppStatus("Reading male big animation data...");
+                    readAnimData(config.animJsonPathMaleBig, config.manBig, 1);
+                }
+
+                if (!string.IsNullOrEmpty(config.animJsonPathFemaleAvg2))
+                {
+                    Debug.WriteLine("DEBUG: Reading animation data [WA2]");
+                    updateAppStatus("Reading female average animation data (2)");
+                    readAnimData(config.animJsonPathFemaleAvg2, config.womanAverage, 2);
+                }
+
+                if (!string.IsNullOrEmpty(config.animJsonPathMaleAvg2))
+                {
+                    Debug.WriteLine("DEBUG: Reading animation data [MA2]");
+                    updateAppStatus("Reading male average animation data (2)");
+                    readAnimData(config.animJsonPathMaleAvg2, config.manAverage, 2);
+                }
+
+                if (!string.IsNullOrEmpty(config.animJsonPathFemaleBig2))
+                {
+                    Debug.WriteLine("DEBUG: Reading animation data [WB2]");
+                    updateAppStatus("Reading female big animation data (2)");
+                    readAnimData(config.animJsonPathFemaleBig2, config.womanBig, 2);
+                }
+
+                if (!string.IsNullOrEmpty(config.animJsonPathMaleBig2))
+                {
+                    Debug.WriteLine("DEBUG: Reading animation data [MB2]");
+                    updateAppStatus("Reading male big animation data (2)");
+                    readAnimData(config.animJsonPathMaleBig2, config.manBig, 2);
+                }
+
+
+                updateAppStatus("Conversion complete. Ready to build.");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DEBUG: Error converting animation file to JSON: " + ex.Message);
+                updateAppStatus("Error: One or more animations couldn't be read by Wolvenkit CLI");
+                MessageBox.Show($"Error reading animation file(s). \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 in particular should have the most compatibility.\n(2) Is your .ANIM file valid? Can you open it in the regular WolvenKit GUI? \n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             // Call conversion method. Each call runs on a separate thread, allowing them to run concurrently.
             // Using async await so that we can don't block the main thread. UI can now update while tasks are running.
             // Without async, the GUI would be unresponsive until the tasks are completed.
-            updateAppStatus("Converting animation file(s). Please wait 5 to 30 seconds..");
-            Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg, 1, config, config.womanAverage));
-            Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg, 1, config, config.manAverage));
-            Task task3 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleBig, 1, config, config.manBig));
-            Task task4 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleBig,1, config, config.womanBig));
-            Task task5 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg2,2, config, config.womanAverage));
-            Task task6 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg2, 2, config, config.manAverage));
-            Task task7 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleBig2, 2, config, config.manBig));
-            Task task8 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleBig2,2, config, config.womanBig));
-
-            // Wait until all tasks are completed before proceeding. Await temporarily suspends the method.
-            await Task.WhenAll(task1, task2, task3, task4, task5, task6, task7, task8);
-
-            // Animation data will only be read after all tasks have completed. Only read data for rigs that the user has provided.
-            // Note: This is very verbose - perhaps refactor into a separate method.
-            if (!string.IsNullOrEmpty(config.animJsonPathFemaleAvg))
-            {
-                updateAppStatus("Reading female average animation data...");
-                Debug.WriteLine("DEBUG: Reading animation data [WA]");
-                readAnimData(config.animJsonPathFemaleAvg, config.womanAverage, 1);
-            }
-
-            if (!string.IsNullOrEmpty(config.animJsonPathMaleAvg))
-            {
-                Debug.WriteLine("DEBUG: Reading animation data [MA]");
-                updateAppStatus("Reading male average animation data...");
-                readAnimData(config.animJsonPathMaleAvg, config.manAverage, 1);
-            }
-
-            if (!string.IsNullOrEmpty(config.animJsonPathFemaleBig))
-            {
-                Debug.WriteLine("DEBUG: Reading animation data [WB]");
-                updateAppStatus("Reading female big animation data...");
-                readAnimData(config.animJsonPathFemaleBig, config.womanBig, 1);
-            }
-
-            if (!string.IsNullOrEmpty(config.animJsonPathMaleBig))
-            {
-                Debug.WriteLine("DEBUG: Reading animation data [MB]");
-                updateAppStatus("Reading male big animation data...");
-                readAnimData(config.animJsonPathMaleBig, config.manBig, 1);
-            }
-
-            if (!string.IsNullOrEmpty(config.animJsonPathFemaleAvg2))
-            {
-                Debug.WriteLine("DEBUG: Reading animation data [WA2]");
-                updateAppStatus("Reading female average animation data (2)");
-                readAnimData(config.animJsonPathFemaleAvg2, config.womanAverage, 2);
-            }
-
-            if (!string.IsNullOrEmpty(config.animJsonPathMaleAvg2))
-            {
-                Debug.WriteLine("DEBUG: Reading animation data [MA2]");
-                updateAppStatus("Reading male average animation data (2)");
-                readAnimData(config.animJsonPathMaleAvg2, config.manAverage, 2);
-            }
-
-            if (!string.IsNullOrEmpty(config.animJsonPathFemaleBig2))
-            {
-                Debug.WriteLine("DEBUG: Reading animation data [WB2]");
-                updateAppStatus("Reading female big animation data (2)");
-                readAnimData(config.animJsonPathFemaleBig2, config.womanBig, 2);
-            }
-
-            if (!string.IsNullOrEmpty(config.animJsonPathMaleBig2))
-            {
-                Debug.WriteLine("DEBUG: Reading animation data [MB2]");
-                updateAppStatus("Reading male big animation data (2)");
-                readAnimData(config.animJsonPathMaleBig2, config.manBig, 2);
-            }
-
-
-            updateAppStatus("Conversion complete. Ready to build.");
+            
         }
 
         /// <summary>
         /// Load poses from the converted animation JSON file.
+        /// This method really shouldn't be in MainWindow...
         /// </summary>
         /// <param name="pathToAnimJson"></param>
         /// <param name="bodyType"></param>
         public void readAnimData(string pathToAnimJson, string bodyType, int animSlot)
         {
-            //var pathToJson2 = @"C:\Users\stndn\Documents\season7_allaccess_pose_pack.anims.json";
             var pathToJson2 = pathToAnimJson;
 
             // Load the JSON and deserialize it into a JToken object.
@@ -371,7 +382,7 @@ namespace Easy_AMM_Poses
                     {
                         Debug.WriteLine("DEBUG: Pose already in list, skipping... " + poseName);
                         pose.ExtraBodyTypes.Add(bodyType);
-                        pose.Slot = animSlot;
+                        //pose.Slot = animSlot;
                         poseExists = true;
                         break;
                     }
@@ -392,73 +403,110 @@ namespace Easy_AMM_Poses
         {
             updateAppStatus("Building workspot JSON...");
 
-            // Build the raw workspot JSON file.
-            Task task1 = Task.Run(async () => await Workspot.BuildWorkspotJson(poseList, config, config.animPathFemaleAvg, config.animPathMaleAvg, config.animPathFemaleBig, config.animPathMaleBig, 1));
-            Task task2 = Task.Run(async () => await Workspot.BuildWorkspotJson(poseList, config, config.animPathFemaleAvg2, config.animPathMaleAvg2, config.animPathFemaleBig2, config.animPathMaleBig2, 2));
-            await Task.WhenAll(task1, task2);
-            Debug.WriteLine("Finished building workspot JSON..");
+            try
+            {
+                // Build the raw workspot JSON file.
+                Task task1 = Task.Run(async () => await Workspot.BuildWorkspotJson(poseList, config, config.animPathFemaleAvg, config.animPathMaleAvg, config.animPathFemaleBig, config.animPathMaleBig, 1));
+                Task task2 = Task.Run(async () => await Workspot.BuildWorkspotJson(poseList, config, config.animPathFemaleAvg2, config.animPathMaleAvg2, config.animPathFemaleBig2, config.animPathMaleBig2, 2));
+                await Task.WhenAll(task1, task2);
+                Debug.WriteLine("Finished building workspot JSON..");
 
-            // Convert the raw JSON file to RedEngine format.
-            updateAppStatus("Converting workspot to RedEngine format...please wait.");
-            Task task3 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToWorkspotJson1));
-            Task task4 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToWorkspotJson2));
-            await Task.WhenAll(task3, task4);
+                // Convert the raw JSON file to RedEngine format.
+                updateAppStatus("Converting workspot to RedEngine format...please wait.");
+                Task task3 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToWorkspotJson1));
+                Task task4 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToWorkspotJson2));
+                await Task.WhenAll(task3, task4);
 
-            // Add the ".workspot" file extension so that the game can read it.
-            WolvenKit.AddFileExtension(config.pathToWorkspotJson1, config, ".workspot", 1);
-            WolvenKit.AddFileExtension(config.pathToWorkspotJson2, config, ".workspot", 2);
+                // Add the ".workspot" file extension so that the game can read it.
+                WolvenKit.AddFileExtension(config.pathToWorkspotJson1, config, ".workspot", 1);
+                WolvenKit.AddFileExtension(config.pathToWorkspotJson2, config, ".workspot", 2);
 
-            Debug.WriteLine("Finished building workspot.workspot");
-            updateAppStatus("Finished building workspot. Path: " + config.pathToWorkspotJson1);
+                Debug.WriteLine("Finished building workspot.workspot");
+                updateAppStatus("Finished building workspot. Path: " + config.pathToWorkspotJson1);
 
-            Debug.WriteLine("PATH to WS1: " + config.pathToWorkspot1);
-            Debug.WriteLine("PATH to WS2: " + config.pathToWorkspot2);
-
+                Debug.WriteLine("PATH to WS1: " + config.pathToWorkspot1);
+                Debug.WriteLine("PATH to WS2: " + config.pathToWorkspot2);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DEBUG: Error building workspot: " + ex.Message);
+                updateAppStatus("Error: Could not build workspot file.");
+                MessageBox.Show($"Error building workspot file. \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 should have the most compatibility.\n\n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private async void ButtonEntityHandler(Object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("DEBUG: Building entity JSON...");
-            updateAppStatus("Building entity JSON...");
+            try
+            {
+                Debug.WriteLine("DEBUG: Building entity JSON...");
+                updateAppStatus("Building entity JSON...");
 
-            // Build the entity JSON file.
-            Task task1 = Task.Run(async () => await Entity.buildEntityJson(config, 1, config.pathToWorkspot1));
-            Task task2 = Task.Run(async () => await Entity.buildEntityJson(config, 2, config.pathToWorkspot2));
-            await Task.WhenAll(task1, task2);
+                // Build the entity JSON file.
+                Task task1 = Task.Run(async () => await Entity.buildEntityJson(config, 1, config.pathToWorkspot1));
+                Task task2 = Task.Run(async () => await Entity.buildEntityJson(config, 2, config.pathToWorkspot2));
+                await Task.WhenAll(task1, task2);
 
-            // Convert the raw JSON file to RedEngine format.
-            Task task3 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToEntityJson1));
-            Task task4 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToEntityJson2));
+                // Convert the raw JSON file to RedEngine format.
+                Task task3 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToEntityJson1));
+                Task task4 = Task.Run(async () => await WolvenKit.ConvertJsonToRedEngine(config.cliPath, config.pathToEntityJson2));
 
-            await Task.WhenAll(task3, task4);
-            // Add the ".ent" file extension so that the game can read it.
-            WolvenKit.AddFileExtension(config.pathToEntityJson1, config, ".ent", 1);
-            WolvenKit.AddFileExtension(config.pathToEntityJson2, config, ".ent", 2);
+                await Task.WhenAll(task3, task4);
+                // Add the ".ent" file extension so that the game can read it.
+                WolvenKit.AddFileExtension(config.pathToEntityJson1, config, ".ent", 1);
+                WolvenKit.AddFileExtension(config.pathToEntityJson2, config, ".ent", 2);
 
-            updateAppStatus("Finished building .ent file(s)...");
+                updateAppStatus("Finished building .ent file(s)...");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DEBUG: Error building ent file: " + ex.Message);
+                updateAppStatus("Error: Could not build ent file.");
+                MessageBox.Show($"Error building ent file. \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 should have the most compatibility.\n\n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+
         }
 
         private async void ButtonLuaHandler(Object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("DEBUG: Building lua file...");
-            updateAppStatus("Building lua file...");
+            try
+            {
+                Debug.WriteLine("DEBUG: Building lua file...");
+                updateAppStatus("Building lua file...");
 
-            Task task1 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config, config.pathToEntity1, 1));
-            Task task2 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config, config.pathToEntity2, 2));
-            await Task.WhenAll(task1, task2);
+                Task task1 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config, config.pathToEntity1, 1));
+                Task task2 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config, config.pathToEntity2, 2));
+                await Task.WhenAll(task1, task2);
 
-            updateAppStatus("Finished buiding lua file(s).");
-
+                updateAppStatus("Finished buiding lua file(s).");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DEBUG: Error building lua file: " + ex.Message);
+                updateAppStatus("Error: Error building lua file.");
+                MessageBox.Show($"Error building lua file. \n\nThis is a rare error that shouldn't happen... contact me for help. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private async void ButtonPackHandler(Object sender, RoutedEventArgs e)
         {
-            updateAppStatus("Packing mod...");
+            try
+            {
+                updateAppStatus("Packing mod...");
 
-            Task task1 = Task.Run(async () => await WolvenKit.packMod(config));
-            await Task.WhenAll(task1);
+                Task task1 = Task.Run(async () => await WolvenKit.packMod(config));
+                await Task.WhenAll(task1);
 
-            updateAppStatus("Finished packing mod.");
+                updateAppStatus("Finished packing mod.");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DEBUG: Error packing project: " + ex.Message);
+                updateAppStatus("Error: WolvenKit couldn't pack your project.");
+                MessageBox.Show($"Error packing project. \n\nYour copy of WolvenKit CLI wasn't able to pack the project file. Ensure you're using CLI 8.13 stable or above. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
 
         }
 

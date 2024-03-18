@@ -236,5 +236,13 @@ namespace Easy_AMM_Poses.src
             config.animPathMaleAvg2 = filepath;
             config.animJsonPathMaleAvg2 = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
         }
+
+        // Create logging method
+
+        public void updateLog(String message)
+        {
+            // Update log
+            //logBox.Text += message + "\n";
+        }
     }
 }

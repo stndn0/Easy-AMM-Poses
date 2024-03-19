@@ -54,6 +54,13 @@
             <Setter Property="Padding" Value="12,12,12,12"/>
             <Setter Property="BorderThickness" Value="0.8"/>
         </Style>
+        <Style x:Key="ButtonClear" TargetType="Button">
+            <Setter Property="Background" Value="#282828"/>
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property ="FontFamily" Value="/assets/fonts/#Rajdhani Medium"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="BorderThickness" Value="0.8"/>
+        </Style>
 
 
     </Window.Resources>
@@ -129,31 +136,127 @@
 
                     <StackPanel Visibility="Visible">
                         <Label Style="{StaticResource PropertyLabel}">Load WA (woman average) animation file</Label>
-                        <TextBox
-                            x:Name="pathToFemaleAverageAnim"
-                            PreviewMouseDown="TextboxFemAnimPathHandler"
-                            IsEnabled="False"
-                            Style="{StaticResource Textbox}"/>
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="94*"></ColumnDefinition>
+                                <ColumnDefinition Width="6*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Column="0" Grid.Row="0">
+                                <TextBox
+                                    x:Name="pathToFemaleAverageAnim"
+                                    PreviewMouseDown="TextboxFemAnimPathHandler"
+                                    IsEnabled="False"
+                                    Style="{StaticResource Textbox}">
+                                </TextBox>
+                            </Grid>
+
+                            <Grid Grid.Column="1" Grid.Row="0">
+                                <Button
+                                    x:Name="clearPathFemaleAvg1"
+                                    PreviewMouseDown="buttonClearPathFemaleAvg1"
+                                    Style="{StaticResource ButtonClear}"
+                                    Content="X">
+                                </Button>
+                            </Grid>
+                        </Grid>
+
 
                         <Label Style="{StaticResource PropertyLabel}">Load MA (masc average) animation file</Label>
-                        <TextBox
-                            x:Name="pathToMaleAverageAnim"
-                            PreviewMouseDown="TextboxMascAnimPathHandler"
-                            IsEnabled="False"
-                            Style="{StaticResource Textbox}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="94*"></ColumnDefinition>
+                                <ColumnDefinition Width="6*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Column="0" Grid.Row="0">
+                                <TextBox
+                                    x:Name="pathToMaleAverageAnim"
+                                    PreviewMouseDown="TextboxMascAnimPathHandler"
+                                    IsEnabled="False"
+                                    Style="{StaticResource Textbox}">
+                                </TextBox>
+                            </Grid>
+
+                            <Grid Grid.Column="1" Grid.Row="0">
+                                <Button
+                                    x:Name="clearPathMaleAvg1"
+                                    PreviewMouseDown="buttonClearPathMaleAvg1"
+                                    Style="{StaticResource ButtonClear}"
+                                    Content="X">
+                                </Button>
+                            </Grid>
+                        </Grid>
+
 
                         <Label Style="{StaticResource PropertyLabel}">Load WB (woman big) animation file</Label>
-                        <TextBox
-                            x:Name="pathToFemaleBigAnim"
-                            PreviewMouseDown="TextboxWBAnimPathHandler"
-                            IsEnabled="False"
-                            Style="{StaticResource Textbox}"/>
-                        <Label Style="{StaticResource PropertyLabel}">Load MB (man big) animation file</Label>
-                        <TextBox
-                            x:Name="pathToMaleBigAnim"
-                            PreviewMouseDown="TextboxMBAnimPathHandler"
-                            IsEnabled="False"
-                            Style="{StaticResource Textbox}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="94*"></ColumnDefinition>
+                                <ColumnDefinition Width="6*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Column="0" Grid.Row="0">
+                                <TextBox
+                                    x:Name="pathToFemaleBigAnim"
+                                    PreviewMouseDown="TextboxWBAnimPathHandler"
+                                    IsEnabled="False"
+                                    Style="{StaticResource Textbox}">
+                                </TextBox>
+                            </Grid>
+
+                            <Grid Grid.Column="1" Grid.Row="0">
+                                <Button
+                                    x:Name="clearPathFemaleBig1"
+                                    PreviewMouseDown="buttonClearPathFemaleBig1"
+                                    Style="{StaticResource ButtonClear}"
+                                    Content="X">
+                                </Button>
+                            </Grid>
+                        </Grid>
+
+
+
+                        <Label Style="{StaticResource PropertyLabel}">Load MB (masc big) animation file</Label>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="94*"></ColumnDefinition>
+                                <ColumnDefinition Width="6*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Column="0" Grid.Row="0">
+                                <TextBox
+                                    x:Name="pathToMaleBigAnim"
+                                    PreviewMouseDown="TextboxMBAnimPathHandler"
+                                    IsEnabled="False"
+                                    Style="{StaticResource Textbox}">
+                                </TextBox>
+                            </Grid>
+
+                            <Grid Grid.Column="1" Grid.Row="0">
+                                <Button
+                                    x:Name="clearPathMaleBig1"
+                                    PreviewMouseDown="buttonClearPathMaleBig1"
+                                    Style="{StaticResource ButtonClear}"
+                                    Content="X">
+                                </Button>
+                            </Grid>
+                        </Grid>
+
+
                     </StackPanel>
 
                     <Label Margin="0,2,0,0"></Label>
@@ -163,29 +266,124 @@
                                 Optional: load more animation files (slot 2)
                             </Label>
                             <Label Style="{StaticResource PropertyLabel}">Load WA (woman average) animation file</Label>
-                            <TextBox
-                                x:Name="pathToFemaleAverageAnim2"
-                                IsEnabled="False"
-                                PreviewMouseDown="TextboxFemAnimPathHandler2"
-                                Style="{StaticResource Textbox}"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="94*"></ColumnDefinition>
+                                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Column="0" Grid.Row="0">
+                                    <TextBox
+                                    x:Name="pathToFemaleAverageAnim2"
+                                    PreviewMouseDown="TextboxFemAnimPathHandler2"
+                                    IsEnabled="False"
+                                    Style="{StaticResource Textbox}">
+                                    </TextBox>
+                                </Grid>
+
+                                <Grid Grid.Column="1" Grid.Row="0">
+                                    <Button
+                                    x:Name="clearPathFemaleAvg2"
+                                    Style="{StaticResource ButtonClear}"
+                                    Content="X">
+                                    </Button>
+                                </Grid>
+                            </Grid>
+
+                            
                             <Label Style="{StaticResource PropertyLabel}">Load MA (masc average) animation file</Label>
-                            <TextBox
-                                x:Name="pathToMaleAverageAnim2"
-                                IsEnabled="False"
-                                PreviewMouseDown="TextboxMascAnimPathHandler2"
-                                Style="{StaticResource Textbox}"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="94*"></ColumnDefinition>
+                                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Column="0" Grid.Row="0">
+                                    <TextBox
+                                    x:Name="pathToMaleAverageAnim2"
+                                    PreviewMouseDown="TextboxMascAnimPathHandler2"
+                                    IsEnabled="False"
+                                    Style="{StaticResource Textbox}">
+                                    </TextBox>
+                                </Grid>
+
+                                <Grid Grid.Column="1" Grid.Row="0">
+                                    <Button
+                                    x:Name="clearPathMaleAvg2"
+                                    Style="{StaticResource ButtonClear}"
+                                    Content="X">
+                                    </Button>
+                                </Grid>
+                            </Grid>
+
+
 
                             <Label Style="{StaticResource PropertyLabel}">Load WB (woman big) animation file</Label>
-                            <TextBox
-                                x:Name="pathToFemaleBigAnim2"
-                                IsEnabled="False"
-                                Style="{StaticResource Textbox}"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="94*"></ColumnDefinition>
+                                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                </Grid.RowDefinitions>
 
-                            <Label Style="{StaticResource PropertyLabel}">Load MB (man big) animation file</Label>
-                            <TextBox
-                                x:Name="pathToMaleBigAnim2"
-                                IsEnabled="False"
-                                Style="{StaticResource Textbox}"/>
+                                <Grid Grid.Column="0" Grid.Row="0">
+                                    <TextBox
+                                    x:Name="pathToFemaleBigAnim2"
+                                    PreviewMouseDown="TextboxWBAnimPathHandler2"
+                                    IsEnabled="False"
+                                    Style="{StaticResource Textbox}">
+                                    </TextBox>
+                                </Grid>
+
+                                <Grid Grid.Column="1" Grid.Row="0">
+                                    <Button
+                                    x:Name="clearPathFemaleBig2"
+                                    Style="{StaticResource ButtonClear}"
+                                    Content="X">
+                                    </Button>
+                                </Grid>
+                            </Grid>
+
+
+
+                            
+                            
+                            <Label Style="{StaticResource PropertyLabel}">Load MB (masc big) animation file</Label>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="94*"></ColumnDefinition>
+                                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Column="0" Grid.Row="0">
+                                    <TextBox
+                                    x:Name="pathToMaleBigAnim2"
+                                    PreviewMouseDown="TextboxMBAnimPathHandler2"
+                                    IsEnabled="False"
+                                    Style="{StaticResource Textbox}">
+                                    </TextBox>
+                                </Grid>
+
+                                <Grid Grid.Column="1" Grid.Row="0">
+                                    <Button
+                                    x:Name="clearPathMaleBig2"
+                                    Style="{StaticResource ButtonClear}"
+                                    Content="X">
+                                    </Button>
+                                </Grid>
+                            </Grid>
+
                         </StackPanel>
                     </Expander>
 

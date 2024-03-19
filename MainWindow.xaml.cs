@@ -167,6 +167,14 @@ namespace Easy_AMM_Poses
                 pathToFemaleAverageAnim.Text = config.animPathFemaleAvg;
             }
         }
+
+        private void buttonClearPathFemaleAvg1(object sender, EventArgs e)
+        {
+            config.setFemaleAvgAnimation1(config, "");
+            pathToFemaleAverageAnim.Text = "";
+        }
+
+
         /// <summary>
         /// Handle user input on textbox for MA animation file path.
         /// </summary>
@@ -181,6 +189,12 @@ namespace Easy_AMM_Poses
                 config.setMaleAvgAnimation1(config, value);
                 pathToMaleAverageAnim.Text = config.animPathMaleAvg;
             }
+        }
+
+        private void buttonClearPathMaleAvg1(object sender, EventArgs e)
+        {
+            config.setMaleAvgAnimation1(config, "");
+            pathToMaleAverageAnim.Text = "";
         }
 
         /// <summary>
@@ -199,6 +213,23 @@ namespace Easy_AMM_Poses
             }
         }
 
+        private void buttonClearPathFemaleBig1(object sender, EventArgs e)
+        {
+            config.setFemaleBigAnimation1(config, "");
+            pathToFemaleBigAnim.Text = "";
+        }
+
+        private void TextboxWBAnimPathHandler2(object sender, EventArgs e)
+        {
+            string value = FileIO.OpenAnim();
+            if (value != null)
+            {
+                Debug.WriteLine("DEBUG: Anim file [WB], " + value);
+                config.setFemaleBigAnimation2(config, value);
+                pathToFemaleBigAnim.Text = config.animPathFemaleBig;
+            }
+        }
+
         /// <summary>
         /// Handle user input on textbox for MB animation file path.
         /// </summary>
@@ -211,6 +242,23 @@ namespace Easy_AMM_Poses
             {
                 Debug.WriteLine("DEBUG: Anim file [WB], " + value);
                 config.setMaleBigAnimation1(config, value);
+                pathToMaleBigAnim.Text = config.animPathMaleBig;
+            }
+        }
+
+        private void buttonClearPathMaleBig1(object sender, EventArgs e)
+        {
+            config.setMaleBigAnimation1(config, "");
+            pathToMaleBigAnim.Text = "";
+        }
+
+        private void TextboxMBAnimPathHandler2(object sender, EventArgs e)
+        {
+            string value = FileIO.OpenAnim();
+            if (value != null)
+            {
+                Debug.WriteLine("DEBUG: Anim file [WB], " + value);
+                config.setMaleBigAnimation2(config, value);
                 pathToMaleBigAnim.Text = config.animPathMaleBig;
             }
         }

@@ -215,6 +215,12 @@ namespace Easy_AMM_Poses.src
             config.animJsonPathFemaleBig = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
         }
 
+        public void setFemaleBigAnimation2(Config config, string filepath)
+        {
+            config.animPathFemaleBig2 = filepath;
+            config.animJsonPathFemaleBig2 = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
+        }
+
         public void setMaleAvgAnimation1(Config config, string filepath)
         {
             config.animPathMaleAvg = filepath;
@@ -225,6 +231,12 @@ namespace Easy_AMM_Poses.src
         {
             config.animPathMaleBig = filepath;
             config.animJsonPathMaleBig = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
+        }
+
+        public void setMaleBigAnimation2(Config config, string filepath)
+        {
+            config.animPathMaleBig2 = filepath;
+            config.animJsonPathMaleBig2 = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
         }
 
         public void setFemaleAvgAnimation2(Config config, string filepath)

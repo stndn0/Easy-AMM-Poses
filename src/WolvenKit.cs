@@ -144,7 +144,7 @@ namespace Easy_AMM_Poses.src
 
 
             // Create Cyberpunk 2077 directory structure
-            Directory.CreateDirectory(@"projects\" + config.projectName + @"\# PACKED\archive\pc\mod");
+            Directory.CreateDirectory(@"projects\" + config.projectName + "_" + config.internalProjectName + @"\# PACKED\archive\pc\mod");
 
             // Start the WolvenKit CLI and pass the required arguments.
             await Cli.Wrap(config.cliPath)

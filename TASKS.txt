@@ -14,3 +14,12 @@ UI:
 valid input.
 - Stop user from clicking buttons WHILE app is doing work.
 - Add reset button that clears all fields and resets the app to its initial state.
+
+
+
+BUG TO FIX
+1. LOAD POSES FROM ANIM FILE
+2. BUILD WORKSPOT
+1. LOAD POSES AGAIN
+
+Error occurs. Needs to be handled!

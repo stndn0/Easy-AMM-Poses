@@ -83,6 +83,11 @@ namespace Easy_AMM_Poses.src
             }
         }
 
+        public string getProjectPackedDirectory()
+        {
+            return @"projects\" + projectName + "_" + internalProjectName + @"\## Packed Folder\archive\pc\mod\";
+        }
+
         public string getProjectControllerDirectory()
         {
             return @"projects\" + projectName + "_" + internalProjectName + @"\" + projectName + @"\base\" + internalProjectName + @"\controller\";
@@ -103,6 +108,22 @@ namespace Easy_AMM_Poses.src
         {
             return @"projects\" + projectName + "_" + internalProjectName + @"\" + projectName;
         }
+
+        public string getProjectDirectory()
+        {
+            return @"projects\" + projectName + "_" + internalProjectName + @"\";
+        }
+
+        public string getPathToPackedArchive()
+        {
+            return @"projects\" + projectName + "_" + internalProjectName + @"\" + projectName + ".archive";
+        }
+
+        public string getProjectLuaDirectory()
+        {
+            return @"projects\" + projectName + "_" + internalProjectName + @"\## Packed Folder\bin\x64\plugins\cyber_engine_tweaks\mods\AppearanceMenuMod\Collabs\Custom Poses\" + projectName + "_" + internalProjectName;
+        }
+
 
         /// <summary>
         /// For a given filepath, strip everything before the "base" substring.
@@ -298,6 +319,36 @@ namespace Easy_AMM_Poses.src
             config.animPathMaleAvg2 = "";
             config.animJsonPathMaleAvg2 = "";
         }
+
+
+        public void resetProject(Config config)
+        {
+                    config.animPathFemaleAvg = "";
+                    config.animPathFemaleBig = "";
+                    config.animJsonPathFemaleAvg = "";
+                    config.animJsonPathFemaleBig = "";
+                    config.animPathMaleAvg = "";
+                    config.animPathMaleBig = "";
+                    config.animJsonPathMaleAvg = "";
+                    config.animJsonPathMaleBig = "";
+                    config.pathToWorkspotJson1 = "";
+                    config.pathToWorkspot1 = "";
+                    config.pathToEntityJson1 = "";
+                    config.pathToEntity1 = "";
+
+                    config.pathToWorkspotJson2 = "";
+                    config.pathToWorkspot2 = "";
+                    config.pathToEntityJson2 = "";
+                    config.pathToEntity2 = "";
+                    config.animPathFemaleAvg2 = "";
+                    config.animPathFemaleBig2 = "";
+                    config.animJsonPathFemaleAvg2 = "";
+                    config.animJsonPathFemaleBig2 = "";
+                    config.animPathMaleAvg2 = "";
+                    config.animPathMaleBig2 = "";
+                    config.animJsonPathMaleAvg2 = "";
+                    config.animJsonPathMaleBig2 = "";
+    }
 
         // Create logging method
 

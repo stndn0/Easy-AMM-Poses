@@ -131,8 +131,6 @@ namespace Easy_AMM_Poses
                 pathToMaleAverageAnim2.IsEnabled = false;
                 pathToFemaleBigAnim2.IsEnabled = false;
                 pathToMaleBigAnim2.IsEnabled = false;
-
-
             }
         }
 
@@ -318,6 +316,7 @@ namespace Easy_AMM_Poses
             if (config.checkIfAllAnimPathsEmpty(config))
             {
                 updateAppStatus("Error: No animation files were provided.");
+                MessageBox.Show("You need to provide at least one animation file to proceed.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -326,6 +325,8 @@ namespace Easy_AMM_Poses
             {
                 Directory.CreateDirectory(config.getProjectAnimsDirectory());
                 Directory.CreateDirectory(config.getProjectResourcesDirectory());
+                Directory.CreateDirectory(config.getProjectPackedDirectory());
+                Directory.CreateDirectory(config.getProjectLuaDirectory());
                 Debug.WriteLine("DEBUG: Project directory created: " + config.getProjectAnimsDirectory());
 
                 // Prevent user from changing the project name now that the directories are already set up.
@@ -579,9 +580,13 @@ namespace Easy_AMM_Poses
             try
             {
                 updateAppStatus("Packing mod...");
-
+                Debug.WriteLine("DEBUG: Packing mod...");
                 Task task1 = Task.Run(async () => await WolvenKit.packMod(config));
+                Debug.WriteLine("DEBUG: Finished packing mod...");
                 await Task.WhenAll(task1);
+
+                Debug.WriteLine("DEBUG: Moving mod files to packed directory...");
+                await FileIO.movePackedToDir(config);
 
                 updateAppStatus("Finished packing mod.");
             }
@@ -594,6 +599,32 @@ namespace Easy_AMM_Poses
             interfaceToggle(true);
         }
 
+        private void ButtonOpenProjectFolderHandler(Object sender, RoutedEventArgs e)
+        {
+            if (config.projectPath != null)
+            {
+                string folderPath = config.getProjectDirectory();
+                Process.Start("explorer.exe", $"\"{folderPath}\"");
+            }
+            else
+            {
+                Debug.WriteLine("DEBUG: Could not find project folder to open.");
+            }
+        }
+
+        private void ButtonOpenLuaFolderHandler(Object sender, RoutedEventArgs e)
+        {
+            if (config.projectPath != null)
+            {
+                string folderPath = config.getProjectLuaDirectory();
+                Process.Start("explorer.exe", $"\"{folderPath}\"");
+            }
+            else
+            {
+                Debug.WriteLine("DEBUG: Could not find lua folder to open.");
+            }
+        }
+
         // Enable or disable UI elements
         // Value must be a boolean
         private void interfaceToggle(Boolean val)
@@ -602,8 +633,8 @@ namespace Easy_AMM_Poses
             btnBuild.IsEnabled = val;
             btnPackMod.IsEnabled = val;
             btnOpenProjectFolder.IsEnabled = val;
+            btnOpenLuaFolder.IsEnabled = val;
         }
-
 
 
         private void ListView_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)

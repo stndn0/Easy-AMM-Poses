@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Easy_AMM_Poses"
         mc:Ignorable="d"
-        Title="Easy AMM Poses by wolv (pre-alpha)" Height="1020" Width="800" Background="#FF1F1F1F">
+        Title="Easy AMM Poses by wolv (alpha)" Height="1020" Width="800" Background="#FF1F1F1F">
     <Window.Resources>
         <Style x:Key="Logo" TargetType="Label">
             <Setter Property="FontSize" Value="30"/>
@@ -87,7 +87,7 @@
                         Easy AMM Poses
                     </Label>
                     <Label FontSize="14" Foreground="white" FontFamily="Cascadia Code Light" 
-                           Content="pre-alpha 0.7 | work in progress" 
+                           Content="alpha 1 | work in progress" 
                            HorizontalAlignment="Center"/>
                     <Label Style="{StaticResource SubheaderLabel01}" Padding="5,5,5,1">
                         Configuration
@@ -392,16 +392,9 @@
                     </Expander>
 
                     <Label Padding="5,5,5,12"></Label>
-                    <Button
-                        x:Name="btnConvert"
-                        Click="ButtonConvertHandler"
-                        Content="Load poses from .anim file(s)"
-                        IsEnabled="False"
-                        Style="{StaticResource Button}"/>
 
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
@@ -414,15 +407,25 @@
                         <Button
                             Grid.Row="0"
                             Grid.Column="0"
+                            x:Name="btnConvert"
+                            Click="ButtonConvertHandler"
+                            Content="1. Load poses"
+                            IsEnabled="False"
+                            Style="{StaticResource Button}"/>
+
+                        <Button
+                            Grid.Row="0"
+                            Grid.Column="1"
                             x:Name="btnBuild"
                             Click="ButtonBuildHandler"
-                            Content="Build files" 
+                            Content="2. Build files" 
+                            IsEnabled="False"
                             Style="{StaticResource Button}"/>
 
                         <Button
                             Visibility="Hidden"
-                            Grid.Row="0"
-                            Grid.Column="1"
+                            Grid.Row="1"
+                            Grid.Column="0"
                             x:Name="btnBuildEntity"
                             Click="ButtonEntityHandler"
                             Content="Build .ent file" 
@@ -439,19 +442,45 @@
 
                         <Button
                             Grid.Row="0"
-                            Grid.Column="1"
+                            Grid.Column="3"
                             x:Name="btnPackMod"
                             Click="ButtonPackHandler"
-                            Content="Pack to .archive" 
-                            Style="{StaticResource Button}"/>
-                        
-                        <Button
-                            Grid.Row="0"
-                            Grid.Column="2"
-                            x:Name="btnOpenProjectFolder"
-                            Content="Open Project Folder" 
+                            Content="3. Pack to .archive" 
+                            IsEnabled="False"
                             Style="{StaticResource Button}"/>
                     </Grid>
+
+                    <Grid>
+                        <!-- Second row with 2 columns -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            x:Name="btnOpenProjectFolder"
+                            Click="ButtonOpenProjectFolderHandler"
+                            Content="Open Project Folder" 
+                            IsEnabled="False"
+                            Style="{StaticResource Button}"/>
+
+                        <Button
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            x:Name="btnOpenLuaFolder"
+                            Click="ButtonOpenLuaFolderHandler"
+                            Content="Open .lua Folder" 
+                            IsEnabled="False"
+                            Style="{StaticResource Button}"/>
+                    </Grid>
+
+
+                        
+           
 
                     <Label Style="{StaticResource PropertyLabel}" FontFamily="#Rajdhani Light">
                         Detected poses will be displayed below...

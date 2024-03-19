@@ -143,9 +143,6 @@ namespace Easy_AMM_Poses.src
             string projectPath = '"' + config.getProjectRootDirectory() + '"';
 
 
-            // Create Cyberpunk 2077 directory structure
-            Directory.CreateDirectory(@"projects\" + config.projectName + "_" + config.internalProjectName + @"\# PACKED\archive\pc\mod");
-
             // Start the WolvenKit CLI and pass the required arguments.
             await Cli.Wrap(config.cliPath)
                 .WithArguments($"pack p {projectPath}")
@@ -156,9 +153,12 @@ namespace Easy_AMM_Poses.src
 
             Debug.WriteLine(stdOutBuffer.ToString());
             Debug.WriteLine(stdErrBuffer.ToString());
-
             return 1;
         }
+
+
+        
+
 
         /// <summary>
         /// Add .workspot or .ent file extension to deserialized REDEngine file.

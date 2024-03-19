@@ -7,6 +7,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>assets\icon1.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +16,10 @@
     <None Remove="assets\fonts\Rajdhani-Medium.ttf" />
     <None Remove="assets\fonts\Rajdhani-Regular.ttf" />
     <None Remove="assets\fonts\Rajdhani-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="assets\icon1.ico" />
   </ItemGroup>
 
   <ItemGroup>

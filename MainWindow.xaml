@@ -287,6 +287,7 @@
                                 <Grid Grid.Column="1" Grid.Row="0">
                                     <Button
                                     x:Name="clearPathFemaleAvg2"
+                                    PreviewMouseDown="buttonClearPathFemaleAvg2"
                                     Style="{StaticResource ButtonClear}"
                                     Content="X">
                                     </Button>
@@ -316,6 +317,7 @@
                                 <Grid Grid.Column="1" Grid.Row="0">
                                     <Button
                                     x:Name="clearPathMaleAvg2"
+                                    PreviewMouseDown="buttonClearPathMaleAvg2"
                                     Style="{StaticResource ButtonClear}"
                                     Content="X">
                                     </Button>
@@ -346,6 +348,7 @@
                                 <Grid Grid.Column="1" Grid.Row="0">
                                     <Button
                                     x:Name="clearPathFemaleBig2"
+                                    PreviewMouseDown="buttonClearPathFemaleBig2"
                                     Style="{StaticResource ButtonClear}"
                                     Content="X">
                                     </Button>
@@ -378,6 +381,7 @@
                                 <Grid Grid.Column="1" Grid.Row="0">
                                     <Button
                                     x:Name="clearPathMaleBig2"
+                                    PreviewMouseDown="buttonClearPathMaleBig2"
                                     Style="{StaticResource ButtonClear}"
                                     Content="X">
                                     </Button>

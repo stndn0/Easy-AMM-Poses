@@ -224,10 +224,15 @@ namespace Easy_AMM_Poses
             string value = FileIO.OpenAnim();
             if (value != null)
             {
-                Debug.WriteLine("DEBUG: Anim file [WB], " + value);
                 config.setFemaleBigAnimation2(config, value);
-                pathToFemaleBigAnim.Text = config.animPathFemaleBig;
+                pathToFemaleBigAnim2.Text = config.animPathFemaleBig2;
             }
+        }
+
+        private void buttonClearPathFemaleBig2(object sender, EventArgs e)
+        {
+            config.setFemaleBigAnimation2(config, "");
+            pathToFemaleBigAnim2.Text = "";
         }
 
         /// <summary>
@@ -257,10 +262,15 @@ namespace Easy_AMM_Poses
             string value = FileIO.OpenAnim();
             if (value != null)
             {
-                Debug.WriteLine("DEBUG: Anim file [WB], " + value);
                 config.setMaleBigAnimation2(config, value);
-                pathToMaleBigAnim.Text = config.animPathMaleBig;
+                pathToMaleBigAnim2.Text = config.animPathMaleBig2;
             }
+        }
+
+        private void buttonClearPathMaleBig2(object sender, EventArgs e)
+        {
+            config.setMaleBigAnimation2(config, "");
+            pathToMaleBigAnim2.Text = "";
         }
 
         private void TextboxFemAnimPathHandler2(object sender, EventArgs e)
@@ -273,6 +283,12 @@ namespace Easy_AMM_Poses
                 pathToFemaleAverageAnim2.Text = config.animPathFemaleAvg2;
             }
         }
+
+        private void buttonClearPathFemaleAvg2(object sender, EventArgs e)
+        {
+            config.setFemaleAvgAnimation2(config, "");
+            pathToFemaleAverageAnim2.Text = "";
+        }
   
         private void TextboxMascAnimPathHandler2(object sender, EventArgs e)
         {
@@ -283,6 +299,12 @@ namespace Easy_AMM_Poses
                 config.setMaleAvgAnimation2(config, value);
                 pathToMaleAverageAnim2.Text = config.animPathMaleAvg2;
             }
+        }
+
+        private void buttonClearPathMaleAvg2(object sender, EventArgs e)
+        {
+            config.setMaleAvgAnimation2(config, "");
+            pathToMaleAverageAnim2.Text = "";
         }
 
         /// <summary>

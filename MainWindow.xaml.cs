@@ -117,6 +117,7 @@ namespace Easy_AMM_Poses
                 pathToMaleAverageAnim2.IsEnabled = true;
                 pathToFemaleBigAnim2.IsEnabled = true;
                 pathToMaleBigAnim2.IsEnabled = true;
+
             }
             else
             {
@@ -256,6 +257,9 @@ namespace Easy_AMM_Poses
                 Directory.CreateDirectory(config.getProjectAnimsDirectory());
                 Directory.CreateDirectory(config.getProjectResourcesDirectory());
                 Debug.WriteLine("DEBUG: Project directory created: " + config.getProjectAnimsDirectory());
+
+                // Prevent user from changing the project name now that the directories are already set up.
+                textboxProjectName.IsEnabled = false;
             }
             else
             {
@@ -267,7 +271,6 @@ namespace Easy_AMM_Poses
             try
             {
                 updateAppStatus("Converting animation file(s). Please wait 5 to 30 seconds..");
-
                 Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg, 1, config, config.womanAverage));
                 Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg, 1, config, config.manAverage));
                 Task task3 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleBig, 1, config, config.manBig));

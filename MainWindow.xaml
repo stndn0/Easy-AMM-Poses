@@ -108,7 +108,7 @@
                         Style="{StaticResource Textbox}"/>
 
                     <Label Style="{StaticResource PropertyLabel}">
-                        Enter mod name (the name of the .archive file)
+                        Enter mod name (the name of the .archive file). You cannot rename this during the build process.
                     </Label>
                     <TextBox
                         x:Name="textboxProjectName"

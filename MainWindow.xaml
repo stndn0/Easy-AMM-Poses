@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Easy_AMM_Poses"
         mc:Ignorable="d"
-        Title="Easy AMM Poses by wolv (pre-alpha)" Height="1080" Width="800" Background="#FF1F1F1F">
+        Title="Easy AMM Poses by wolv (pre-alpha)" Height="1020" Width="800" Background="#FF1F1F1F">
     <Window.Resources>
         <Style x:Key="Logo" TargetType="Label">
             <Setter Property="FontSize" Value="30"/>
@@ -408,6 +408,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
                         <Button
@@ -415,10 +416,11 @@
                             Grid.Column="0"
                             x:Name="btnBuild"
                             Click="ButtonBuildHandler"
-                            Content="Build .workspot file" 
+                            Content="Build files" 
                             Style="{StaticResource Button}"/>
 
                         <Button
+                            Visibility="Hidden"
                             Grid.Row="0"
                             Grid.Column="1"
                             x:Name="btnBuildEntity"
@@ -427,6 +429,7 @@
                             Style="{StaticResource Button}"/>
 
                         <Button
+                            Visibility="Collapsed"
                             Grid.Row="1"
                             Grid.Column="0"
                             x:Name="btnBuildLua"
@@ -435,11 +438,18 @@
                             Style="{StaticResource Button}"/>
 
                         <Button
-                            Grid.Row="1"
+                            Grid.Row="0"
                             Grid.Column="1"
                             x:Name="btnPackMod"
                             Click="ButtonPackHandler"
-                            Content="Pack Cyberpunk 2077 mod" 
+                            Content="Pack to .archive" 
+                            Style="{StaticResource Button}"/>
+                        
+                        <Button
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            x:Name="btnOpenProjectFolder"
+                            Content="Open Project Folder" 
                             Style="{StaticResource Button}"/>
                     </Grid>
 

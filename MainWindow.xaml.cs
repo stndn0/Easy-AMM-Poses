@@ -341,6 +341,10 @@ namespace Easy_AMM_Poses
             try
             {
                 updateAppStatus("Converting animation file(s). Please wait 5 to 30 seconds..");
+
+                // Call conversion method. Each call runs on a separate thread, allowing them to run concurrently.
+                // Using async await so that we can don't block the main thread. UI can now update while tasks are running.
+                // Without async, the GUI would be unresponsive until the tasks are completed.
                 Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg, 1, config, config.womanAverage));
                 Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg, 1, config, config.manAverage));
                 Task task3 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleBig, 1, config, config.manBig));
@@ -422,11 +426,6 @@ namespace Easy_AMM_Poses
                 // Reset project folder and clear pose list
                 MessageBox.Show($"Error #1. Error reading animation file(s). \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 in particular should have the most compatibility.\n(2) Is your .ANIM file valid? Can you open it in the regular WolvenKit GUI? \n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            // Call conversion method. Each call runs on a separate thread, allowing them to run concurrently.
-            // Using async await so that we can don't block the main thread. UI can now update while tasks are running.
-            // Without async, the GUI would be unresponsive until the tasks are completed.
-            
         }
 
         /// <summary>
@@ -509,6 +508,12 @@ namespace Easy_AMM_Poses
                 updateAppStatus("Error: Could not build workspot file.");
                 MessageBox.Show($"Error building workspot file. \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 should have the most compatibility.\n\n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            // Build lua file
+            ButtonLuaHandler(sender, e);
+
+            // Build ent file
+            ButtonEntityHandler(sender, e);
         }
 
         private async void ButtonEntityHandler(Object sender, RoutedEventArgs e)
@@ -532,7 +537,7 @@ namespace Easy_AMM_Poses
                 WolvenKit.AddFileExtension(config.pathToEntityJson1, config, ".ent", 1);
                 WolvenKit.AddFileExtension(config.pathToEntityJson2, config, ".ent", 2);
 
-                updateAppStatus("Finished building .ent file(s)...");
+                updateAppStatus("Finished building mod. Ready to pack!");
             }
             catch (Exception ex)
             {
@@ -540,8 +545,6 @@ namespace Easy_AMM_Poses
                 updateAppStatus("Error: Could not build ent file.");
                 MessageBox.Show($"Error building ent file. \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 should have the most compatibility.\n\n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-
         }
 
         private async void ButtonLuaHandler(Object sender, RoutedEventArgs e)

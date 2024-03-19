@@ -209,10 +209,22 @@ namespace Easy_AMM_Poses.src
             config.animJsonPathFemaleAvg = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
         }
 
+        public void resetFemaleAvgAnimation1(Config config)
+        {
+            config.animPathFemaleAvg = "";
+            config.animJsonPathFemaleAvg = "";
+        }
+
         public void setFemaleBigAnimation1(Config config, string filepath)
         {
             config.animPathFemaleBig = filepath;
             config.animJsonPathFemaleBig = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
+        }
+
+        public void resetFemaleBigAnimation1(Config config)
+        {
+            config.animPathFemaleBig = "";
+            config.animJsonPathFemaleBig = "";
         }
 
         public void setFemaleBigAnimation2(Config config, string filepath)
@@ -221,10 +233,22 @@ namespace Easy_AMM_Poses.src
             config.animJsonPathFemaleBig2 = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
         }
 
+        public void resetFemaleBigAnimation2(Config config)
+        {
+            config.animPathFemaleBig2 = "";
+            config.animJsonPathFemaleBig2 = "";
+        }
+
         public void setMaleAvgAnimation1(Config config, string filepath)
         {
             config.animPathMaleAvg = filepath;
             config.animJsonPathMaleAvg = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
+        }
+
+        public void resetMaleAvgAnimation1(Config config)
+        {
+            config.animPathMaleAvg = "";
+            config.animJsonPathMaleAvg = "";
         }
 
         public void setMaleBigAnimation1(Config config, string filepath)
@@ -233,10 +257,22 @@ namespace Easy_AMM_Poses.src
             config.animJsonPathMaleBig = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
         }
 
+        public void resetMaleBigAnimation1(Config config)
+        {
+            config.animPathMaleBig = "";
+            config.animJsonPathMaleBig = "";
+        }
+
         public void setMaleBigAnimation2(Config config, string filepath)
         {
             config.animPathMaleBig2 = filepath;
             config.animJsonPathMaleBig2 = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
+        }
+
+        public void resetMaleBigAnimation2(Config config)
+        {
+            config.animPathMaleBig2 = "";
+            config.animJsonPathMaleBig2 = "";
         }
 
         public void setFemaleAvgAnimation2(Config config, string filepath)
@@ -245,10 +281,22 @@ namespace Easy_AMM_Poses.src
             config.animJsonPathFemaleAvg2 = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
         }
 
+        public void resetFemaleAvgAnimation2(Config config)
+        {
+            config.animPathFemaleAvg2 = "";
+            config.animJsonPathFemaleAvg2 = "";
+        }
+
         public void setMaleAvgAnimation2(Config config, string filepath)
         {
             config.animPathMaleAvg2 = filepath;
             config.animJsonPathMaleAvg2 = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
+        }
+
+        public void resetMaleAvgAnimation2(Config config)
+        {
+            config.animPathMaleAvg2 = "";
+            config.animJsonPathMaleAvg2 = "";
         }
 
         // Create logging method

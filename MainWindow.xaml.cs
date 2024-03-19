@@ -170,7 +170,7 @@ namespace Easy_AMM_Poses
 
         private void buttonClearPathFemaleAvg1(object sender, EventArgs e)
         {
-            config.setFemaleAvgAnimation1(config, "");
+            config.resetFemaleAvgAnimation1(config);
             pathToFemaleAverageAnim.Text = "";
         }
 
@@ -193,7 +193,7 @@ namespace Easy_AMM_Poses
 
         private void buttonClearPathMaleAvg1(object sender, EventArgs e)
         {
-            config.setMaleAvgAnimation1(config, "");
+            config.resetMaleAvgAnimation1(config);
             pathToMaleAverageAnim.Text = "";
         }
 
@@ -215,7 +215,7 @@ namespace Easy_AMM_Poses
 
         private void buttonClearPathFemaleBig1(object sender, EventArgs e)
         {
-            config.setFemaleBigAnimation1(config, "");
+            config.resetFemaleBigAnimation1(config);
             pathToFemaleBigAnim.Text = "";
         }
 
@@ -231,7 +231,7 @@ namespace Easy_AMM_Poses
 
         private void buttonClearPathFemaleBig2(object sender, EventArgs e)
         {
-            config.setFemaleBigAnimation2(config, "");
+            config.resetFemaleBigAnimation2(config);
             pathToFemaleBigAnim2.Text = "";
         }
 
@@ -253,7 +253,7 @@ namespace Easy_AMM_Poses
 
         private void buttonClearPathMaleBig1(object sender, EventArgs e)
         {
-            config.setMaleBigAnimation1(config, "");
+            config.resetMaleBigAnimation1(config);
             pathToMaleBigAnim.Text = "";
         }
 
@@ -269,7 +269,7 @@ namespace Easy_AMM_Poses
 
         private void buttonClearPathMaleBig2(object sender, EventArgs e)
         {
-            config.setMaleBigAnimation2(config, "");
+            config.resetMaleBigAnimation2(config);
             pathToMaleBigAnim2.Text = "";
         }
 
@@ -286,7 +286,7 @@ namespace Easy_AMM_Poses
 
         private void buttonClearPathFemaleAvg2(object sender, EventArgs e)
         {
-            config.setFemaleAvgAnimation2(config, "");
+            config.resetFemaleAvgAnimation2(config);
             pathToFemaleAverageAnim2.Text = "";
         }
   
@@ -303,7 +303,7 @@ namespace Easy_AMM_Poses
 
         private void buttonClearPathMaleAvg2(object sender, EventArgs e)
         {
-            config.setMaleAvgAnimation2(config, "");
+            config.resetMaleAvgAnimation2(config);
             pathToMaleAverageAnim2.Text = "";
         }
 
@@ -337,6 +337,9 @@ namespace Easy_AMM_Poses
                 updateAppStatus("Error: You need to provide a project name first.");
                 return;
             }
+
+            // Disable parts of the UI while the conversion is running
+            interfaceToggle(false);
 
             try
             {
@@ -414,8 +417,6 @@ namespace Easy_AMM_Poses
                     updateAppStatus("Reading male big animation data (2)");
                     readAnimData(config.animJsonPathMaleBig2, config.manBig, 2);
                 }
-
-
                 updateAppStatus("Conversion complete. Ready to build.");
             }
             catch (Exception ex)
@@ -426,6 +427,7 @@ namespace Easy_AMM_Poses
                 // Reset project folder and clear pose list
                 MessageBox.Show($"Error #1. Error reading animation file(s). \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 in particular should have the most compatibility.\n(2) Is your .ANIM file valid? Can you open it in the regular WolvenKit GUI? \n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            interfaceToggle(true);
         }
 
         /// <summary>
@@ -477,6 +479,7 @@ namespace Easy_AMM_Poses
         private async void ButtonBuildHandler(object sender, RoutedEventArgs e)
         {
             updateAppStatus("Building workspot JSON...");
+            interfaceToggle(false);
 
             try
             {
@@ -514,6 +517,8 @@ namespace Easy_AMM_Poses
 
             // Build ent file
             ButtonEntityHandler(sender, e);
+
+            interfaceToggle(true);
         }
 
         private async void ButtonEntityHandler(Object sender, RoutedEventArgs e)
@@ -570,6 +575,7 @@ namespace Easy_AMM_Poses
 
         private async void ButtonPackHandler(Object sender, RoutedEventArgs e)
         {
+            interfaceToggle(false);
             try
             {
                 updateAppStatus("Packing mod...");
@@ -585,9 +591,20 @@ namespace Easy_AMM_Poses
                 updateAppStatus("Error: WolvenKit couldn't pack your project.");
                 MessageBox.Show($"Error packing project. \n\nYour copy of WolvenKit CLI wasn't able to pack the project file. Ensure you're using CLI 8.13 stable or above. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-
+            interfaceToggle(true);
         }
+
+        // Enable or disable UI elements
+        // Value must be a boolean
+        private void interfaceToggle(Boolean val)
+        {
+            btnConvert.IsEnabled = val;
+            btnBuild.IsEnabled = val;
+            btnPackMod.IsEnabled = val;
+            btnOpenProjectFolder.IsEnabled = val;
+        }
+
+
 
         private void ListView_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {

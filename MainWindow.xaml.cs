@@ -267,6 +267,7 @@ namespace Easy_AMM_Poses
             try
             {
                 updateAppStatus("Converting animation file(s). Please wait 5 to 30 seconds..");
+
                 Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg, 1, config, config.womanAverage));
                 Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg, 1, config, config.manAverage));
                 Task task3 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleBig, 1, config, config.manBig));
@@ -343,8 +344,10 @@ namespace Easy_AMM_Poses
             catch (Exception ex)
             {
                 Debug.WriteLine("DEBUG: Error converting animation file to JSON: " + ex.Message);
-                updateAppStatus("Error: One or more animations couldn't be read by Wolvenkit CLI");
-                MessageBox.Show($"Error reading animation file(s). \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 in particular should have the most compatibility.\n(2) Is your .ANIM file valid? Can you open it in the regular WolvenKit GUI? \n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                updateAppStatus("Error #1. One or more animations couldn't be read by Wolvenkit CLI");
+
+                // Reset project folder and clear pose list
+                MessageBox.Show($"Error #1. Error reading animation file(s). \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 in particular should have the most compatibility.\n(2) Is your .ANIM file valid? Can you open it in the regular WolvenKit GUI? \n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             // Call conversion method. Each call runs on a separate thread, allowing them to run concurrently.

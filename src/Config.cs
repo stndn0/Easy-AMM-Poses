@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 using System.IO;
 
 
@@ -67,7 +68,7 @@ namespace Easy_AMM_Poses.src
             //Directory.CreateDirectory(getProjectResourcesDirectory());
             //Directory.CreateDirectory(@"projects\project1\resources\bin\x64\plugins\cyber_engine_tweaks\mods\AppearanceMenuMod\Collabs\Custom Poses\NAMEHERE");
 
-            internalProjectName = "eap_" + rnd.Next(100000, 10000000);
+            internalProjectName = "eap_" + rnd.Next(100000, 100000000);
 
             // If the config file doesn't exist, create it.
             if (!File.Exists(config.configFilePath))
@@ -84,23 +85,23 @@ namespace Easy_AMM_Poses.src
 
         public string getProjectControllerDirectory()
         {
-            return @"projects\" + projectName + @"\" + projectName + @"\base\" + internalProjectName + @"\controller\";
+            return @"projects\" + projectName + "_" + internalProjectName + @"\" + projectName + @"\base\" + internalProjectName + @"\controller\";
         }
 
         public string getProjectResourcesDirectory()
         {
-            return @"projects\" + projectName + @"\resources\";
+            return @"projects\" + projectName + "_" + internalProjectName + @"\resources\";
         }
 
 
         public string getProjectAnimsDirectory()
         {
-            return @"projects\" + projectName + @"\" + projectName + @"\base\" + internalProjectName + @"\controller\anims\";
+            return @"projects\" + projectName + "_" + internalProjectName + @"\" + projectName + @"\base\" + internalProjectName + @"\controller\anims\";
         }
 
         public string getProjectRootDirectory()
         {
-            return @"projects\" + projectName + @"\" + projectName;
+            return @"projects\" + projectName + "_" + internalProjectName + @"\" + projectName;
         }
 
         /// <summary>
@@ -203,6 +204,7 @@ namespace Easy_AMM_Poses.src
 
         public void setFemaleAvgAnimation1(Config config, string filepath)
         {
+            Debug.WriteLine("Updated female avg animation path: " + filepath);
             config.animPathFemaleAvg = filepath;
             config.animJsonPathFemaleAvg = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
         }

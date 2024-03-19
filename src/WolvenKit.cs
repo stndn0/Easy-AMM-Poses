@@ -37,24 +37,36 @@ namespace Easy_AMM_Poses.src
             // Until the copy is complete, code below it will not run.
             var newAnimationPath = config.getProjectAnimsDirectory() + Path.GetFileName(animPath);
             File.Copy(animPath, newAnimationPath, true);
+            Debug.Write("Copied file");
 
             var newAnimationPath2 = '"' + Path.GetFullPath(newAnimationPath) + '"';
             Debug.WriteLine("DEBUG: Internal animation path is: " + newAnimationPath2);
 
+            // Start the WolvenKit CLI and pass the required arguments.
+            await Cli.Wrap(cliPath)
+                .WithArguments($"convert s {newAnimationPath2}")
+                .WithValidation(CommandResultValidation.None)
+                .WithStandardOutputPipe(PipeTarget.ToStringBuilder(stdOutBuffer))
+                .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))
+                .ExecuteAsync();
+
+            Debug.WriteLine(stdOutBuffer.ToString());
+            Debug.WriteLine(stdErrBuffer.ToString());
+
             // Update file path for anim file 
             if (rigType == config.womanAverage)
             {
-               if (animSlot == 1)
-               {
+                if (animSlot == 1)
+                {
                     config.animPathFemaleAvg = config.convertToRedengineFilepath(newAnimationPath);
                     Debug.WriteLine("DEBUG: Path to WA: " + config.animPathFemaleAvg);
-               }
+                }
                 else if (animSlot == 2)
                 {
                     config.animPathFemaleAvg2 = config.convertToRedengineFilepath(newAnimationPath);
                     Debug.WriteLine("DEBUG: Path to WA2: " + config.animPathFemaleAvg2);
                 }
-                
+
             }
             else if (rigType == config.womanBig)
             {
@@ -78,7 +90,7 @@ namespace Easy_AMM_Poses.src
                 {
                     config.animPathMaleAvg2 = config.convertToRedengineFilepath(newAnimationPath);
                 }
-                
+
             }
             else if (rigType == config.manBig)
             {
@@ -91,19 +103,6 @@ namespace Easy_AMM_Poses.src
                     config.animPathMaleBig2 = config.convertToRedengineFilepath(newAnimationPath);
                 }
             }
-
-
-            // Start the WolvenKit CLI and pass the required arguments.
-            await Cli.Wrap(cliPath)
-                .WithArguments($"convert s {newAnimationPath2}")
-                .WithValidation(CommandResultValidation.None)
-                .WithStandardOutputPipe(PipeTarget.ToStringBuilder(stdOutBuffer))
-                .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))
-                .ExecuteAsync();
-
-            Debug.WriteLine(stdOutBuffer.ToString());
-            Debug.WriteLine(stdErrBuffer.ToString());
-            
             return 1;
         }
 

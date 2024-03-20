@@ -73,6 +73,8 @@ namespace Easy_AMM_Poses
                 config.cliPath = value;
                 pathToCli.Text = config.cliPath;
                 Json.WriteConfigData(config);
+                btnConvert.IsEnabled = true;
+                updateAppStatus("WolvenKit online. Waiting for input...");
             }
         }
 
@@ -346,17 +348,27 @@ namespace Easy_AMM_Poses
             {
                 updateAppStatus("Converting animation file(s). Please wait 5 to 30 seconds..");
 
+                // You can't pass the actual text box values into the async task, so we need to store them in a string first.
+                string fem1 = pathToFemaleAverageAnim.Text;
+                string masc1 = pathToMaleAverageAnim.Text;
+                string fem2 = pathToFemaleBigAnim.Text;
+                string masc2 = pathToMaleBigAnim.Text;
+                string fem3 = pathToFemaleAverageAnim2.Text;
+                string masc3 = pathToMaleAverageAnim2.Text;
+                string fem4 = pathToFemaleBigAnim2.Text;
+                string masc4 = pathToMaleBigAnim2.Text;
+
                 // Call conversion method. Each call runs on a separate thread, allowing them to run concurrently.
                 // Using async await so that we can don't block the main thread. UI can now update while tasks are running.
                 // Without async, the GUI would be unresponsive until the tasks are completed.
-                Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg, 1, config, config.womanAverage));
-                Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg, 1, config, config.manAverage));
-                Task task3 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleBig, 1, config, config.manBig));
-                Task task4 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleBig, 1, config, config.womanBig));
-                Task task5 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleAvg2, 2, config, config.womanAverage));
-                Task task6 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleAvg2, 2, config, config.manAverage));
-                Task task7 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathMaleBig2, 2, config, config.manBig));
-                Task task8 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, config.animPathFemaleBig2, 2, config, config.womanBig));
+                Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, fem1, 1, config, config.womanAverage));
+                Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, masc1, 1, config, config.manAverage));
+                Task task3 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, fem2, 1, config, config.manBig));
+                Task task4 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, masc2, 1, config, config.womanBig));
+                Task task5 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, fem3, 2, config, config.womanAverage));
+                Task task6 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, masc3, 2, config, config.manAverage));
+                Task task7 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, fem4, 2, config, config.manBig));
+                Task task8 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, masc4, 2, config, config.womanBig));
 
                 // Wait until all tasks are completed before proceeding. Await temporarily suspends the method.
                 await Task.WhenAll(task1, task2, task3, task4, task5, task6, task7, task8);

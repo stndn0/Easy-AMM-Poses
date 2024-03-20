@@ -36,6 +36,8 @@ namespace Easy_AMM_Poses.src
             // Note: File.Copy is a synchronous operation. 
             // Until the copy is complete, code below it will not run.
             var newAnimationPath = config.getProjectAnimsDirectory() + Path.GetFileName(animPath);
+            Debug.WriteLine("\n\nAnimation path is " + animPath);
+            Debug.WriteLine("DEBUG: New animation path is: " + newAnimationPath);
             File.Copy(animPath, newAnimationPath, true);
             Debug.Write("Copied file");
 

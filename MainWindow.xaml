@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="Easy AMM Poses by wolv (alpha)" Height="1020" Width="800" Background="#FF1F1F1F">
     <Window.Resources>
+        
+        
+        
+        
         <Style x:Key="Logo" TargetType="Label">
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="Foreground" Value="white"/>
@@ -61,18 +65,54 @@
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="BorderThickness" Value="0.8"/>
         </Style>
+        <Style x:Key="mainToolbar" TargetType="Menu">
+            <Setter Property="Background" Value="#282828"/>
+            <Setter Property ="FontFamily" Value="/assets/fonts/#Rajdhani Medium"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
 
-
+        <Style x:Key="MenuStyle1" TargetType="{x:Type Menu}">
+            <Setter Property="Background" Value="#121212"/>
+            <Setter Property ="FontFamily" Value="/assets/fonts/#Rajdhani Medium"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="Padding" Value="12,8,12,8"/>
+        </Style>
     </Window.Resources>
+    
+    
+
     <Grid ShowGridLines="False">
+
+        
+        
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
 
-        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="0">
+
+        <Grid Grid.Row="0">
+            <DockPanel>
+                <Menu DockPanel.Dock="Top" Style="{StaticResource MenuStyle1}">
+                    <MenuItem 
+                        Header="Reset/Start Over"
+                        Click="ButtonRestartHandler">
+                    </MenuItem>
+                    <MenuItem Header="View on GitHub">
+                        <MenuItem Header="Open"/>
+                    </MenuItem>
+                </Menu>
+                <StackPanel></StackPanel>
+            </DockPanel>
+
+
+        </Grid>
+
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
             <Grid Margin="16,16,16,16">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

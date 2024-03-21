@@ -5,12 +5,8 @@ using System.Text.RegularExpressions;
 namespace Easy_AMM_Poses.src
 {
     /**
-     * Q: "Why are you rolling your own manual solution? Why don't you use NLua?"
-     * A: Because when I tried using a third party library (NLua), the package simply
-     * would not install. And when it did install, it had issues that weren't covered
-     * by the documentation, nor did I find anything helpful on their bug tracker on GitHub.
-     * 
-     * Hence, i'm rolling my own manual solution. It's not ideal but it's the only way.
+     * NLua wasn't cooperating with me so i'm rolling my own manual solution. 
+     * It's not ideal but it's the only way.
     */
 
 
@@ -21,6 +17,14 @@ namespace Easy_AMM_Poses.src
         {
             Debug.WriteLine("DEBUG: Reading Lua template");
             string luaFile = File.ReadAllText(@"templates\lua_template.lua");
+
+            // For the optional lua file, if there aren't any poses assigned to it then don't create the file
+            if (fileNumber == 2 && !config.checkIfOptionalAnimsProvided(config))
+            {
+                Debug.WriteLine("DEBUG: No optional animations provided. Skipping lua file creation...");
+                return 0;
+            }
+
 
             string maleAveragePoses = "";
             string femaleAveragePoses = "";

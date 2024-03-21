@@ -525,13 +525,8 @@ namespace Easy_AMM_Poses
                 MessageBox.Show($"Error building workspot file. \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 should have the most compatibility.\n\n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            // Build lua file
-            ButtonLuaHandler(sender, e);
-
-            // Build ent file
+            // Build ent and lua file
             ButtonEntityHandler(sender, e);
-
-            interfaceToggle(true);
         }
 
         private async void ButtonEntityHandler(Object sender, RoutedEventArgs e)
@@ -555,7 +550,11 @@ namespace Easy_AMM_Poses
                 WolvenKit.AddFileExtension(config.pathToEntityJson1, config, ".ent", 1);
                 WolvenKit.AddFileExtension(config.pathToEntityJson2, config, ".ent", 2);
 
+                // Build lua file
+                ButtonLuaHandler(sender, e);
+
                 updateAppStatus("Finished building mod. Ready to pack!");
+                interfaceToggle(true);
             }
             catch (Exception ex)
             {
@@ -575,8 +574,6 @@ namespace Easy_AMM_Poses
                 Task task1 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config, config.pathToEntity1, 1));
                 Task task2 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config, config.pathToEntity2, 2));
                 await Task.WhenAll(task1, task2);
-
-                updateAppStatus("Finished buiding lua file(s).");
             }
             catch (Exception ex)
             {
@@ -584,6 +581,7 @@ namespace Easy_AMM_Poses
                 updateAppStatus("Error: Error building lua file.");
                 MessageBox.Show($"Error building lua file. \n\nThis is a rare error that shouldn't happen... contact me for help. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            
         }
 
         private async void ButtonPackHandler(Object sender, RoutedEventArgs e)
@@ -594,11 +592,12 @@ namespace Easy_AMM_Poses
                 updateAppStatus("Packing mod...");
                 Debug.WriteLine("DEBUG: Packing mod...");
                 Task task1 = Task.Run(async () => await WolvenKit.packMod(config));
-                Debug.WriteLine("DEBUG: Finished packing mod...");
                 await Task.WhenAll(task1);
+                Debug.WriteLine("DEBUG: Finished packing mod...");
 
                 Debug.WriteLine("DEBUG: Moving mod files to packed directory...");
-                await FileIO.movePackedToDir(config);
+                Task task2 = Task.Run(async () => await FileIO.movePackedToDir(config));
+                await Task.WhenAll(task2);
 
                 updateAppStatus("Finished packing mod.");
             }
@@ -635,6 +634,29 @@ namespace Easy_AMM_Poses
             {
                 Debug.WriteLine("DEBUG: Could not find lua folder to open.");
             }
+        }
+
+        private void ButtonRestartHandler(Object sender, RoutedEventArgs e)
+        {
+            poseList.Clear();
+            config.resetProject(config);
+            
+            textboxCategory.Text = "";
+            textboxProjectName.Text = "";
+            pathToFemaleAverageAnim.Text = "";
+            pathToMaleAverageAnim.Text = "";
+            pathToFemaleBigAnim.Text = "";
+            pathToMaleBigAnim.Text = "";
+            pathToFemaleAverageAnim2.Text = "";
+            pathToMaleAverageAnim2.Text = "";
+            pathToFemaleBigAnim2.Text = "";
+            pathToMaleBigAnim2.Text = "";
+            entries.Items.Clear();
+            textboxProjectName.IsEnabled = true;
+            interfaceToggle(false);
+            btnConvert.IsEnabled = true;
+
+            updateAppStatus("Project has been reset.");
         }
 
         // Enable or disable UI elements

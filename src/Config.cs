@@ -9,6 +9,8 @@ namespace Easy_AMM_Poses.src
     public class Config
     {
         Random rnd = new Random();                      // Used in method to set internal project name.
+        int randMin = 10000000;
+        int randMax = 100000000;
 
         // Project and general configuration settings
         public string cliPath = "";
@@ -68,7 +70,7 @@ namespace Easy_AMM_Poses.src
             //Directory.CreateDirectory(getProjectResourcesDirectory());
             //Directory.CreateDirectory(@"projects\project1\resources\bin\x64\plugins\cyber_engine_tweaks\mods\AppearanceMenuMod\Collabs\Custom Poses\NAMEHERE");
 
-            internalProjectName = "eap_" + rnd.Next(100000, 100000000);
+            internalProjectName = "eap_" + rnd.Next(randMin, randMax);
 
             // If the config file doesn't exist, create it.
             if (!File.Exists(config.configFilePath))
@@ -153,6 +155,7 @@ namespace Easy_AMM_Poses.src
             return "null";
         }
 
+        // Return true if all paths are empty.
         public bool checkIfAllAnimPathsEmpty(Config config)
         {
             // At least one animation path must be provided.
@@ -199,18 +202,15 @@ namespace Easy_AMM_Poses.src
         }
 
 
+        // Return true if optional anims are provided.
         public bool checkIfOptionalAnimsProvided(Config config)
         {
-            if (string.IsNullOrEmpty(config.animPathFemaleAvg2) && string.IsNullOrEmpty(config.animPathMaleAvg2))
+            if (string.IsNullOrEmpty(config.animPathFemaleAvg2) && string.IsNullOrEmpty(config.animPathMaleAvg2) && string.IsNullOrEmpty(config.animPathFemaleBig2) && string.IsNullOrEmpty(config.animPathMaleBig2))
             {
                 return false;
             }
-            if (string.IsNullOrEmpty(config.animPathFemaleBig2) && string.IsNullOrEmpty(config.animPathMaleBig2))
-            {
-                return false;
-            }
-
             return true;
+
         }
 
         public void setInternalProjectName()
@@ -323,32 +323,38 @@ namespace Easy_AMM_Poses.src
 
         public void resetProject(Config config)
         {
-                    config.animPathFemaleAvg = "";
-                    config.animPathFemaleBig = "";
-                    config.animJsonPathFemaleAvg = "";
-                    config.animJsonPathFemaleBig = "";
-                    config.animPathMaleAvg = "";
-                    config.animPathMaleBig = "";
-                    config.animJsonPathMaleAvg = "";
-                    config.animJsonPathMaleBig = "";
-                    config.pathToWorkspotJson1 = "";
-                    config.pathToWorkspot1 = "";
-                    config.pathToEntityJson1 = "";
-                    config.pathToEntity1 = "";
+            config.animPathFemaleAvg = "";
+            config.animPathFemaleBig = "";
+            config.animJsonPathFemaleAvg = "";
+            config.animJsonPathFemaleBig = "";
+            config.animPathMaleAvg = "";
+            config.animPathMaleBig = "";
+            config.animJsonPathMaleAvg = "";
+            config.animJsonPathMaleBig = "";
+            config.pathToWorkspotJson1 = "";
+            config.pathToWorkspot1 = "";
+            config.pathToEntityJson1 = "";
+            config.pathToEntity1 = "";
 
-                    config.pathToWorkspotJson2 = "";
-                    config.pathToWorkspot2 = "";
-                    config.pathToEntityJson2 = "";
-                    config.pathToEntity2 = "";
-                    config.animPathFemaleAvg2 = "";
-                    config.animPathFemaleBig2 = "";
-                    config.animJsonPathFemaleAvg2 = "";
-                    config.animJsonPathFemaleBig2 = "";
-                    config.animPathMaleAvg2 = "";
-                    config.animPathMaleBig2 = "";
-                    config.animJsonPathMaleAvg2 = "";
-                    config.animJsonPathMaleBig2 = "";
-    }
+            config.pathToWorkspotJson2 = "";
+            config.pathToWorkspot2 = "";
+            config.pathToEntityJson2 = "";
+            config.pathToEntity2 = "";
+            config.animPathFemaleAvg2 = "";
+            config.animPathFemaleBig2 = "";
+            config.animJsonPathFemaleAvg2 = "";
+            config.animJsonPathFemaleBig2 = "";
+            config.animPathMaleAvg2 = "";
+            config.animPathMaleBig2 = "";
+            config.animJsonPathMaleAvg2 = "";
+            config.animJsonPathMaleBig2 = "";
+
+            luaCategoryName = "";
+            projectName = "";
+            projectPath = "";
+
+            internalProjectName = "eap_" + rnd.Next(randMin, randMax);
+        }
 
         // Create logging method
 

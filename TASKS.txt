@@ -18,8 +18,4 @@ valid input.
 
 
 BUG TO FIX
-1. LOAD POSES FROM ANIM FILE
-2. BUILD WORKSPOT
-1. LOAD POSES AGAIN
-
-Error occurs. Needs to be handled!
+1. error when packing mod - archive doesnt get created in time - cant get moved

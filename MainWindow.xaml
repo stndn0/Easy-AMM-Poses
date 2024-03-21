@@ -5,12 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Easy_AMM_Poses"
         mc:Ignorable="d"
-        Title="Easy AMM Poses by wolv (alpha)" Height="1020" Width="800" Background="#FF1F1F1F">
+        Title="Easy AMM Poses by wolv" Height="1020" Width="800" Background="#FF1F1F1F">
     <Window.Resources>
-        
-        
-        
-        
         <Style x:Key="Logo" TargetType="Label">
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="Foreground" Value="white"/>
@@ -79,21 +75,14 @@
             <Setter Property="Padding" Value="12,8,12,8"/>
         </Style>
     </Window.Resources>
-    
-    
+
 
     <Grid ShowGridLines="False">
-
-        
-        
-        
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-
-
 
         <Grid Grid.Row="0">
             <DockPanel>
@@ -102,8 +91,7 @@
                         Header="Reset/Start Over"
                         Click="ButtonRestartHandler">
                     </MenuItem>
-                    <MenuItem Header="View on GitHub">
-                        <MenuItem Header="Open"/>
+                    <MenuItem Header="View on GitHub" Click="ButtonGithubHandler">
                     </MenuItem>
                 </Menu>
                 <StackPanel></StackPanel>
@@ -127,13 +115,13 @@
                         Easy AMM Poses
                     </Label>
                     <Label FontSize="14" Foreground="white" FontFamily="Cascadia Code Light" 
-                           Content="alpha 0.41 | work in progress " 
+                           Content="alpha 0.42 | work in progress " 
                            HorizontalAlignment="Center"/>
                     <Label Style="{StaticResource SubheaderLabel01}" Padding="5,5,5,1">
                         Configuration
                     </Label>
                     <Label Style="{StaticResource PropertyLabel}">
-                        Path to WolvenKit CLI executable. Use stable version only (version 8.12 or above)
+                        Path to WolvenKit CLI executable. Use stable version only (version 8.13 or above)
                     </Label>
                     <TextBox 
                         x:Name="pathToCli"
@@ -396,9 +384,6 @@
                             </Grid>
 
 
-
-                            
-                            
                             <Label Style="{StaticResource PropertyLabel}">Load MB (masc big) animation file</Label>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -517,10 +502,6 @@
                             IsEnabled="False"
                             Style="{StaticResource Button}"/>
                     </Grid>
-
-
-                        
-           
 
                     <Label Style="{StaticResource PropertyLabel}" FontFamily="#Rajdhani Light">
                         Detected poses will be displayed below...

@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.Windows;
 using Easy_AMM_Poses.src;
 using Newtonsoft.Json.Linq;
+using System.Security.Policy;
 
 namespace Easy_AMM_Poses
 {
@@ -657,6 +658,12 @@ namespace Easy_AMM_Poses
             btnConvert.IsEnabled = true;
 
             updateAppStatus("Project has been reset.");
+        }
+
+        private void ButtonGithubHandler(Object sender, RoutedEventArgs e)
+        {
+            string url = "https://github.com/stndn0/Easy-AMM-Poses";
+            Process.Start("explorer.exe", url);
         }
 
         // Enable or disable UI elements

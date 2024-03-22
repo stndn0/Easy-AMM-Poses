@@ -107,8 +107,8 @@ namespace Easy_AMM_Poses
             // If the user has provided a project name, enable the animation file input fields.
             if (textboxProjectName.Text != "")
             {
-                config.projectName = textboxProjectName.Text;
-                config.projectPath = "projects/" + textboxProjectName.Text;
+                config.projectName = textboxProjectName.Text.Trim();
+                config.projectPath = "projects/" + textboxProjectName.Text.Trim();
                 Debug.WriteLine("DEBUG: Project Name, " + config.projectName);
                 Debug.WriteLine("DEBUG: Project Path, " + config.projectPath);
 
@@ -198,6 +198,41 @@ namespace Easy_AMM_Poses
             pathToMaleAverageAnim.Text = "";
         }
 
+
+        private void TextboxFemAnimPathHandler2(object sender, EventArgs e)
+        {
+            string value = FileIO.OpenAnim();
+            if (value != null)
+            {
+                Debug.WriteLine("DEBUG: Anim file 2 [WA], " + value);
+                config.setFemaleAvgAnimation2(config, value);
+                pathToFemaleAverageAnim2.Text = config.animPathFemaleAvg2;
+            }
+        }
+
+        private void buttonClearPathFemaleAvg2(object sender, EventArgs e)
+        {
+            config.resetFemaleAvgAnimation2(config);
+            pathToFemaleAverageAnim2.Text = "";
+        }
+
+        private void TextboxMascAnimPathHandler2(object sender, EventArgs e)
+        {
+            string value = FileIO.OpenAnim();
+            if (value != null)
+            {
+                Debug.WriteLine("DEBUG: Anim file 2 [MA], " + value);
+                config.setMaleAvgAnimation2(config, value);
+                pathToMaleAverageAnim2.Text = config.animPathMaleAvg2;
+            }
+        }
+
+        private void buttonClearPathMaleAvg2(object sender, EventArgs e)
+        {
+            config.resetMaleAvgAnimation2(config);
+            pathToMaleAverageAnim2.Text = "";
+        }
+
         /// <summary>
         /// Handle user input on textbox for WB animation file path.
         /// </summary>
@@ -220,6 +255,24 @@ namespace Easy_AMM_Poses
             pathToFemaleBigAnim.Text = "";
         }
 
+
+        private void TextboxMBAnimPathHandler(object sender, EventArgs e)
+        {
+            string value = FileIO.OpenAnim();
+            if (value != null)
+            {
+                Debug.WriteLine("DEBUG: Anim file [MB], " + value);
+                config.setMaleBigAnimation1(config, value);
+                pathToMaleBigAnim.Text = config.animPathMaleBig;
+            }
+        }
+
+        private void buttonClearPathMaleBig1(object sender, EventArgs e)
+        {
+            config.resetMaleBigAnimation1(config);
+            pathToMaleBigAnim.Text = "";
+        }
+
         private void TextboxWBAnimPathHandler2(object sender, EventArgs e)
         {
             string value = FileIO.OpenAnim();
@@ -236,27 +289,7 @@ namespace Easy_AMM_Poses
             pathToFemaleBigAnim2.Text = "";
         }
 
-        /// <summary>
-        /// Handle user input on textbox for MB animation file path.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TextboxMBAnimPathHandler(object sender, EventArgs e)
-        {
-            string value = FileIO.OpenAnim();
-            if (value != null)
-            {
-                Debug.WriteLine("DEBUG: Anim file [WB], " + value);
-                config.setMaleBigAnimation1(config, value);
-                pathToMaleBigAnim.Text = config.animPathMaleBig;
-            }
-        }
 
-        private void buttonClearPathMaleBig1(object sender, EventArgs e)
-        {
-            config.resetMaleBigAnimation1(config);
-            pathToMaleBigAnim.Text = "";
-        }
 
         private void TextboxMBAnimPathHandler2(object sender, EventArgs e)
         {
@@ -274,39 +307,7 @@ namespace Easy_AMM_Poses
             pathToMaleBigAnim2.Text = "";
         }
 
-        private void TextboxFemAnimPathHandler2(object sender, EventArgs e)
-        {
-            string value = FileIO.OpenAnim();
-            if (value != null)
-            {
-                Debug.WriteLine("DEBUG: Anim file 2 [WA], " + value);
-                config.setFemaleAvgAnimation2(config, value);
-                pathToFemaleAverageAnim2.Text = config.animPathFemaleAvg2;
-            }
-        }
 
-        private void buttonClearPathFemaleAvg2(object sender, EventArgs e)
-        {
-            config.resetFemaleAvgAnimation2(config);
-            pathToFemaleAverageAnim2.Text = "";
-        }
-  
-        private void TextboxMascAnimPathHandler2(object sender, EventArgs e)
-        {
-            string value = FileIO.OpenAnim();
-            if (value != null)
-            {
-                Debug.WriteLine("DEBUG: Anim file 2 [MA], " + value);
-                config.setMaleAvgAnimation2(config, value);
-                pathToMaleAverageAnim2.Text = config.animPathMaleAvg2;
-            }
-        }
-
-        private void buttonClearPathMaleAvg2(object sender, EventArgs e)
-        {
-            config.resetMaleAvgAnimation2(config);
-            pathToMaleAverageAnim2.Text = "";
-        }
 
         /// <summary>
         /// Handle button press for "Load Poses from .ANIM".
@@ -364,12 +365,12 @@ namespace Easy_AMM_Poses
                 // Without async, the GUI would be unresponsive until the tasks are completed.
                 Task task1 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, fem1, 1, config, config.womanAverage));
                 Task task2 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, masc1, 1, config, config.manAverage));
-                Task task3 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, fem2, 1, config, config.manBig));
-                Task task4 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, masc2, 1, config, config.womanBig));
+                Task task3 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, fem2, 1, config, config.womanBig));
+                Task task4 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, masc2, 1, config, config.manBig));
                 Task task5 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, fem3, 2, config, config.womanAverage));
                 Task task6 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, masc3, 2, config, config.manAverage));
-                Task task7 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, fem4, 2, config, config.manBig));
-                Task task8 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, masc4, 2, config, config.womanBig));
+                Task task7 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, fem4, 2, config, config.womanBig));
+                Task task8 = Task.Run(async () => await WolvenKit.ConvertAnimToJson(config.cliPath, masc4, 2, config, config.manBig));
 
                 // Wait until all tasks are completed before proceeding. Await temporarily suspends the method.
                 await Task.WhenAll(task1, task2, task3, task4, task5, task6, task7, task8);

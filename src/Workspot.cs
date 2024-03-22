@@ -22,7 +22,12 @@ namespace Easy_AMM_Poses.src
                 return -1;
             }
 
-            Debug.WriteLine("DEBUG: Building workspot JSON...");
+            Debug.WriteLine("\n\nDEBUG: Building workspot JSON...");
+            Debug.WriteLine("Female anim path: " + femAnimPath);
+            Debug.WriteLine("Male anim path: " + manAnimPath);
+            Debug.WriteLine("Female big anim path: " + femBigAnimPath);
+            Debug.WriteLine("Man big anim path: " + manBigAnimPath);
+
 
             // Load core workspot file and deserialize to dynamic object.
             string pathToWorkspotJson = @"templates\workspot.json";

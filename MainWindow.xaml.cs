@@ -440,7 +440,7 @@ namespace Easy_AMM_Poses
                 updateAppStatus("Error #1. One or more animations couldn't be read by Wolvenkit CLI");
 
                 // Reset project folder and clear pose list
-                MessageBox.Show($"Error #1. Error reading animation file(s). \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 in particular should have the most compatibility.\n(2) Is your .ANIM file valid? Can you open it in the regular WolvenKit GUI? \n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Error #1. Error reading animation file(s). \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 in particular should have the most compatibility.\n(2) Is your .ANIM file valid? Can you open it in the regular WolvenKit GUI? \n\nIf you're still having issues let me know and i'll try to help.  \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             interfaceToggle(true);
         }
@@ -524,7 +524,7 @@ namespace Easy_AMM_Poses
             {
                 Debug.WriteLine("DEBUG: Error building workspot: " + ex.Message);
                 updateAppStatus("Error: Could not build workspot file.");
-                MessageBox.Show($"Error building workspot file. \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 should have the most compatibility.\n\n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Error building workspot file. \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 should have the most compatibility.\n\n\nIf you're still having issues please let me know and i'll try to help. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             // Build ent and lua file
@@ -562,7 +562,7 @@ namespace Easy_AMM_Poses
             {
                 Debug.WriteLine("DEBUG: Error building ent file: " + ex.Message);
                 updateAppStatus("Error: Could not build ent file.");
-                MessageBox.Show($"Error building ent file. \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 should have the most compatibility.\n\n\nIf you're still having issues please let me know and i'll try to help. Sorry about that. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Error building ent file. \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 should have the most compatibility.\n\n\nIf you're still having issues please let me know and i'll try to help. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

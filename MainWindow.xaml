@@ -115,7 +115,7 @@
                         Easy AMM Poses
                     </Label>
                     <Label FontSize="14" Foreground="white" FontFamily="Cascadia Code Light" 
-                           Content="alpha 0.42 | work in progress " 
+                           Content="beta 1 (v0.80) | work in progress" 
                            HorizontalAlignment="Center"/>
                     <Label Style="{StaticResource SubheaderLabel01}" Padding="5,5,5,1">
                         Configuration

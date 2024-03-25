@@ -6,7 +6,7 @@ namespace Easy_AMM_Poses.src
 {
     /// <summary>
     /// Class pertaining to the configuration settings of the application.
-    /// The "memory" of the applicaiton. A lot of key variables are stored here.
+    /// The "memory" of the application. A lot of key variables are stored here.
     /// </summary>
     public class Config
     {

@@ -1,13 +1,21 @@
-﻿using Newtonsoft.Json.Linq;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 
 
 namespace Easy_AMM_Poses.src
 {
-    // Store user configuration settings.
+    /// <summary>
+    /// Class pertaining to the configuration settings of the application.
+    /// The "memory" of the applicaiton. A lot of key variables are stored here.
+    /// </summary>
     public class Config
     {
+        // **********************************************************
+        // **********************************************************
+        //                  Key appliation variables
+        // **********************************************************
+        // **********************************************************
+
         Random rnd = new Random();                      // Used in method to set internal project name.
         int randMin = 10000000;
         int randMax = 100000000;
@@ -57,18 +65,16 @@ namespace Easy_AMM_Poses.src
         public string manBig = "MB";
 
 
+        /// <summary>
+        /// Set the configuration json file for the application.
+        /// The configuration file stores the user's CLI path and username and is persistent.
+        /// </summary>
+        /// <param name="config"></param>
         public void SetConfigFile(Config config)
         {
             // Create the configuration directory. If the folder already exists, it'll be ignored.
             Directory.CreateDirectory("config");
             Directory.CreateDirectory("temp");
-
-            // Create mod directory
-            //Directory.CreateDirectory(getProjectAnimsDirectory());
-
-            // Store mod resources (.lua files)
-            //Directory.CreateDirectory(getProjectResourcesDirectory());
-            //Directory.CreateDirectory(@"projects\project1\resources\bin\x64\plugins\cyber_engine_tweaks\mods\AppearanceMenuMod\Collabs\Custom Poses\NAMEHERE");
 
             internalProjectName = "eap_" + rnd.Next(randMin, randMax);
 
@@ -85,6 +91,20 @@ namespace Easy_AMM_Poses.src
             }
         }
 
+        public void setInternalProjectName()
+        {
+            // Internal project name needs to be unique and random so that it 
+            // doesn't conflict with other mods created by the user, or other
+            // mods created by EAP.
+            Random rnd = new Random();
+            internalProjectName = "eap_" + rnd.Next(1, 20000);
+        }
+
+
+        // **********************************************************
+        //              Key methods pertaining to filepaths
+        // **********************************************************
+
         public string getProjectPackedDirectory()
         {
             return @"projects\" + projectName + "_" + internalProjectName + @"\## Packed Folder\archive\pc\mod\";
@@ -99,7 +119,6 @@ namespace Easy_AMM_Poses.src
         {
             return @"projects\" + projectName + "_" + internalProjectName + @"\resources\";
         }
-
 
         public string getProjectAnimsDirectory()
         {
@@ -125,7 +144,6 @@ namespace Easy_AMM_Poses.src
         {
             return @"projects\" + projectName + "_" + internalProjectName + @"\## Packed Folder\bin\x64\plugins\cyber_engine_tweaks\mods\AppearanceMenuMod\Collabs\Custom Poses\" + projectName + "_" + internalProjectName;
         }
-
 
         /// <summary>
         /// For a given filepath, strip everything before the "base" substring.
@@ -155,7 +173,11 @@ namespace Easy_AMM_Poses.src
             return "null";
         }
 
-        // Return true if all paths are empty.
+        /// <summary>
+        /// Check if all animation paths are empty.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns>true if all paths empty, else false.</returns>
         public bool checkIfAllAnimPathsEmpty(Config config)
         {
             // At least one animation path must be provided.
@@ -202,7 +224,11 @@ namespace Easy_AMM_Poses.src
         }
 
 
-        // Return true if optional anims are provided.
+        /// <summary>
+        /// Check if optional animations (workspot 2) are provided. 
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns>true if optional animations (workspot 2) are provided. Else false.</returns>
         public bool checkIfOptionalAnimsProvided(Config config)
         {
             if (string.IsNullOrEmpty(config.animPathFemaleAvg2) && string.IsNullOrEmpty(config.animPathMaleAvg2) && string.IsNullOrEmpty(config.animPathFemaleBig2) && string.IsNullOrEmpty(config.animPathMaleBig2))
@@ -210,19 +236,12 @@ namespace Easy_AMM_Poses.src
                 return false;
             }
             return true;
-
-        }
-
-        public void setInternalProjectName()
-        {
-            // Internal project name needs to be unique and random so that it 
-            // doesn't conflict with other mods created by the user, or other
-            // mods created by EAP.
-            Random rnd = new Random();
-            internalProjectName = "eap_" + rnd.Next(1, 20000);
         }
 
 
+        // **********************************************************
+        // Handle variables for woman animations (WA1, WA2, WB1, WB2)
+        // **********************************************************
         public void setFemaleAvgAnimation1(Config config, string filepath)
         {
             Debug.WriteLine("Updated female avg animation path: " + filepath);
@@ -236,6 +255,17 @@ namespace Easy_AMM_Poses.src
             config.animJsonPathFemaleAvg = "";
         }
 
+        public void setFemaleAvgAnimation2(Config config, string filepath)
+        {
+            config.animPathFemaleAvg2 = filepath;
+            config.animJsonPathFemaleAvg2 = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
+        }
+
+        public void resetFemaleAvgAnimation2(Config config)
+        {
+            config.animPathFemaleAvg2 = "";
+            config.animJsonPathFemaleAvg2 = "";
+        }
         public void setFemaleBigAnimation1(Config config, string filepath)
         {
             config.animPathFemaleBig = filepath;
@@ -259,6 +289,10 @@ namespace Easy_AMM_Poses.src
             config.animPathFemaleBig2 = "";
             config.animJsonPathFemaleBig2 = "";
         }
+
+        // **********************************************************
+        // Handle variables for man animations (MA1, MA2, MB1, MB2)
+        // **********************************************************
 
         public void setMaleAvgAnimation1(Config config, string filepath)
         {
@@ -296,18 +330,6 @@ namespace Easy_AMM_Poses.src
             config.animJsonPathMaleBig2 = "";
         }
 
-        public void setFemaleAvgAnimation2(Config config, string filepath)
-        {
-            config.animPathFemaleAvg2 = filepath;
-            config.animJsonPathFemaleAvg2 = config.getProjectAnimsDirectory() + Path.GetFileName(filepath) + ".json";
-        }
-
-        public void resetFemaleAvgAnimation2(Config config)
-        {
-            config.animPathFemaleAvg2 = "";
-            config.animJsonPathFemaleAvg2 = "";
-        }
-
         public void setMaleAvgAnimation2(Config config, string filepath)
         {
             config.animPathMaleAvg2 = filepath;
@@ -321,6 +343,7 @@ namespace Easy_AMM_Poses.src
         }
 
 
+        // Reset all project variables.
         public void resetProject(Config config)
         {
             config.animPathFemaleAvg = "";
@@ -352,16 +375,7 @@ namespace Easy_AMM_Poses.src
             luaCategoryName = "";
             projectName = "";
             projectPath = "";
-
             internalProjectName = "eap_" + rnd.Next(randMin, randMax);
-        }
-
-        // Create logging method
-
-        public void updateLog(String message)
-        {
-            // Update log
-            //logBox.Text += message + "\n";
         }
     }
 }

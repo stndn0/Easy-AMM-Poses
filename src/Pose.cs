@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Easy_AMM_Poses.src
+﻿namespace Easy_AMM_Poses.src
 {
     /// <summary>
-    /// Store the pose data from animation JSON file.
-    /// </summary>
+    /// New class instances of type Pose are created for each pose that is detected in the 
+    /// animation files that the user provides.
     public class Pose
     {
         public string Name { get; set; }
         public string BodyType { get; set; }
 
-        // By default, users load poses into slot 1.
-        // However, if the user clicks the optional button to add more animation files, then poses from these optional 
-        // files are loaded into slot 2.
-        // We need slot seperation to determine which poses to load into which workspot.
-        // Poses with slot 1 is for the first workspot, and slot 2 is for the second workspot.
+        // By default, users load poses into slot 1 (main four animation slots in the UI).
+        // However, if the user clicks the optional arrow button to add more animation files,
+        // then poses from these optional files are loaded into slot 2.
+        // We need a way to determine which poses to load into which workspot.
+        // Poses with slot 1 are for the first workspot, and slot 2 is for the second workspot.
         public int Slot { get; set; }
 
         // A pose name might belong to more than one body type.
@@ -36,6 +29,4 @@ namespace Easy_AMM_Poses.src
             this.Slot = slot;
         }
     }
-
-
 }

@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using System.Windows;
 using Easy_AMM_Poses.src;
 using Newtonsoft.Json.Linq;
-using System.Security.Policy;
 
 namespace Easy_AMM_Poses
 {
@@ -12,16 +11,14 @@ namespace Easy_AMM_Poses
     {
         Config config = new Config();
 
-        // Create list of poses to be populated from the users animation json files.
+        // Store all poses that the user provides into this list.
         List<Pose> poseList = new List<Pose>();
-
 
         public MainWindow()
         {
             InitializeComponent();
             InitializeConfiguration();
         }
-
 
         /// <summary>
         /// Initialize the configuration file and set the appropriate variables.
@@ -48,22 +45,10 @@ namespace Easy_AMM_Poses
             }
         }
 
-        /// <summary>
-        /// Update the GUI status label.
-        /// </summary>
-        /// <param name="message">name of status message</param>
-        /// <returns></returns>
-        private int updateAppStatus(string message)
-        {
-            appStatus.Content = "Status: " + message;
-            return 1;
-        }
 
-        /// <summary>
-        /// Handle user input on textbox for CLI path.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        // **********************************************************
+        // Handle user input for CLI path and general mod details.
+        // **********************************************************
         private void TextboxCliPathHandler(object sender, RoutedEventArgs e)
         {
             // Open a file dialog to select the path to the WolvenKit CLI
@@ -81,7 +66,6 @@ namespace Easy_AMM_Poses
 
         private void TextboxCategoryHandler(object sender, EventArgs e)
         {
-            Debug.WriteLine("DEBUG: AMM Category Name, " + textboxCategory.Text);
             if (textboxCategory.Text != null)
             {
                 config.luaCategoryName = textboxCategory.Text;
@@ -94,7 +78,6 @@ namespace Easy_AMM_Poses
 
         private void TextboxUsernameHandler(object sender, EventArgs e)
         {
-            Debug.WriteLine("DEBUG: Modder Name, " + textboxUsername.Text);
             if (textboxUsername.Text != null)
             {
                 config.projectUsername = textboxUsername.Text;
@@ -109,9 +92,6 @@ namespace Easy_AMM_Poses
             {
                 config.projectName = textboxProjectName.Text.Trim();
                 config.projectPath = "projects/" + textboxProjectName.Text.Trim();
-                Debug.WriteLine("DEBUG: Project Name, " + config.projectName);
-                Debug.WriteLine("DEBUG: Project Path, " + config.projectPath);
-
                 pathToFemaleAverageAnim.IsEnabled = true;
                 pathToMaleAverageAnim.IsEnabled = true;
                 pathToFemaleBigAnim.IsEnabled = true;
@@ -137,28 +117,10 @@ namespace Easy_AMM_Poses
             }
         }
 
-        /// <summary>
-        /// Handle user input on textbox for mod folder path.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //private void TextboxGamePathHandler(object sender, RoutedEventArgs e)
-        //{
-        //    string value = FileIO.OpenFolder();
-        //    if (value != null)
-        //    {
-        //        Debug.WriteLine("Folder selected, " + value);
-        //        config.modFolderPath = value;
-        //        pathToGame.Text = config.modFolderPath;
-        //        Json.WriteConfigData(config);
-        //    }
-        //}
 
-        /// <summary>
-        /// Handle user input on textbox for WA animation file path.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        // **********************************************************
+        // Handle user input for woman average animations (WA1, WA2)
+        // **********************************************************
         private void TextboxFemAnimPathHandler(object sender, EventArgs e)
         {
             string value = FileIO.OpenAnim();
@@ -175,30 +137,6 @@ namespace Easy_AMM_Poses
             pathToFemaleAverageAnim.Text = "";
         }
 
-
-        /// <summary>
-        /// Handle user input on textbox for MA animation file path.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TextboxMascAnimPathHandler(object sender, EventArgs e)
-        {
-            string value = FileIO.OpenAnim();
-            if (value != null)
-            {
-                Debug.WriteLine("DEBUG: Anim file [MA], " + value);
-                config.setMaleAvgAnimation1(config, value);
-                pathToMaleAverageAnim.Text = config.animPathMaleAvg;
-            }
-        }
-
-        private void buttonClearPathMaleAvg1(object sender, EventArgs e)
-        {
-            config.resetMaleAvgAnimation1(config);
-            pathToMaleAverageAnim.Text = "";
-        }
-
-
         private void TextboxFemAnimPathHandler2(object sender, EventArgs e)
         {
             string value = FileIO.OpenAnim();
@@ -214,6 +152,26 @@ namespace Easy_AMM_Poses
         {
             config.resetFemaleAvgAnimation2(config);
             pathToFemaleAverageAnim2.Text = "";
+        }
+
+        // **********************************************************
+        // Handle user input for male average animations (MA1, MA2)
+        // **********************************************************
+        private void TextboxMascAnimPathHandler(object sender, EventArgs e)
+        {
+            string value = FileIO.OpenAnim();
+            if (value != null)
+            {
+                Debug.WriteLine("DEBUG: Anim file [MA], " + value);
+                config.setMaleAvgAnimation1(config, value);
+                pathToMaleAverageAnim.Text = config.animPathMaleAvg;
+            }
+        }
+
+        private void buttonClearPathMaleAvg1(object sender, EventArgs e)
+        {
+            config.resetMaleAvgAnimation1(config);
+            pathToMaleAverageAnim.Text = "";
         }
 
         private void TextboxMascAnimPathHandler2(object sender, EventArgs e)
@@ -233,11 +191,9 @@ namespace Easy_AMM_Poses
             pathToMaleAverageAnim2.Text = "";
         }
 
-        /// <summary>
-        /// Handle user input on textbox for WB animation file path.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        // **********************************************************
+        // Handle user input for female big animations (FB1, FB2)
+        // **********************************************************
         private void TextboxWBAnimPathHandler(object sender, EventArgs e)
         {
             string value = FileIO.OpenAnim();
@@ -253,24 +209,6 @@ namespace Easy_AMM_Poses
         {
             config.resetFemaleBigAnimation1(config);
             pathToFemaleBigAnim.Text = "";
-        }
-
-
-        private void TextboxMBAnimPathHandler(object sender, EventArgs e)
-        {
-            string value = FileIO.OpenAnim();
-            if (value != null)
-            {
-                Debug.WriteLine("DEBUG: Anim file [MB], " + value);
-                config.setMaleBigAnimation1(config, value);
-                pathToMaleBigAnim.Text = config.animPathMaleBig;
-            }
-        }
-
-        private void buttonClearPathMaleBig1(object sender, EventArgs e)
-        {
-            config.resetMaleBigAnimation1(config);
-            pathToMaleBigAnim.Text = "";
         }
 
         private void TextboxWBAnimPathHandler2(object sender, EventArgs e)
@@ -289,7 +227,25 @@ namespace Easy_AMM_Poses
             pathToFemaleBigAnim2.Text = "";
         }
 
+        // **********************************************************
+        // Handle user input for male big animations (MB1, MB2)
+        // **********************************************************
+        private void TextboxMBAnimPathHandler(object sender, EventArgs e)
+        {
+            string value = FileIO.OpenAnim();
+            if (value != null)
+            {
+                Debug.WriteLine("DEBUG: Anim file [MB], " + value);
+                config.setMaleBigAnimation1(config, value);
+                pathToMaleBigAnim.Text = config.animPathMaleBig;
+            }
+        }
 
+        private void buttonClearPathMaleBig1(object sender, EventArgs e)
+        {
+            config.resetMaleBigAnimation1(config);
+            pathToMaleBigAnim.Text = "";
+        }
 
         private void TextboxMBAnimPathHandler2(object sender, EventArgs e)
         {
@@ -308,6 +264,12 @@ namespace Easy_AMM_Poses
         }
 
 
+        // **********************************************************
+        // Method handlers and helpers for the main buttons.
+        // Note: Some methods are too verbose and should be refactored.
+        // Furthermore, some methods should be moved to a separate
+        // class.
+        // **********************************************************
 
         /// <summary>
         /// Handle button press for "Load Poses from .ANIM".
@@ -316,7 +278,6 @@ namespace Easy_AMM_Poses
         /// </summary>
         private async void ButtonConvertHandler(object sender, RoutedEventArgs e)
         {
-            // If the user has not provided any animation files.
             if (config.checkIfAllAnimPathsEmpty(config))
             {
                 updateAppStatus("Error: No animation files were provided.");
@@ -324,7 +285,7 @@ namespace Easy_AMM_Poses
                 return;
             }
 
-            // When the user provides a project name, build the project directory automatically. 
+            // When the user provides a project name, build the project directory. 
             if (config.projectName != "")
             {
                 Directory.CreateDirectory(config.getProjectAnimsDirectory());
@@ -379,57 +340,41 @@ namespace Easy_AMM_Poses
                 // Note: This is very verbose - perhaps refactor into a separate method.
                 if (!string.IsNullOrEmpty(config.animJsonPathFemaleAvg))
                 {
-                    updateAppStatus("Reading female average animation data...");
-                    Debug.WriteLine("DEBUG: Reading animation data [WA]");
                     readAnimData(config.animJsonPathFemaleAvg, config.womanAverage, 1);
                 }
 
                 if (!string.IsNullOrEmpty(config.animJsonPathMaleAvg))
                 {
-                    Debug.WriteLine("DEBUG: Reading animation data [MA]");
-                    updateAppStatus("Reading male average animation data...");
                     readAnimData(config.animJsonPathMaleAvg, config.manAverage, 1);
                 }
 
                 if (!string.IsNullOrEmpty(config.animJsonPathFemaleBig))
                 {
-                    Debug.WriteLine("DEBUG: Reading animation data [WB]");
-                    updateAppStatus("Reading female big animation data...");
                     readAnimData(config.animJsonPathFemaleBig, config.womanBig, 1);
                 }
 
                 if (!string.IsNullOrEmpty(config.animJsonPathMaleBig))
                 {
-                    Debug.WriteLine("DEBUG: Reading animation data [MB]");
-                    updateAppStatus("Reading male big animation data...");
                     readAnimData(config.animJsonPathMaleBig, config.manBig, 1);
                 }
 
                 if (!string.IsNullOrEmpty(config.animJsonPathFemaleAvg2))
                 {
-                    Debug.WriteLine("DEBUG: Reading animation data [WA2]");
-                    updateAppStatus("Reading female average animation data (2)");
                     readAnimData(config.animJsonPathFemaleAvg2, config.womanAverage, 2);
                 }
 
                 if (!string.IsNullOrEmpty(config.animJsonPathMaleAvg2))
                 {
-                    Debug.WriteLine("DEBUG: Reading animation data [MA2]");
-                    updateAppStatus("Reading male average animation data (2)");
                     readAnimData(config.animJsonPathMaleAvg2, config.manAverage, 2);
                 }
 
                 if (!string.IsNullOrEmpty(config.animJsonPathFemaleBig2))
                 {
-                    Debug.WriteLine("DEBUG: Reading animation data [WB2]");
-                    updateAppStatus("Reading female big animation data (2)");
                     readAnimData(config.animJsonPathFemaleBig2, config.womanBig, 2);
                 }
 
                 if (!string.IsNullOrEmpty(config.animJsonPathMaleBig2))
                 {
-                    Debug.WriteLine("DEBUG: Reading animation data [MB2]");
-                    updateAppStatus("Reading male big animation data (2)");
                     readAnimData(config.animJsonPathMaleBig2, config.manBig, 2);
                 }
                 updateAppStatus("Conversion complete. Ready to build.");
@@ -440,14 +385,14 @@ namespace Easy_AMM_Poses
                 updateAppStatus("Error #1. One or more animations couldn't be read by Wolvenkit CLI");
 
                 // Reset project folder and clear pose list
-                MessageBox.Show($"Error #1. Error reading animation file(s). \n\n(1) Please make sure you're using CLI 8.13 stable or above. Version 8.13 in particular should have the most compatibility.\n(2) Is your .ANIM file valid? Can you open it in the regular WolvenKit GUI? \n\nIf you're still having issues let me know and i'll try to help.  \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Error #1. Error reading animation file(s). \n\n(1) Please make sure you're using CLI 8.13 stable or above. \n(2) Is your .ANIM file valid? Can you open it in the regular WolvenKit GUI? \n\nIf you're still having issues let me know and i'll try to help.  \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             interfaceToggle(true);
         }
 
         /// <summary>
         /// Load poses from the converted animation JSON file.
-        /// This method really shouldn't be in MainWindow...
+        /// TODO: This method shouldn't be in MainWindow. Move it to another method.
         /// </summary>
         /// <param name="pathToAnimJson"></param>
         /// <param name="bodyType"></param>
@@ -486,8 +431,9 @@ namespace Easy_AMM_Poses
                 }
             }
         }
+
         /// <summary>
-        /// Handle button press for "Build Workspot".
+        /// Handle button press and operations for "Build Workspot".
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -502,7 +448,6 @@ namespace Easy_AMM_Poses
                 Task task1 = Task.Run(async () => await Workspot.BuildWorkspotJson(poseList, config, config.animPathFemaleAvg, config.animPathMaleAvg, config.animPathFemaleBig, config.animPathMaleBig, 1));
                 Task task2 = Task.Run(async () => await Workspot.BuildWorkspotJson(poseList, config, config.animPathFemaleAvg2, config.animPathMaleAvg2, config.animPathFemaleBig2, config.animPathMaleBig2, 2));
                 await Task.WhenAll(task1, task2);
-                Debug.WriteLine("Finished building workspot JSON..");
 
                 // Convert the raw JSON file to RedEngine format.
                 updateAppStatus("Converting workspot to RedEngine format...please wait.");
@@ -514,11 +459,7 @@ namespace Easy_AMM_Poses
                 WolvenKit.AddFileExtension(config.pathToWorkspotJson1, config, ".workspot", 1);
                 WolvenKit.AddFileExtension(config.pathToWorkspotJson2, config, ".workspot", 2);
 
-                Debug.WriteLine("Finished building workspot.workspot");
                 updateAppStatus("Finished building workspot. Path: " + config.pathToWorkspotJson1);
-
-                Debug.WriteLine("PATH to WS1: " + config.pathToWorkspot1);
-                Debug.WriteLine("PATH to WS2: " + config.pathToWorkspot2);
             }
             catch (Exception ex)
             {
@@ -530,7 +471,7 @@ namespace Easy_AMM_Poses
             // Build ent and lua file
             ButtonEntityHandler(sender, e);
         }
-
+       
         private async void ButtonEntityHandler(Object sender, RoutedEventArgs e)
         {
             try
@@ -583,7 +524,6 @@ namespace Easy_AMM_Poses
                 updateAppStatus("Error: Error building lua file.");
                 MessageBox.Show($"Error building lua file. \n\nThis is a rare error that shouldn't happen... contact me for help. \n\n\nError Log: {ex.Message}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
         }
 
         private async void ButtonPackHandler(Object sender, RoutedEventArgs e)
@@ -596,7 +536,6 @@ namespace Easy_AMM_Poses
                 Task task1 = Task.Run(async () => await WolvenKit.packMod(config));
                 await Task.WhenAll(task1);
                 Debug.WriteLine("DEBUG: Finished packing mod...");
-
                 Debug.WriteLine("DEBUG: Moving mod files to packed directory...");
                 Task task2 = Task.Run(async () => await FileIO.movePackedToDir(config));
                 await Task.WhenAll(task2);
@@ -667,8 +606,15 @@ namespace Easy_AMM_Poses
             Process.Start("explorer.exe", url);
         }
 
-        // Enable or disable UI elements
-        // Value must be a boolean
+
+        // **********************************************************
+        // Miscellaneous methods and helpers.
+        // **********************************************************
+
+        /// <summary>
+        /// Enable or disable UI elements during processing to prevent user from interfering.
+        /// </summary>
+        /// <param name="val">boolean true or false</param>
         private void interfaceToggle(Boolean val)
         {
             btnConvert.IsEnabled = val;
@@ -678,11 +624,38 @@ namespace Easy_AMM_Poses
             btnOpenLuaFolder.IsEnabled = val;
         }
 
+        /// <summary>
+        /// Update the GUI status label.
+        /// </summary>
+        /// <param name="message">name of status message</param>
+        /// <returns></returns>
+        private int updateAppStatus(string message)
+        {
+            appStatus.Content = "Status: " + message;
+            return 1;
+        }
 
         private void ListView_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
             listScrollView.ScrollToVerticalOffset(listScrollView.VerticalOffset - e.Delta);
             e.Handled = true;
         }
+
+        /// <summary>
+        /// Handle user input on textbox for mod folder path.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //private void TextboxGamePathHandler(object sender, RoutedEventArgs e)
+        //{
+        //    string value = FileIO.OpenFolder();
+        //    if (value != null)
+        //    {
+        //        Debug.WriteLine("Folder selected, " + value);
+        //        config.modFolderPath = value;
+        //        pathToGame.Text = config.modFolderPath;
+        //        Json.WriteConfigData(config);
+        //    }
+        //}
     }
 }

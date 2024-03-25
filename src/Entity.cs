@@ -5,6 +5,10 @@ using System.Diagnostics;
 
 namespace Easy_AMM_Poses.src
 {
+
+    /// <summary>
+    /// Class pertaining to the creation and manipulation of .ent files.
+    /// </summary>
     class Entity
     {
         // Builds the entity JSON file via a JSON template and the path to the workspot file.

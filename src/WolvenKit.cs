@@ -4,12 +4,14 @@ using System.Text;
 using System.IO;
 using System.Windows;
 
-/* 
- * * This class acts as a brige between EAP and WolvenKit.
- * * It interacts with the WolvenKit CLI to perform operations (conversion, packing etc).
- * */
+
 namespace Easy_AMM_Poses.src
 {
+    /// <summary>
+    /// This class acts as a bridge between EAP and WolvenKit to perform WolvenKit CLI operations.
+    /// These operations include conversion and packing of files.I've written some of my own helpers as well.
+    /// Consider refactoring and adding better documentation in the future.
+    /// </summary>
     class WolvenKit
     {
         /// <summary>
@@ -17,7 +19,7 @@ namespace Easy_AMM_Poses.src
         /// </summary>
         /// <param name="cliPath">Path to WolvenKit command line.</param>
         /// <param name="animPath">Path to users animation.</param>
-        /// <param name="animSlot">Slot 1 = main four anim paths, Slot 2 = optional extra four anim paths.</param>
+        /// <param name="animSlot">Determines which workspot file to use. Slot 1 = main four anim paths, Slot 2 = optional extra four anim paths.</param>
         /// <returns></returns>
         public static async Task<int> ConvertAnimToJson(string cliPath, string animPath, int animSlot, Config config, string rigType)
         {
@@ -56,17 +58,16 @@ namespace Easy_AMM_Poses.src
             Debug.WriteLine(stdErrBuffer.ToString());
 
             // Update file path for anim file 
+            // Not the cleanest method but it works.
             if (rigType == config.womanAverage)
             {
                 if (animSlot == 1)
                 {
                     config.animPathFemaleAvg = config.convertToRedengineFilepath(newAnimationPath);
-                    Debug.WriteLine("DEBUG: Path to WA: " + config.animPathFemaleAvg);
                 }
                 else if (animSlot == 2)
                 {
                     config.animPathFemaleAvg2 = config.convertToRedengineFilepath(newAnimationPath);
-                    Debug.WriteLine("DEBUG: Path to WA2: " + config.animPathFemaleAvg2);
                 }
 
             }
@@ -144,7 +145,6 @@ namespace Easy_AMM_Poses.src
             var stdErrBuffer = new StringBuilder();
             string projectPath = '"' + config.getProjectRootDirectory() + '"';
 
-
             // Start the WolvenKit CLI and pass the required arguments.
             await Cli.Wrap(config.cliPath)
                 .WithArguments($"pack p {projectPath}")
@@ -157,10 +157,6 @@ namespace Easy_AMM_Poses.src
             Debug.WriteLine(stdErrBuffer.ToString());
             return 1;
         }
-
-
-        
-
 
         /// <summary>
         /// Add .workspot or .ent file extension to deserialized REDEngine file.
@@ -182,7 +178,6 @@ namespace Easy_AMM_Poses.src
                 return;
             }
 
-            Debug.WriteLine("DEBUG: ADDING EXTENSION TO FILE");
             var newFilePath = "";
 
             // Create a new file path to the output file but with the extension we want.

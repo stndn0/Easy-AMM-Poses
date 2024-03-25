@@ -4,15 +4,13 @@ using System.Text.RegularExpressions;
 
 namespace Easy_AMM_Poses.src
 {
-    /**
-     * NLua wasn't cooperating with me so i'm rolling my own manual solution. 
-     * It's not ideal but it's the only way.
-    */
-
-
+   /// <summary>
+   /// This class creates the lua file that is used by AMM to load poses into the game.
+   /// Ideally you'd use a library like NLua to interact with Lua files but NLua wouldn't work so
+   /// I rolled my own manual solution.
+   /// </summary>
     public class Lua
     {
-
         public static async Task<int> readLuaTemplate(List<Pose> poseList, Config config, string pathToEntity, int fileNumber)
         {
             Debug.WriteLine("DEBUG: Reading Lua template");
@@ -24,7 +22,6 @@ namespace Easy_AMM_Poses.src
                 Debug.WriteLine("DEBUG: No optional animations provided. Skipping lua file creation...");
                 return 0;
             }
-
 
             string maleAveragePoses = "";
             string femaleAveragePoses = "";
@@ -113,9 +110,7 @@ namespace Easy_AMM_Poses.src
             string pathToOutput = config.getProjectResourcesDirectory() + @"poses" + fileNumber + @".lua";
 
             File.WriteAllText(pathToOutput, luaFile);
-
             Debug.WriteLine("Lua file: \n" + luaFile);
-
             return 1;
         }
     }

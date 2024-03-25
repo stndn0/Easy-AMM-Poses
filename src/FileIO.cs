@@ -1,15 +1,13 @@
 ﻿using Easy_AMM_Poses.src;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Easy_AMM_Poses
 {
+    /// <summary>
+    /// This class defines some basic file i/o methods used by EAP for its operations.
+    /// </summary>
     class FileIO
     {
         public static string OpenFile()
@@ -57,7 +55,6 @@ namespace Easy_AMM_Poses
             }
         }
 
-
         public static string OpenAnim()
         {
             // Open file dialogue to select file path
@@ -86,7 +83,6 @@ namespace Easy_AMM_Poses
             // Move the packed .archive to the correct directory
             string pathToArchive = Path.GetFullPath(config.getPathToPackedArchive());
             string pathToModFolder = Path.GetFullPath(config.getProjectPackedDirectory()) + config.projectName + ".archive";
-
 
             Debug.WriteLine("Moving " + pathToArchive + " to " + pathToModFolder);
 
@@ -117,9 +113,6 @@ namespace Easy_AMM_Poses
                 string temppath = Path.Combine(config.getProjectLuaDirectory(), file.Name);
                 file.CopyTo(temppath, true);
             }
-
-
-
             return 1;
         }
     }

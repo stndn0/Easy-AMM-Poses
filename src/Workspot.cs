@@ -5,6 +5,10 @@ using System.Diagnostics;
 
 namespace Easy_AMM_Poses.src
 {
+    /// <summary>
+    /// Methods pertaining to the creation and manipulation of .workspot files.
+    /// Please note: class is not properly documented and refactoring may be required.
+    /// </summary>
     class Workspot
     {
         /// <summary>
@@ -21,13 +25,6 @@ namespace Easy_AMM_Poses.src
                 Debug.WriteLine("DEBUG: Cannot build workspot on slot: " + animSlot);
                 return -1;
             }
-
-            Debug.WriteLine("\n\nDEBUG: Building workspot JSON...");
-            Debug.WriteLine("Female anim path: " + femAnimPath);
-            Debug.WriteLine("Male anim path: " + manAnimPath);
-            Debug.WriteLine("Female big anim path: " + femBigAnimPath);
-            Debug.WriteLine("Man big anim path: " + manBigAnimPath);
-
 
             // Load core workspot file and deserialize to dynamic object.
             string pathToWorkspotJson = @"templates\workspot.json";
@@ -69,10 +66,8 @@ namespace Easy_AMM_Poses.src
             }
 
 
-
             foreach (Pose pose in poseList)
             {
-
                 // Add a new pose entries to the workspot template json.
                 Debug.WriteLine("POSE SLOT: " + pose.Slot + "ANIM SLOT: " + animSlot);
 
@@ -97,8 +92,6 @@ namespace Easy_AMM_Poses.src
                     // Merge template with the main workspot json.
                     jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["rootEntry"]["Data"]["list"].Add(jsonWorkspotListEntryObj);
                 }
-
-
             }
 
             // Serialize and write updated data to the workspot JSON file.

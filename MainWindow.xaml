@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Easy_AMM_Poses"
         mc:Ignorable="d"
-        Title="Easy AMM Poses by wolv" Height="1020" Width="800" Background="#FF1F1F1F">
+        Title="Easy AMM Poses by wolv" Height="1040" Width="800" Background="#FF1F1F1F">
     <Window.Resources>
         <Style x:Key="Logo" TargetType="Label">
             <Setter Property="FontSize" Value="30"/>
@@ -254,7 +254,6 @@
                         </Grid>
 
 
-
                         <Label Style="{StaticResource PropertyLabel}">Load MB (masc big) animation file</Label>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -283,8 +282,6 @@
                                 </Button>
                             </Grid>
                         </Grid>
-
-
                     </StackPanel>
 
                     <Label Margin="0,2,0,0"></Label>
@@ -353,7 +350,6 @@
                             </Grid>
 
 
-
                             <Label Style="{StaticResource PropertyLabel}">Load WB (woman big) animation file</Label>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -412,7 +408,6 @@
                                     </Button>
                                 </Grid>
                             </Grid>
-
                         </StackPanel>
                     </Expander>
 

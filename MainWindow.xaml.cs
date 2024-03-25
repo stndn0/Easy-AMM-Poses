@@ -309,6 +309,10 @@ namespace Easy_AMM_Poses
 
             try
             {
+                // Reset pose list.
+                poseList.Clear();
+                entries.Items.Clear();
+
                 updateAppStatus("Converting animation file(s). Please wait 5 to 30 seconds..");
 
                 // You can't pass the actual text box values into the async task, so we need to store them in a string first.

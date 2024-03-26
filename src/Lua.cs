@@ -52,7 +52,7 @@ namespace Easy_AMM_Poses.src
                 //Debug.WriteLine("DEBUG: Pose name: " + poseList[i].Name + " Body: " + poseList[i].BodyType + " Pose slot: " + poseList[i].Slot + " fileNumber: " + fileNumber);
                 // Check if pose belongs to the current file number
                 // We don't want to add poses from another anim file that isn't linked to this lua.
-                if (poseList[i].Slot.Contains(fileNumber))
+                if (poseList[i].Slot == fileNumber)
                 {
                     // Don't use else-if for this block. Multiple anim files may share the same pose name.
                     if (poseList[i].BodyType == "MA")

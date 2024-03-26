@@ -72,7 +72,7 @@ namespace Easy_AMM_Poses.src
                 //Debug.WriteLine("POSE SLOT: " + pose.Slot + "ANIM SLOT: " + animSlot);
 
                 // If the pose belongs to the current animation slot for the workspot then it is relevant to us.
-                if (pose.Slot.Contains(animSlot))
+                if (pose.Slot == animSlot)
                 {
                     // Check if we already have the same pose name in the current workspot list.
                     // We can't have two duplicate poses with the same name in the same workspot.

@@ -472,7 +472,7 @@ namespace Easy_AMM_Poses
             try
             {
                 Debug.WriteLine("DEBUG: Building entity JSON...");
-                updateAppStatus("Building entity JSON...");
+                updateAppStatus("Building entity file...");
 
                 // Build the entity JSON file.
                 Task task1 = Task.Run(async () => await Entity.buildEntityJson(config, 1, config.pathToWorkspot1));

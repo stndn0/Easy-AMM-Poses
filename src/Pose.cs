@@ -8,10 +8,8 @@
         public string Name { get; set; }
         public string BodyType { get; set; }
     
-        // Workspot slot. 1 = WS1, 2 = WS2
-        // Does not need to be a list (this is a holdover from an old implementation where poses could have multiple slots)
-        // Refactor to single int value eventually but for now it does not cause issues..
-        public List<int> Slot = new List<int>();
+        // Workspot slot/file that this pose belongs to. 1 = WS1, 2 = WS2
+        public int Slot { get; set; }
 
         // Constructor that takes one parameter.
         public Pose(string name, string bodyType, int slot)
@@ -19,8 +17,10 @@
             // "this" keyword references the current object (current instance of the class).
             this.Name = name;
             this.BodyType = bodyType;
+            this.Slot = slot;
+
             //this.ExtraBodyTypes = new List<string>();
-            this.Slot.Add(slot);
+            //this.Slot.Add(slot);
         }
     }
 }

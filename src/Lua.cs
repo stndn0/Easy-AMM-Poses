@@ -11,9 +11,9 @@ namespace Easy_AMM_Poses.src
    /// </summary>
     public class Lua
     {
-        public static async Task<int> readLuaTemplate(List<Pose> poseList, Config config, string pathToEntity, int fileNumber)
+        public static async Task<int> readLuaTemplate(List<Pose> poseList, Config config, string pathToEntity, int fileNumber, string femAnimPath, string manAnimPath, string femBigAnimPath, string manBigAnimPath)
         {
-            Debug.WriteLine("DEBUG: Reading Lua template");
+            Debug.WriteLine("DEBUG: Reading Lua template. File number is " + fileNumber);
             string luaFile = File.ReadAllText(@"templates\lua_template.lua");
 
             // For the optional lua file, if there aren't any poses assigned to it then don't create the file
@@ -49,25 +49,37 @@ namespace Easy_AMM_Poses.src
 
             for (int i = 0; i < poseList.Count; i++)
             {
-                Debug.WriteLine("DEBUG: Pose name: " + poseList[i].Name + " fileNumber: " + fileNumber);
+                //Debug.WriteLine("DEBUG: Pose name: " + poseList[i].Name + " Body: " + poseList[i].BodyType + " Pose slot: " + poseList[i].Slot + " fileNumber: " + fileNumber);
                 // Check if pose belongs to the current file number
                 // We don't want to add poses from another anim file that isn't linked to this lua.
-                if (poseList[i].Slot == fileNumber)
+                if (poseList[i].Slot.Contains(fileNumber))
                 {
                     // Don't use else-if for this block. Multiple anim files may share the same pose name.
                     if (poseList[i].BodyType == "MA" || poseList[i].ExtraBodyTypes.Contains("MA"))
                     {
-                        maleAveragePoses += '"' + poseList[i].Name + '"' + ", ";
+                        if (manAnimPath != "")
+                        {
+                            Debug.WriteLine("Added MA pose " + poseList[i].Name + " to workspot " + fileNumber);
+                            maleAveragePoses += '"' + poseList[i].Name + '"' + ", ";
+                        }
                     }
 
                     if (poseList[i].BodyType == "WA" || poseList[i].ExtraBodyTypes.Contains("WA"))
                     {
-                        femaleAveragePoses += '"' + poseList[i].Name + '"' + ", ";
+                        if (femAnimPath != "")
+                        {
+                            Debug.WriteLine("Added WA pose " + poseList[i].Name + " to workspot " + fileNumber);
+                            femaleAveragePoses += '"' + poseList[i].Name + '"' + ", ";
+                        }
                     }
 
                     if (poseList[i].BodyType == "MB" || poseList[i].ExtraBodyTypes.Contains("MB"))
                     {
-                        bigPoses += '"' + poseList[i].Name + '"' + ", ";
+                        if (manBigAnimPath != "")
+                        {
+                            Debug.WriteLine("Added MB pose " + poseList[i].Name + " to workspot " + fileNumber);
+                            bigPoses += '"' + poseList[i].Name + '"' + ", ";
+                        }
                     }
 
                     if (poseList[i].BodyType == "WB" || poseList[i].ExtraBodyTypes.Contains("WB"))
@@ -76,11 +88,16 @@ namespace Easy_AMM_Poses.src
                         // We don't want to add the same pose twice.
                         if (bigPoses.Contains(poseList[i].Name))
                         {
+                            Debug.WriteLine("DEBUG: Pose already exists in big poses. Skipping...");
                             continue;
                         }
                         else
                         {
-                            bigPoses += '"' + poseList[i].Name + '"' + ", ";
+                            if (femBigAnimPath != "")
+                            {
+                                Debug.WriteLine("Added WB pose " + poseList[i].Name + " to workspot " + fileNumber);
+                                bigPoses += '"' + poseList[i].Name + '"' + ", ";
+                            }
                         }
                     }
                 }

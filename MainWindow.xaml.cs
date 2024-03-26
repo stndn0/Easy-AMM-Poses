@@ -404,6 +404,8 @@ namespace Easy_AMM_Poses
         {
             var pathToJson2 = pathToAnimJson;
 
+            Debug.WriteLine("DEBUG: Reading animation data...");
+
             // Load the JSON and deserialize it into a JToken object.
             var result = JsonConvert.DeserializeObject<JToken>(File.ReadAllText(pathToJson2));
 
@@ -423,6 +425,7 @@ namespace Easy_AMM_Poses
                     {
                         Debug.WriteLine("DEBUG: Pose already in list, skipping... " + poseName);
                         pose.ExtraBodyTypes.Add(bodyType);
+                        pose.Slot.Add(animSlot);
                         //pose.Slot = animSlot;
                         poseExists = true;
                         break;
@@ -430,6 +433,7 @@ namespace Easy_AMM_Poses
                 }
                 if (!poseExists)
                 {
+                    Debug.WriteLine("DEBUG: Pose not in list, adding... " + poseName);
                     entries.Items.Add(poseName);
                     poseList.Add(new Pose(poseName, bodyType, animSlot)); ;
                 }
@@ -518,8 +522,18 @@ namespace Easy_AMM_Poses
                 Debug.WriteLine("DEBUG: Building lua file...");
                 updateAppStatus("Building lua file...");
 
-                Task task1 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config, config.pathToEntity1, 1));
-                Task task2 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config, config.pathToEntity2, 2));
+                // You can't pass the actual text box values into the async task, so we need to store them in a string first.
+                string fem1 = pathToFemaleAverageAnim.Text;
+                string masc1 = pathToMaleAverageAnim.Text;
+                string fem2 = pathToFemaleBigAnim.Text;
+                string masc2 = pathToMaleBigAnim.Text;
+                string fem3 = pathToFemaleAverageAnim2.Text;
+                string masc3 = pathToMaleAverageAnim2.Text;
+                string fem4 = pathToFemaleBigAnim2.Text;
+                string masc4 = pathToMaleBigAnim2.Text;
+
+                Task task1 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config, config.pathToEntity1, 1, fem1, masc1, fem2, masc2));
+                Task task2 = Task.Run(async () => await Lua.readLuaTemplate(poseList, config, config.pathToEntity2, 2, fem3, masc3, fem4, masc4));
                 await Task.WhenAll(task1, task2);
             }
             catch (Exception ex)

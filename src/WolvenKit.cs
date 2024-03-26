@@ -106,6 +106,7 @@ namespace Easy_AMM_Poses.src
                     config.animPathMaleBig2 = config.convertToRedengineFilepath(newAnimationPath);
                 }
             }
+            Debug.WriteLine("\nDEBUG: End of convertAnimToJson");
             return 1;
         }
 

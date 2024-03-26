@@ -69,10 +69,10 @@ namespace Easy_AMM_Poses.src
             foreach (Pose pose in poseList)
             {
                 // Add a new pose entries to the workspot template json.
-                Debug.WriteLine("POSE SLOT: " + pose.Slot + "ANIM SLOT: " + animSlot);
+                //Debug.WriteLine("POSE SLOT: " + pose.Slot + "ANIM SLOT: " + animSlot);
 
                 // If the pose belongs to the current animation slot for the workspot then it is relevant to us.
-                if (pose.Slot == animSlot)
+                if (pose.Slot.Contains(animSlot))
                 {
                     // Deserialize entry template in order to write to it.
                     dynamic jsonWorkspotListEntryObj = JsonConvert.DeserializeObject(File.ReadAllText(pathToWorkspotListEntry));

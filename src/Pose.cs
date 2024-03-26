@@ -13,7 +13,8 @@
         // then poses from these optional files are loaded into slot 2.
         // We need a way to determine which poses to load into which workspot.
         // Poses with slot 1 are for the first workspot, and slot 2 is for the second workspot.
-        public int Slot { get; set; }
+        public List<int> Slot = new List<int>();
+
 
         // A pose name might belong to more than one body type.
         // E.g., both WA and MA have a pose with the same name ("Pose 1").
@@ -26,7 +27,7 @@
             this.Name = name;
             this.BodyType = bodyType;
             this.ExtraBodyTypes = new List<string>();
-            this.Slot = slot;
+            this.Slot.Add(slot);
         }
     }
 }

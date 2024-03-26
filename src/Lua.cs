@@ -55,7 +55,7 @@ namespace Easy_AMM_Poses.src
                 if (poseList[i].Slot.Contains(fileNumber))
                 {
                     // Don't use else-if for this block. Multiple anim files may share the same pose name.
-                    if (poseList[i].BodyType == "MA" || poseList[i].ExtraBodyTypes.Contains("MA"))
+                    if (poseList[i].BodyType == "MA")
                     {
                         if (manAnimPath != "")
                         {
@@ -64,7 +64,7 @@ namespace Easy_AMM_Poses.src
                         }
                     }
 
-                    if (poseList[i].BodyType == "WA" || poseList[i].ExtraBodyTypes.Contains("WA"))
+                    if (poseList[i].BodyType == "WA")
                     {
                         if (femAnimPath != "")
                         {
@@ -73,7 +73,7 @@ namespace Easy_AMM_Poses.src
                         }
                     }
 
-                    if (poseList[i].BodyType == "MB" || poseList[i].ExtraBodyTypes.Contains("MB"))
+                    if (poseList[i].BodyType == "MB")
                     {
                         if (manBigAnimPath != "")
                         {
@@ -82,7 +82,7 @@ namespace Easy_AMM_Poses.src
                         }
                     }
 
-                    if (poseList[i].BodyType == "WB" || poseList[i].ExtraBodyTypes.Contains("WB"))
+                    if (poseList[i].BodyType == "WB")
                     {
                         // Check if exact pose name already exists in string
                         // We don't want to add the same pose twice.

@@ -416,26 +416,13 @@ namespace Easy_AMM_Poses
                 // Store all $value items into a new list
                 string poseName = item["Data"]["animation"]["Data"]["name"]["$value"].ToString();
 
-                // If posename already in list of poses, don't add a new pose.
-                // Instead, update the pose and add the new body type.
-                bool poseExists = false;
-                foreach (Pose pose in poseList)
+                Debug.WriteLine("DEBUG: Adding pose... " + poseName);
+                poseList.Add(new Pose(poseName, bodyType, animSlot)); ;
+
+                // Add pose to front end list - don't add duplicates.
+                if(!entries.Items.Contains(poseName))
                 {
-                    if (pose.Name == poseName)
-                    {
-                        Debug.WriteLine("DEBUG: Pose already in list, skipping... " + poseName);
-                        pose.ExtraBodyTypes.Add(bodyType);
-                        pose.Slot.Add(animSlot);
-                        //pose.Slot = animSlot;
-                        poseExists = true;
-                        break;
-                    }
-                }
-                if (!poseExists)
-                {
-                    Debug.WriteLine("DEBUG: Pose not in list, adding... " + poseName);
                     entries.Items.Add(poseName);
-                    poseList.Add(new Pose(poseName, bodyType, animSlot)); ;
                 }
             }
         }

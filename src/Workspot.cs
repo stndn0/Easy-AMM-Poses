@@ -65,7 +65,7 @@ namespace Easy_AMM_Poses.src
                 jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["finalAnimsets"][1]["loadingHandles"][0]["DepotPath"]["$value"] = manBigAnimPath;
             }
 
-
+            List<String> posesInCurrentWorkspot = new List<String>();
             foreach (Pose pose in poseList)
             {
                 // Add a new pose entries to the workspot template json.
@@ -74,25 +74,35 @@ namespace Easy_AMM_Poses.src
                 // If the pose belongs to the current animation slot for the workspot then it is relevant to us.
                 if (pose.Slot.Contains(animSlot))
                 {
-                    // Deserialize entry template in order to write to it.
-                    dynamic jsonWorkspotListEntryObj = JsonConvert.DeserializeObject(File.ReadAllText(pathToWorkspotListEntry));
-                    jsonWorkspotListEntryObj["Data"]["idleAnim"]["$value"] = pose.Name;
-                    jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["animName"]["$value"] = pose.Name;
+                    // Check if we already have the same pose name in the current workspot list.
+                    // We can't have two duplicate poses with the same name in the same workspot.
+                    if (!posesInCurrentWorkspot.Contains(pose.Name))
+                    {
+                        // Deserialize entry template in order to write to it.
+                        dynamic jsonWorkspotListEntryObj = JsonConvert.DeserializeObject(File.ReadAllText(pathToWorkspotListEntry));
+                        jsonWorkspotListEntryObj["Data"]["idleAnim"]["$value"] = pose.Name;
+                        jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["animName"]["$value"] = pose.Name;
 
-                    // Update id fields. Incremented the nested list field.
-                    jsonWorkspotListEntryObj["HandleId"] = currentId.ToString();
-                    jsonWorkspotListEntryObj["Data"]["list"][0]["HandleId"] = (currentId + 1).ToString();
+                        // Update id fields. Incremented the nested list field.
+                        jsonWorkspotListEntryObj["HandleId"] = currentId.ToString();
+                        jsonWorkspotListEntryObj["Data"]["list"][0]["HandleId"] = (currentId + 1).ToString();
 
-                    jsonWorkspotListEntryObj["Data"]["id"]["id"] = currentId;
-                    jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["id"]["id"] = currentId + 1;
+                        jsonWorkspotListEntryObj["Data"]["id"]["id"] = currentId;
+                        jsonWorkspotListEntryObj["Data"]["list"][0]["Data"]["id"]["id"] = currentId + 1;
 
-                    // Increment counter for the next iteration.
-                    currentId += 2;
+                        // Increment counter for the next iteration.
+                        currentId += 2;
 
-                    // Merge template with the main workspot json.
-                    jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["rootEntry"]["Data"]["list"].Add(jsonWorkspotListEntryObj);
+                        // Merge template with the main workspot json.
+                        jsonWorkspotObj["Data"]["RootChunk"]["workspotTree"]["Data"]["rootEntry"]["Data"]["list"].Add(jsonWorkspotListEntryObj);
+
+                        // Add pose to posesInCurrentWorkspotList so that we don't add it again during
+                        // futuer iterations
+                        posesInCurrentWorkspot.Add(pose.Name);
+                    }
                 }
             }
+            posesInCurrentWorkspot.Clear();
 
             // Serialize and write updated data to the workspot JSON file.
             string output = JsonConvert.SerializeObject(jsonWorkspotObj, Formatting.Indented);

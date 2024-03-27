@@ -29,9 +29,7 @@ This tool uses the following technologies:
 - [CliWrap](https://github.com/Tyrrrz/CliWrap) for providing the library used for interfacing with the command line.
 
 
-## License
-Copyright © wolv 2024
-
-This software is soure available. You are free to modify this software for personal use only.
+## Terms of Use
+This software is soure available. You are free to modify this software for personal use only. If you'd like to help improve it for everyone, i'm happy to collaborate.
 
 Do not redistribute or reupload this software, with or without modification, without my permission. 

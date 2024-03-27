@@ -30,6 +30,8 @@ This tool uses the following technologies:
 
 
 ## Terms of Use
-This software is soure available. You are free to modify this software for personal use only. If you'd like to help improve it for everyone, i'm happy to collaborate.
+This software is soure available. 
+
+You are free to modify this software for personal use only. If you'd like to help improve it for everyone, i'm happy to collaborate.
 
 Do not redistribute or reupload this software, with or without modification, without my permission. 

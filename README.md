@@ -27,3 +27,11 @@ A <b> fast and fully automated way of creating Appearance Menu Mod (AMM) pose pa
 This tool uses the following technologies:
 - [Newtonsoft Json.NET](https://www.newtonsoft.com/json) for providing a quality JSON framework.
 - [CliWrap](https://github.com/Tyrrrz/CliWrap) for providing the library used for interfacing with the command line.
+
+
+## License
+Copyright © wolv 2024
+
+This software is soure available. You are free to modify this software for personal use only.
+
+Do not redistribute or reupload this software, with or without modification, without my permission. 

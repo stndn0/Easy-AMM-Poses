@@ -35,6 +35,9 @@ Optional: To build more advanced packs, click the arrow to reveal more slots.
 4. Follow the button prompts: Load -> Build -> Pack.
 5. The final packed mod will be saved to the "Packed Folder" in the project directory.
 
+#### Note
+If your pose happens to T-Pose in game **this has nothing to do with my tool.** Simply change your in-game location and it'll work. This is an issue with AMM itself and it affects all packs randomly, regardless of whether they're created by hand or automatically via EAP.
+
 ## Screenshots
 <p align="center">
   <img src="https://i.imgur.com/lUls3ZP.png" height="800"/>
@@ -43,10 +46,8 @@ Optional: To build more advanced packs, click the arrow to reveal more slots.
   Above: poses successfully loaded from user provided animations. Ready to build.
 </p>
 
-## A note to potential contributors
-This information only applies to potential contributors.
-
-I'm still learning C#, .NET and WPF, so please excuse some of the inelegance. Refactoring and code cleanup is a priority for future builds as well as adherance to practices such as SOLID.
+### A note to potential contributors
+I'm still learning C#, .NET and WPF so excuse some of the inelegance. Refactoring and code cleanup is a priority for future builds as well as adherance to practices such as SOLID.
 
 ## Terms of Use
 You are free to modify this software for personal use. If you'd like to help improve it for everyone, i'm happy to collaborate.

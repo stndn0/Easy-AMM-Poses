@@ -22,6 +22,9 @@ A <b> fast and fully automated way of creating Appearance Menu Mod (AMM) pose pa
 - Automatically generates the necessary .workspot, .lua, and .ent files using detected pose data.
 - Automatically generates a packed Cyberpunk 2077 mod that you can share with the community.
 
+#### A note to potential contributors
+I'm still learning C#, .NET and WPF so excuse some of the mess. Refactoring and code cleanup is a priority for future builds as well as adherance to practices such as SOLID.
+
 ## Tutorial
 #### Requirements
 - [.NET framework 8.0](https://dotnet.microsoft.com/en-us/download) to run the application.
@@ -46,8 +49,6 @@ If your pose happens to T-Pose in game **this has nothing to do with my tool.** 
   Above: poses successfully loaded from user provided animations. Ready to build.
 </p>
 
-## A note to potential contributors
-I'm still learning C#, .NET and WPF so excuse some of the mess. Refactoring and code cleanup is a priority for future builds as well as adherance to practices such as SOLID.
 
 ## Terms of Use
 You are free to modify this software for personal use. If you'd like to help improve it for everyone, i'm happy to collaborate.

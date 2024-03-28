@@ -36,7 +36,7 @@ Optional: To build more advanced packs, click the arrow to reveal more slots.
 5. The final packed mod will be saved to the "Packed Folder" in the project directory.
 
 #### Note
-If your pose happens to T-Pose in game **this has nothing to do with my tool.** Simply change your in-game location and it'll work. This is an issue with AMM itself and it affects all packs randomly, regardless of whether they're created by hand or automatically via EAP.
+If your pose happens to T-Pose in game **this has nothing to do with my tool.** This is an issue with AMM itself and it affects all packs randomly, regardless of whether they're created by hand or automatically via EAP. Simply change your in-game location or restart the game.
 
 ## Screenshots
 <p align="center">

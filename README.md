@@ -49,9 +49,10 @@ If your pose happens to T-Pose in game **this has nothing to do with my tool.** 
   <img src="https://i.imgur.com/Peio83d.png"/>
 </p>
 <p align="center">
+  Above: Season7 - All Access pose pack built via EAP.
 </p>
 
-#### A note to potential contributors
+#### A note for potential contributors
 I'm still learning C#, .NET and WPF so excuse some of the mess. Refactoring and code cleanup is a priority for future builds as well as adherance to proper conventions.
 
 ## Terms of Use

@@ -27,7 +27,7 @@ A <b> fast and fully automated way of creating Appearance Menu Mod (AMM) pose pa
 
 #### Guide
 1. Select the path to your WolvenKit Console executable.			
-2. Fill out the mod name, author and AMM category. 
+2. Fill out the author, mod name and AMM category. 
 3. Load one more more .ANIM files to the corresponding body type.
 Optional: To build more advanced packs, click the arrow to reveal more slots.
 4. Follow the button prompts: Load -> Build -> Pack.

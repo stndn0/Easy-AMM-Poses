@@ -20,12 +20,33 @@ A <b> fast and fully automated way of creating Appearance Menu Mod (AMM) pose pa
 - Automatically generates the necessary .workspot, .lua, and .ent files using detected pose data.
 - Automatically generates a packed Cyberpunk 2077 mod that you can share with the community.
 
-## Screenshots
+## Tutorial
+#### Requirements
+- [.NET framework 8.0](https://dotnet.microsoft.com/en-us/download) to run the application.
+- [WolvenKit Console (stable preferred, 8.13+)](https://github.com/WolvenKit/WolvenKit/releases) to be used by the application.
 
+#### Guide
+1. Select the path to your WolvenKit Console executable.			
+2. Fill out the mod name, author and AMM category. 
+3. Load one more more .ANIM files to the corresponding body type.
+Optional: To build more advanced packs, click the arrow to reveal more slots.
+4. Follow the button prompts: Load -> Build -> Pack.
+5. The final packed mod will be saved to the "Packed Folder" in the project directory.
+
+## Screenshots
+<p align="center">
+  <img src="https://i.imgur.com/lUls3ZP.png" height="800"/>
+</p>
+<p align="center">
+  Above: poses successfully loaded from user provided animations. 
+</p>
+
+## A note to potential contributors
+This information only applies to potential contributors.
+
+I'm still learning C#, .NET and WPF, so please excuse some of the inelegance. Refactoring and code cleanup is a priority for future builds as well as adherance to practices such as SOLID.
 
 ## Terms of Use
-This software is soure available. 
-
-You are free to modify this software for personal use only. If you'd like to help improve it for everyone, i'm happy to collaborate.
+You are free to modify this software for personal use. If you'd like to help improve it for everyone, i'm happy to collaborate.
 
 Do not redistribute or reupload this software, with or without modification, without my permission. 

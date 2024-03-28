@@ -38,7 +38,7 @@ Optional: To build more advanced packs, click the arrow to reveal more slots.
   <img src="https://i.imgur.com/lUls3ZP.png" height="800"/>
 </p>
 <p align="center">
-  Above: poses successfully loaded from user provided animations. 
+  Above: poses successfully loaded from user provided animations. Ready to build.
 </p>
 
 ## A note to potential contributors

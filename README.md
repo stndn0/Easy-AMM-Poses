@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="https://i.imgur.com/H6mOAVl.png"/>
-</p>
+# Easy AMM Poses
 
 ---
 

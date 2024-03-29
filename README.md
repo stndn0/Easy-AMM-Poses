@@ -13,10 +13,13 @@ Photomode to AMM converter for the development of Cyberpunk 2077 mods.
 A <b> fast and fully automated way of creating Appearance Menu Mod (AMM) pose packs</b>. Simply provide your animation file(s) and my tool will handle the rest. 
 
 
-<b>Capabilities:</b>
+<b>Capabilities (with the help of WolvenKit):</b>
 - Automatically reads and extracts all poses from your animation file(s).
 - Automatically generates the necessary .workspot, .lua, and .ent files using detected pose data.
 - Automatically generates a packed Cyberpunk 2077 mod that you can share with the community.
+
+#### A note for potential contributors
+I'm still learning C#, .NET and WPF so excuse some of the mess. Refactoring and code cleanup is a major priority for future builds.
 
 ## Tutorial
 #### Requirements
@@ -48,8 +51,6 @@ If your pose happens to T-Pose in game **this has nothing to do with my tool.** 
   Above: Season7 - All Access pose pack built via EAP.
 </p>
 
-#### A note for potential contributors
-I'm still learning C#, .NET and WPF so excuse some of the mess. Refactoring and code cleanup is a priority for future builds.
 
 ## Terms of Use
 You are free to modify this software for personal use. If you'd like to help improve it for everyone, i'm happy to collaborate.

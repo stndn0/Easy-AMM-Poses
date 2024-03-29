@@ -53,7 +53,7 @@ If your pose happens to T-Pose in game **this has nothing to do with my tool.** 
 </p>
 
 #### A note for potential contributors
-I'm still learning C#, .NET and WPF so excuse some of the mess. Refactoring and code cleanup is a priority for future builds as well as adherance to proper conventions.
+I'm still learning C#, .NET and WPF so excuse some of the mess. Refactoring and code cleanup is a priority for future builds.
 
 ## Terms of Use
 You are free to modify this software for personal use. If you'd like to help improve it for everyone, i'm happy to collaborate.

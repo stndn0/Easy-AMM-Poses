@@ -1,5 +1,5 @@
 <div align="center">
-  Easy AMM Poses
+  # Easy AMM Poses
 </div>
 
 ---

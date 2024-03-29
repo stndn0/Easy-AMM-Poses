@@ -54,4 +54,4 @@ I'm still learning C#, .NET and WPF so excuse some of the mess. Refactoring and 
 ## Terms of Use
 You are free to modify this software for personal use. If you'd like to help improve it for everyone, i'm happy to collaborate.
 
-Please do not redistribute or reupload this software, with or without modification, without my permission. 
+Please do not reupload this software, with or without modification, without my permission. 

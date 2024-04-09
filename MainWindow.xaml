@@ -96,8 +96,6 @@
                 </Menu>
                 <StackPanel></StackPanel>
             </DockPanel>
-
-
         </Grid>
 
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
@@ -115,7 +113,7 @@
                         Easy AMM Poses
                     </Label>
                     <Label FontSize="14" Foreground="white" FontFamily="Cascadia Code Light" 
-                           Content="beta 1 (v0.86) | work in progress | made by wolv" 
+                           Content="beta 2 (v0.90) | work in progress | made by wolv" 
                            HorizontalAlignment="Center"/>
                     <Label Style="{StaticResource SubheaderLabel01}" Padding="5,5,5,1">
                         Configuration
@@ -288,7 +286,7 @@
                     <Expander FlowDirection="RightToLeft" >
                         <StackPanel FlowDirection="LeftToRight">
                             <Label Style="{StaticResource SubheaderLabel02}" Padding="5,16,5,1">
-                                Optional: load more animation files (slot 2)
+                                Optional: load more animation files
                             </Label>
                             <Label Style="{StaticResource PropertyLabel}">Load WA (woman average) animation file</Label>
                             <Grid>

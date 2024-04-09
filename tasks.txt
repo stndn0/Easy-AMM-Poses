@@ -1,0 +1,15 @@
+Beta 2 tasks
+
+Misc:
+- Stop temp folder from being created
+- Remove unused .json files that get generated.
+
+UI:
+- Toolbar: display links to wiki etc...
+- Show the number of poses that get detected.
+- Display poses in column formation.
+- Show thin scroll bar.
+- Fix margins/padding.
+
+Maybe:
+- Send to mod folder option?

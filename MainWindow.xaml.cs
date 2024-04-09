@@ -267,8 +267,7 @@ namespace Easy_AMM_Poses
         // **********************************************************
         // Method handlers and helpers for the main buttons.
         // Note: Some methods are too verbose and should be refactored.
-        // Furthermore, some methods should be moved to a separate
-        // class.
+        // Furthermore, some methods should be moved to a separate class.
         // **********************************************************
 
         /// <summary>

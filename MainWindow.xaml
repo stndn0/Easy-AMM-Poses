@@ -149,7 +149,7 @@
                         Style="{StaticResource Textbox}"/>
 
                     <Label Style="{StaticResource PropertyLabel}">
-                        Enter AMM category name (what the user sees in-game)
+                        Enter AMM category name (what the user sees in-game). Plain text only, no special characters.
                     </Label>
                     <TextBox 
                         x:Name="textboxCategory" 

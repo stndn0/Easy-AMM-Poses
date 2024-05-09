@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.Windows;
 using Easy_AMM_Poses.src;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace Easy_AMM_Poses
 {
@@ -68,7 +69,9 @@ namespace Easy_AMM_Poses
         {
             if (textboxCategory.Text != null)
             {
-                config.luaCategoryName = textboxCategory.Text;
+                // Remove apostrophes and other special characters
+                string modCategoryName = Regex.Replace(textboxCategory.Text, "[^a-zA-Z0-9\\s]", string.Empty);
+                config.luaCategoryName = modCategoryName;
             }
             else
             {
@@ -80,7 +83,8 @@ namespace Easy_AMM_Poses
         {
             if (textboxUsername.Text != null)
             {
-                config.projectUsername = textboxUsername.Text;
+                string modUsername = Regex.Replace(textboxUsername.Text, "[^a-zA-Z0-9\\s]", string.Empty);
+                config.projectUsername = modUsername;
                 Json.WriteConfigData(config);
             }
         }

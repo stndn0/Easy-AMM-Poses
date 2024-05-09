@@ -385,6 +385,8 @@ namespace Easy_AMM_Poses
                 {
                     readAnimData(config.animJsonPathMaleBig2, config.manBig, 2);
                 }
+
+                updatePoseInfo();
                 updateAppStatus("Conversion complete. Ready to build.");
             }
             catch (Exception ex)
@@ -615,6 +617,11 @@ namespace Easy_AMM_Poses
             Process.Start("explorer.exe", url);
         }
 
+        // Display a status message in the UI.
+        private void updatePoseInfo()
+        {
+            poseInformation.Content = "Detected poses are displayed below (" + poseList.Count + " poses found in .anim files):";
+        }
 
         // **********************************************************
         // Miscellaneous methods and helpers.

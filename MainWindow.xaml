@@ -522,8 +522,8 @@
                             Style="{StaticResource Button}"/>
                     </Grid>
 
-                    <Label Style="{StaticResource PropertyLabel}" FontFamily="#Rajdhani Light">
-                        Detected poses will be displayed below...
+                    <Label x:Name="poseInformation" Style="{StaticResource PropertyLabel}" FontFamily="#Rajdhani Light">
+                        Detected poses will be displayed below.
                     </Label>
 
                 </StackPanel>

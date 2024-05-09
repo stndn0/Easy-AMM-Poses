@@ -95,6 +95,7 @@ namespace Easy_AMM_Poses
             if (textboxProjectName.Text != "")
             {
                 config.projectName = textboxProjectName.Text.Trim();
+                config.projectName = config.projectName.Replace(":", " ");
                 config.projectPath = "projects/" + textboxProjectName.Text.Trim();
                 pathToFemaleAverageAnim.IsEnabled = true;
                 pathToMaleAverageAnim.IsEnabled = true;

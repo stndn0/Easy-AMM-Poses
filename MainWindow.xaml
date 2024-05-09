@@ -98,8 +98,34 @@
             </DockPanel>
         </Grid>
 
-        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
-            <Grid Margin="16,16,16,16">
+        <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Row="1">
+            <ScrollViewer.Resources>
+                <Style TargetType="ScrollBar">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ScrollBar">
+                                <Grid>
+                                    <Border Background="Transparent"
+                                    BorderBrush="Black" 
+                                            BorderThickness="0">
+      
+                                        <Track x:Name="PART_Track"
+                                       Width="Auto"
+                                       Height="Auto"
+                                       IsDirectionReversed="True">
+                                            <Track.Thumb>
+                                                <Thumb x:Name="Thumb"
+                                               Background="White" />
+                                            </Track.Thumb>
+                                        </Track>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ScrollViewer.Resources>
+            <Grid Margin="28,16,16,16">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>

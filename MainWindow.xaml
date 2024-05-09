@@ -139,7 +139,7 @@
                         Easy AMM Poses
                     </Label>
                     <Label FontSize="14" Foreground="white" FontFamily="Cascadia Code Light" 
-                           Content="beta 2 (v0.90) | work in progress | made by wolv" 
+                           Content="v1.00 | made by wolv" 
                            HorizontalAlignment="Center"/>
                     <Label Style="{StaticResource SubheaderLabel01}" Padding="5,5,5,1">
                         Configuration

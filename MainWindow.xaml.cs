@@ -617,6 +617,35 @@ namespace Easy_AMM_Poses
             Process.Start("explorer.exe", url);
         }
 
+        private void ButtonWikiHandler(Object sender, RoutedEventArgs e)
+        {
+            string url = "https://wiki.redmodding.org/cyberpunk-2077-modding/modding-guides/animations/animations/amm-collab-anims-poses#easy-amm-poses";
+            Process.Start("explorer.exe", url);
+        }
+
+        private void ButtonNexusHandler(Object sender, RoutedEventArgs e)
+        {
+            string url = "https://www.nexusmods.com/cyberpunk2077/mods/13904";
+            Process.Start("explorer.exe", url);
+        }
+
+        private void ButtonBugReportHandler(Object sender, RoutedEventArgs e)
+        {
+            string url = @"https://www.nexusmods.com/cyberpunk2077/mods/13904?tab=bugs";
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true
+            };
+            Process.Start(psi);
+        }
+
+        private void ButtonPhotomodeToolHandler(Object sender, RoutedEventArgs e)
+        {
+            string url = "https://wolv-photomode-tools.netlify.app/";
+            Process.Start("explorer.exe", url);
+        }
+
         // Display a status message in the UI.
         private void updatePoseInfo()
         {
